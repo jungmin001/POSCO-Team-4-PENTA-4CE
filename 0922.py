@@ -1,1 +1,1 @@
-print()
+print("PR권한 테스트")
