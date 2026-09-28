@@ -4,10 +4,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, recall_score, precision_score, f1_score
 
 # =========================================================
-# 1. 데이터
+# 1. 데이터 불러오기
 # =========================================================
 
-df = pd.read_csv("sensor.csv")
+df = pd.read_csv("CH.1/Data/Row/sensor.csv")
 
 df["timestamp"] = pd.to_datetime(df["timestamp"])
 df = df.sort_values("timestamp").reset_index(drop=True)
@@ -73,7 +73,7 @@ print("고장 횟수:", len(failure_times))
 
 
 # =========================================================
-# 5. 시간순 Train / Test 기준
+# 5. 시간순 Train/ Test 기준
 # =========================================================
 
 split_time = failure_times[-2] - pd.Timedelta(hours=12)
@@ -145,4 +145,120 @@ result = pd.DataFrame(
     rows, columns=["고장 몇 시간 전", "재현율", "정밀도", "F1", "FP", "FN", "TP"]
 )
 
-print(result)
+# =========================================================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# =========================================================
+# 1. 데이터 불러오기
+# =========================================================
+
+df = pd.read_csv("CH.1/Data/Row/sensor.csv")
+
+df["timestamp"] = pd.to_datetime(df["timestamp"])
+df = df.sort_values("timestamp")
+
+
+# =========================================================
+# 2. 사용할 센서
+# =========================================================
+
+selected_sensors = [
+    "sensor_04",
+    "sensor_02",
+    "sensor_13",
+    "sensor_33",
+    "sensor_32",
+    "sensor_28",
+]
+
+
+# =========================================================
+# 3. 선택한 센서 결측값 시간 기준 보간
+# =========================================================
+
+df = df.set_index("timestamp")
+
+df[selected_sensors] = df[selected_sensors].interpolate(method="time")
+
+df = df.reset_index()
+
+
+# =========================================================
+# 4. 실제 고장 발생 시간
+# =========================================================
+
+failure_times = df.loc[df["machine_status"] == "BROKEN", "timestamp"]
+
+
+# =========================================================
+# 5. 선택 센서 전체 시계열 흐름
+# =========================================================
+
+fig, axes = plt.subplots(len(selected_sensors), 1, figsize=(15, 15), sharex=True)
+
+for ax, sensor in zip(axes, selected_sensors):
+
+    ax.plot(df["timestamp"], df[sensor], linewidth=0.7)
+
+    for t in failure_times:
+        ax.axvline(t, linestyle="--", alpha=0.7)
+
+    ax.set_title(sensor)
+    ax.set_ylabel("Value")
+
+plt.xlabel("Time")
+plt.tight_layout()
+plt.show()
+
+
+# =========================================================
+# 6. 첫 번째 고장 기준 12시간 전 확대
+# =========================================================
+
+t = failure_times.iloc[0]
+
+view = df[(df["timestamp"] >= t - pd.Timedelta(hours=12)) & (df["timestamp"] <= t)]
+
+
+fig, axes = plt.subplots(len(selected_sensors), 1, figsize=(15, 15), sharex=True)
+
+for ax, sensor in zip(axes, selected_sensors):
+
+    ax.plot(view["timestamp"], view[sensor], linewidth=1)
+
+    ax.axvline(t, linestyle="--")
+
+    ax.set_title(sensor)
+    ax.set_ylabel("Value")
+
+plt.xlabel("Time")
+plt.tight_layout()
+plt.show()
+
+
+# =========================================================
+# 7. 30분 이동평균
+# =========================================================
+
+for sensor in selected_sensors:
+
+    df[f"{sensor}_mean30"] = df[sensor].rolling(30).mean()
+
+
+fig, axes = plt.subplots(len(selected_sensors), 1, figsize=(15, 15), sharex=True)
+
+for ax, sensor in zip(axes, selected_sensors):
+
+    ax.plot(df["timestamp"], df[f"{sensor}_mean30"])
+
+    for t in failure_times:
+        ax.axvline(t, linestyle="--", alpha=0.7)
+
+    ax.set_title(f"{sensor} - 30min Rolling Mean")
+    ax.set_ylabel("Value")
+
+plt.xlabel("Time")
+plt.tight_layout()
+plt.show()
