@@ -11,7 +11,7 @@ DfClean = Df.copy() # 데이터 전처리 작업용 변수
 # =========================================================
 
 if "Unnamed: 0" in DfClean.columns:
-    DfClean = DfClean.drop(columns=["Unnamed: 0"]) # sensor의 단순 행열 삭제
+    DfClean = DfClean.drop(columns=["Unnamed: 0"]) # sensor 파일의 단순 행열 삭제
 
 # =========================================================
 # 2. timestamp 자료형 변환
@@ -21,7 +21,7 @@ DfClean["timestamp"] = pd.to_datetime(DfClean["timestamp"], errors="coerce") # �
 
 
 # timestamp 자체가 없는 행 제거
-DfClean = DfClean.dropna(subset=["timestamp"])
+DfClean = DfClean.dropna(subset=["timestamp"]) # 
 
 
 # =========================================================
