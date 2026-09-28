@@ -1,12 +1,11 @@
 import pandas as pd
 
-
 # =========================================================
 # 0. 원본 데이터 불러오기
 # =========================================================
 # 원본 데이터는 보존하고 DfClean에서 전처리를 진행한다.
 
-Df = pd.read_csv("data/sensor.csv")
+Df = pd.read_csv("CH.1/Data/Row/sensor.csv")
 
 DfRaw = Df.copy()
 DfClean = Df.copy()
@@ -26,15 +25,10 @@ if "Unnamed: 0" in DfClean.columns:
 # timestamp를 실제 시간 자료형으로 변환
 # 변환할 수 없는 값은 NaT로 변경
 
-DfClean["timestamp"] = pd.to_datetime(
-    DfClean["timestamp"],
-    errors="coerce"
-)
+DfClean["timestamp"] = pd.to_datetime(DfClean["timestamp"], errors="coerce")
 
-# timestamp가 없는 데이터는 시계열 분석이 불가능하므로 제거
-DfClean = DfClean.dropna(
-    subset=["timestamp"]
-)
+# timestamp 자체가 없는 행 제거
+DfClean = DfClean.dropna(subset=["timestamp"])
 
 
 # =========================================================
@@ -42,33 +36,21 @@ DfClean = DfClean.dropna(
 # =========================================================
 # 과거 → 현재 순서로 데이터를 정렬
 
-DfClean = (
-    DfClean
-    .sort_values("timestamp")
-    .reset_index(drop=True)
-)
+DfClean = DfClean.sort_values("timestamp").reset_index(drop=True)
 
 
 # =========================================================
 # 4. 완전히 동일한 중복 행 제거
 # =========================================================
 
-DfClean = (
-    DfClean
-    .drop_duplicates()
-    .reset_index(drop=True)
-)
+DfClean = DfClean.drop_duplicates().reset_index(drop=True)
 
 
 # =========================================================
 # 5. 센서 열 찾기
 # =========================================================
 
-SensorCols = [
-    Col
-    for Col in DfClean.columns
-    if Col.startswith("sensor_")
-]
+SensorCols = [Col for Col in DfClean.columns if Col.startswith("sensor_")]
 
 
 # =========================================================
@@ -77,11 +59,7 @@ SensorCols = [
 # 숫자로 변환할 수 없는 값은 NaN으로 처리
 
 for Col in SensorCols:
-
-    DfClean[Col] = pd.to_numeric(
-        DfClean[Col],
-        errors="coerce"
-    )
+    DfClean[Col] = pd.to_numeric(DfClean[Col], errors="coerce")
 
 
 # =========================================================
@@ -90,36 +68,19 @@ for Col in SensorCols:
 # 전체 데이터 중 결측값이 30% 이상인 센서는
 # 신뢰도가 낮다고 판단하여 센서 열 자체를 제거
 
-MissingRate = (
-    DfClean[SensorCols]
-    .isna()
-    .mean()
-    * 100
-)
+MissingRate = DfClean[SensorCols].isna().mean() * 100
 
-HighMissingCols = (
-    MissingRate[
-        MissingRate >= 30
-    ]
-    .index
-    .tolist()
-)
+HighMissingCols = MissingRate[MissingRate >= 30].index.tolist()
 
 print("\n=== 결측률 30% 이상 제거 센서 ===")
 print(HighMissingCols)
 
 
-DfClean = DfClean.drop(
-    columns=HighMissingCols
-)
+DfClean = DfClean.drop(columns=HighMissingCols)
 
 
-# 제거 후 센서 목록 다시 설정
-SensorCols = [
-    Col
-    for Col in DfClean.columns
-    if Col.startswith("sensor_")
-]
+# 제거 이후 센서 목록 다시 갱신
+SensorCols = [Col for Col in DfClean.columns if Col.startswith("sensor_")]
 
 
 # =========================================================
@@ -131,10 +92,7 @@ SensorCols = [
 if "machine_status" in DfClean.columns:
 
     DfClean["machine_status"] = (
-        DfClean["machine_status"]
-        .astype("string")
-        .str.strip()
-        .str.upper()
+        DfClean["machine_status"].astype("string").str.strip().str.upper()
     )
 
 
@@ -142,24 +100,13 @@ if "machine_status" in DfClean.columns:
 # 9. 결측치 보간 전 상태 확인
 # =========================================================
 
-BeforeMissing = (
-    DfClean[SensorCols]
-    .isna()
-    .sum()
-)
+BeforeMissing = DfClean[SensorCols].isna().sum()
 
 print("\n=== 보간 전 센서별 결측치 ===")
 
-print(
-    BeforeMissing[
-        BeforeMissing > 0
-    ]
-)
+print(BeforeMissing[BeforeMissing > 0])
 
-print(
-    "\n보간 전 전체 결측치:",
-    BeforeMissing.sum()
-)
+print("\n보간 전 전체 결측치:", BeforeMissing.sum())
 
 
 # =========================================================
@@ -168,9 +115,7 @@ print(
 # 실제 시간 간격을 이용해 결측값을 추정하기 위해
 # timestamp를 index로 설정
 
-DfClean = DfClean.set_index(
-    "timestamp"
-)
+DfClean = DfClean.set_index("timestamp")
 
 
 # =========================================================
@@ -195,12 +140,8 @@ DfClean = DfClean.set_index(
 # limit_area="inside"
 # → 앞뒤에 실제 값이 존재하는 결측치만 보간
 
-DfClean[SensorCols] = (
-    DfClean[SensorCols]
-    .interpolate(
-        method="time",
-        limit_area="inside"
-    )
+DfClean[SensorCols] = DfClean[SensorCols].interpolate(
+    method="time", limit_area="inside"
 )
 
 
@@ -215,51 +156,29 @@ DfClean = DfClean.reset_index()
 # 13. 결측치 보간 후 확인
 # =========================================================
 
-AfterMissing = (
-    DfClean[SensorCols]
-    .isna()
-    .sum()
-)
+AfterMissing = DfClean[SensorCols].isna().sum()
 
 print("\n=== 보간 후 센서별 결측치 ===")
 
-print(
-    AfterMissing[
-        AfterMissing > 0
-    ]
-)
+print(AfterMissing[AfterMissing > 0])
 
-print(
-    "\n보간 후 남아있는 전체 결측치:",
-    AfterMissing.sum()
-)
+print("\n보간 후 남아있는 전체 결측치:", AfterMissing.sum())
 
 
 # =========================================================
 # 14. 최종 시간순 정렬
 # =========================================================
 
-DfClean = (
-    DfClean
-    .sort_values("timestamp")
-    .reset_index(drop=True)
-)
+DfClean = DfClean.sort_values("timestamp").reset_index(drop=True)
 
 
 # =========================================================
 # 15. 최종 중복 확인
 # =========================================================
 
-DuplicateCount = (
-    DfClean
-    .duplicated()
-    .sum()
-)
+DuplicateCount = DfClean.duplicated().sum()
 
-print(
-    "\n남아있는 완전 중복 행:",
-    DuplicateCount
-)
+print("\n남아있는 완전 중복 행:", DuplicateCount)
 
 
 # =========================================================
@@ -342,36 +261,17 @@ print("\n================================")
 print("Test2 최종 전처리 완료")
 print("================================")
 
-print(
-    "원본 데이터 크기:",
-    DfRaw.shape
-)
+print("원본 데이터 크기:", DfRaw.shape)
 
-print(
-    "최종 데이터 크기:",
-    DfClean.shape
-)
+print("Test2 데이터 크기:", DfClean.shape)
 
-print(
-    "\n결측률 30% 이상으로 제거된 센서:"
-)
+print("\n결측률 30% 이상으로 제거된 센서:")
 
-print(
-    HighMissingCols
-)
+print(HighMissingCols)
 
-print(
-    "\n최종 센서 개수:",
-    len(SensorCols)
-)
+print("\n최종 센서 개수:", len(SensorCols))
 
-print(
-    "\n최종 센서 결측치:",
-    DfClean[SensorCols]
-    .isna()
-    .sum()
-    .sum()
-)
+print("\n최종 센서 결측치 수:", DfClean[SensorCols].isna().sum().sum())
 
 print(
     "\n최종 중복 행:",
@@ -385,30 +285,18 @@ print(
 
 if "machine_status" in DfClean.columns:
 
-    print(
-        "\n=== machine_status 분포 ==="
-    )
+    print("\n=== machine_status 분포 ===")
 
-    print(
-        DfClean["machine_status"]
-        .value_counts(
-            dropna=False
-        )
-    )
+    print(DfClean["machine_status"].value_counts(dropna=False))
 
 
 # =========================================================
 # 19. 센서 기초 통계 확인
 # =========================================================
 
-print(
-    "\n=== 센서 기초 통계 ==="
-)
+print("\n=== 센서 기초 통계 ===")
 
-print(
-    DfClean[SensorCols]
-    .describe()
-)
+print(DfClean[SensorCols].describe())
 
 
 # =========================================================
@@ -417,11 +305,6 @@ print(
 # 별도의 결측치/이상치 보고서 파일은 저장하지 않고
 # 최종 전처리 데이터 하나만 저장한다.
 
-DfClean.to_csv(
-    "Test2_machine_data.csv",
-    index=False
-)
+DfClean.to_csv("Test2_machine_data.csv", index=False)
 
-# print(
-#     "\nTest2_machine_data.csv 저장 완료"
-# )
+print("\nTest2_machine_data.csv 저장 완료")
