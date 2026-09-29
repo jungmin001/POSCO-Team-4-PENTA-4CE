@@ -23,6 +23,7 @@ ENV/
 !.vscode/settings.json
 !.vscode/extensions.json
 .history/
+__pycache__/
 
 # --- PyCharm / JetBrains ---
 .idea/
