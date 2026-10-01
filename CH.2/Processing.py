@@ -53,29 +53,43 @@ def CheckDuplicates(Df):
     return DuplicateCount
 
 # 상수/저변동 센서 확인 (완전히 똑같은 센서 vs 거의 안 변하는 센서 구분)
-def CheckConstantSensors(Df):
+def CheckConstantSensors(Df, DominantRatio=0.9):
     SensorCols = [Col for Col in Df.columns if Col.startswith("sensor_measurement_")]
 
     UniqueCounts = Df[SensorCols].nunique()
     ExactConstantCols = UniqueCounts[UniqueCounts == 1].index.tolist()
 
-    StdValues = Df[SensorCols].std()
-    LowVarianceCols = StdValues[StdValues < 1e-5].index.tolist()
+    # 최빈값 하나가 전체의 90% 이상을 차지하면 사실상 상수로 취급
+    TopValueRatio = Df[SensorCols].apply(lambda Col: Col.value_counts(normalize=True).iloc[0])
+    LowVarianceCols = TopValueRatio[TopValueRatio >= DominantRatio].index.tolist()
 
     print("완전히 똑같은 센서:", ExactConstantCols if ExactConstantCols else "없음")
     print("거의 안 변하는 센서(완전 동일 포함):", LowVarianceCols if LowVarianceCols else "없음")
 
     return ExactConstantCols, LowVarianceCols
 
-# IQR 방식 이상치 탐지
+# 엔진별 초반 1/3 구간(정상 상태로 간주) 값만 모아서 반환
+def CollectEarlyValues(Df, Col):
+    EarlyValues = []
+
+    for _, Group in Df.groupby("unit_number"):
+        Group = Group.sort_values("time_in_cycles")
+        SplitPoint = len(Group) // 3
+        EarlyValues.append(Group[Col].iloc[:SplitPoint])
+
+    return pd.concat(EarlyValues)
+
+# IQR 방식 이상치 탐지 (전체 구간이 아니라 초반 정상 구간 기준으로 범위를 잡음 -
 def CheckOutliersIQR(Df):
     SensorCols = [Col for Col in Df.columns if Col.startswith("sensor_measurement_")]
     Report = []
     OutlierMasks = {}
 
     for Col in SensorCols:
-        Q1 = Df[Col].quantile(0.25)
-        Q3 = Df[Col].quantile(0.75)
+        EarlyValues = CollectEarlyValues(Df, Col)
+
+        Q1 = EarlyValues.quantile(0.25)
+        Q3 = EarlyValues.quantile(0.75)
         IQR = Q3 - Q1
         Lower = Q1 - 1.5 * IQR
         Upper = Q3 + 1.5 * IQR
@@ -108,15 +122,17 @@ def CheckOutliersRollingMedian(Df, Window=5, Threshold=3):
 
     return ReportDf, OutlierMasks
 
-# MAD 방식 이상치 탐지
+# MAD 방식 이상치 탐지 (IQR과 마찬가지로 초반 정상 구간 기준)
 def CheckOutliersMAD(Df, Threshold=3.5):
     SensorCols = [Col for Col in Df.columns if Col.startswith("sensor_measurement_")]
     Report = []
     OutlierMasks = {}
 
     for Col in SensorCols:
-        Median = Df[Col].median()
-        Mad = (Df[Col] - Median).abs().median()
+        EarlyValues = CollectEarlyValues(Df, Col)
+
+        Median = EarlyValues.median()
+        Mad = (EarlyValues - Median).abs().median()
         ModifiedZScore = pd.Series(0, index=Df.index) if Mad == 0 else 0.6745 * (Df[Col] - Median) / Mad
         OutlierMask = ModifiedZScore.abs() > Threshold
 
@@ -163,29 +179,38 @@ def Main():
     Df = LoadData(SelectedFile)
 
     # 결측치 확인 후 처리 방법 선택
-    CheckMissing(Df)
-    Method = int(input("결측치 처리 방법을 선택하세요 (1: 삭제, 2: 보간): "))
-    Df = HandleMissing(Df, Method)
+    MissingCount = CheckMissing(Df)
+    if len(MissingCount) > 0:
+        Method = int(input("결측치 처리 방법을 선택하세요 (1: 삭제, 2: 보간): "))
+        Df = HandleMissing(Df, Method)
 
     CheckDuplicates(Df)
 
     ExactConstantCols, LowVarianceCols = CheckConstantSensors(Df)
     Df = Df.drop(columns=LowVarianceCols)
 
+    # IQR 방식
     IqrReport, IqrMasks = CheckOutliersIQR(Df)
     print(IqrReport)
 
+    # Rolling 방식
     RollingReport, RollingMasks = CheckOutliersRollingMedian(Df)
     print(RollingReport)
 
+    # MAD 방식
     MadReport, MadMasks = CheckOutliersMAD(Df)
     print(MadReport)
 
-    # 이상치 처리는 IQR 기준으로, 할지 말지는 직접 선택
-    Df = TreatOutliers(Df, IqrMasks)
+    # 이상치 처리는 IQR 기준으로, 할지 말지는 직접 선택 (발견된 게 있을 때만 물어봄)
+    if IqrReport["outlier_count"].sum() > 0:
+        Df = TreatOutliers(Df, IqrMasks)
+    else:
+        print("이상치가 없어 처리를 건너뜁니다.")
 
-    SavePath = SelectedFile.replace(".csv", "_cleaned.csv")
-    SaveCleaned(Df, SavePath)
+    BaseDir = os.path.dirname(os.path.abspath(__file__))
+    CleanedPath = os.path.join(BaseDir, "Data", "Processed", "cleaned_data.csv")
+    os.makedirs(os.path.dirname(CleanedPath), exist_ok=True)
+    SaveCleaned(Df, CleanedPath)
 
 
 Main()
