@@ -1,4 +1,5 @@
 import os
+import sys
 from tkinter import filedialog
 import pandas as pd
 import tkinter as tk
@@ -7,9 +8,10 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Malgun Gothic"
 plt.rcParams["axes.unicode_minus"] = False
 
-# CSV 파일 로드 및 Df 변환하여 반환
+# CSV 파일 로드 및 Df 변환하여 반환 (rolling, 보간처럼 행 순서에 의존하는 계산이 있어서 미리 정렬)
 def LoadData(FileLocation):
     Df = pd.read_csv(FileLocation)
+    Df = Df.sort_values(["unit_number", "time_in_cycles"]).reset_index(drop=True)
 
     return Df
 
@@ -27,9 +29,13 @@ def DropMissing(Df):
 
     return ResultDf
 
-# 결측치 보간
+# 결측치 보간 (엔진별로 따로 보간 - 전체에 한 번에 하면 엔진 끝 값이 다음 엔진 첫 값과 이어져서 보간됨)
 def InterpolateMissing(Df):
-    ResultDf = Df.interpolate(method="linear", limit_direction="both")
+    ResultDf = Df.copy()
+    ValueCols = ResultDf.columns.drop("unit_number")
+    ResultDf[ValueCols] = ResultDf.groupby("unit_number")[ValueCols].transform(
+        lambda X: X.interpolate(method="linear", limit_direction="both")
+    )
 
     return ResultDf
 
@@ -44,6 +50,14 @@ def HandleMissing(Df, Method):
         ResultDf = Df
 
     return ResultDf
+
+# 결측치 처리 방법 입력 (1, 2가 아니면 다시 입력)
+def AskMissingMethod():
+    while True:
+        Answer = input("결측치 처리 방법을 선택하세요 (1: 삭제, 2: 보간): ").strip()
+        if Answer in ("1", "2"):
+            return int(Answer)
+        print("1 또는 2를 입력하세요.")
 
 # 중복 행 개수 반환
 def CheckDuplicates(Df):
@@ -112,8 +126,9 @@ def CheckOutliersRollingMedian(Df, Window=5, Threshold=3):
         RollingMedian = Df.groupby("unit_number")[Col].transform(
             lambda X: X.rolling(Window, center=True, min_periods=1).median()
         )
-        Deviation = (Df[Col] - RollingMedian).abs()
-        OutlierMask = Deviation > (Threshold * Deviation.std())
+        # 기준은 편차 자체의 표준편차 (절댓값의 표준편차를 쓰면 기준이 약 1.8σ로 낮아져서 일반 노이즈까지 잡힘)
+        Residual = Df[Col] - RollingMedian
+        OutlierMask = Residual.abs() > (Threshold * Residual.std())
 
         Report.append({"sensor": Col, "outlier_count": OutlierMask.sum()})
         OutlierMasks[Col] = OutlierMask
@@ -156,7 +171,7 @@ def TreatOutliers(Df, OutlierMasks):
     for Col, Mask in OutlierMasks.items():
         ResultDf.loc[Mask, Col] = None
 
-    ResultDf = ResultDf.interpolate(method="linear", limit_direction="both")
+    ResultDf = InterpolateMissing(ResultDf)
     print("이상치를 결측치로 바꾸고 보간했습니다.")
 
     return ResultDf
@@ -176,12 +191,16 @@ def Main():
     SelectedFile = filedialog.askopenfilename(initialdir=os.getcwd(), title="CSV 파일을 선택하세요",
                                               filetypes=(("CSV 파일", "*.csv"),))
 
+    # 파일 선택 취소 시 종료 (main.py에서도 다음 단계로 안 넘어감)
+    if not SelectedFile:
+        sys.exit("파일을 선택하지 않아 종료합니다.")
+
     Df = LoadData(SelectedFile)
 
     # 결측치 확인 후 처리 방법 선택
     MissingCount = CheckMissing(Df)
     if len(MissingCount) > 0:
-        Method = int(input("결측치 처리 방법을 선택하세요 (1: 삭제, 2: 보간): "))
+        Method = AskMissingMethod()
         Df = HandleMissing(Df, Method)
 
     CheckDuplicates(Df)
@@ -201,9 +220,10 @@ def Main():
     MadReport, MadMasks = CheckOutliersMAD(Df)
     print(MadReport)
 
-    # 이상치 처리는 IQR 기준으로, 할지 말지는 직접 선택 (발견된 게 있을 때만 물어봄)
-    if IqrReport["outlier_count"].sum() > 0:
-        Df = TreatOutliers(Df, IqrMasks)
+    # 이상치 처리는 Rolling Median 기준으로, 할지 말지는 직접 선택 (발견된 게 있을 때만 물어봄)
+    # IQR/MAD는 초반 정상 구간 기준이라 수명 후반의 열화 신호까지 이상치로 잡음 (지우면 RUL 예측 신호가 사라짐)
+    if RollingReport["outlier_count"].sum() > 0:
+        Df = TreatOutliers(Df, RollingMasks)
     else:
         print("이상치가 없어 처리를 건너뜁니다.")
 
@@ -213,4 +233,5 @@ def Main():
     SaveCleaned(Df, CleanedPath)
 
 
-Main()
+if __name__ == "__main__":
+    Main()
