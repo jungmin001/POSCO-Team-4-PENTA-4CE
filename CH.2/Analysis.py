@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -9,6 +10,9 @@ plt.rcParams["axes.unicode_minus"] = False
 
 BaseDir = os.path.dirname(os.path.abspath(__file__))
 CleanedPath = os.path.join(BaseDir, "Data", "Processed", "cleaned_data.csv")
+
+# rolling window (단기 5 + 장기 30, 교차검증으로 선정)
+RollingWindows = (5, 30)
 
 
 # CSV 파일 로드 및 Df 변환하여 반환 (rolling 등 순서에 의존하는 계산이 많아서 미리 정렬)
@@ -142,9 +146,11 @@ def PlotTopSensorsByUnit(Df, TrendDf, TopSensors, SampleUnits=5):
     Units = Df["unit_number"].unique()[:SampleUnits]
     UnitColors = dict(zip(Units, sns.color_palette(n_colors=len(Units))))
 
+    # squeeze=False: 센서 1개여도 Axes를 배열로 받음
     Fig, Axes = plt.subplots(
-        len(TopSensors), 1, figsize=(10, 2.5 * len(TopSensors)), sharex=True
+        len(TopSensors), 1, figsize=(10, 2.5 * len(TopSensors)), sharex=True, squeeze=False
     )
+    Axes = Axes[:, 0]
 
     for Ax, Col in zip(Axes, TopSensors):
         Low, High = NormalRanges[Col]
@@ -212,20 +218,20 @@ def PlotSensorTrendByProgress(Df, KeySensors):
 
 
 # 원본 값과 Rolling Mean 비교 시각화 (엔진 하나 예시로)
-def PlotRawVsRolling(Df, ExampleSensor, ExampleUnit=1):
-    RollingCol = f"{ExampleSensor}_rolling_mean"
+def PlotRawVsRolling(Df, ExampleSensor, ExampleUnit=1, Windows=RollingWindows):
     ExampleDf = Df[Df["unit_number"] == ExampleUnit].sort_values("time_in_cycles")
 
     plt.figure(figsize=(12, 5))
     plt.plot(
         ExampleDf["time_in_cycles"], ExampleDf[ExampleSensor], label="원본", alpha=0.5
     )
-    plt.plot(
-        ExampleDf["time_in_cycles"],
-        ExampleDf[RollingCol],
-        label="Rolling Mean",
-        linewidth=2,
-    )
+    for Window in Windows:
+        plt.plot(
+            ExampleDf["time_in_cycles"],
+            ExampleDf[f"{ExampleSensor}_rolling_mean_{Window}"],
+            label=f"Rolling Mean ({Window})",
+            linewidth=2,
+        )
     plt.title(f"엔진 {ExampleUnit} - {ExampleSensor} 원본 vs Rolling Mean")
     plt.xlabel("Cycle")
     plt.ylabel("센서값")
@@ -236,21 +242,23 @@ def PlotRawVsRolling(Df, ExampleSensor, ExampleUnit=1):
 
 
 # 핵심 센서에 대해 엔진별 rolling 평균/표준편차 특성 추가 (엔진 경계 안 넘게 unit_number별로 계산)
-def AddRollingFeatures(Df, TopSensors, Window=5):
+def AddRollingFeatures(Df, TopSensors, Windows=RollingWindows):
     ResultDf = Df.copy()
 
-    for Col in TopSensors:
-        ResultDf[f"{Col}_rolling_mean"] = ResultDf.groupby("unit_number")[
-            Col
-        ].transform(lambda X: X.rolling(Window, min_periods=1).mean())
-        ResultDf[f"{Col}_rolling_std"] = (
-            ResultDf.groupby("unit_number")[Col]
-            .transform(lambda X: X.rolling(Window, min_periods=1).std())
-            .fillna(0)
-        )
+    for Window in Windows:
+        for Col in TopSensors:
+            ResultDf[f"{Col}_rolling_mean_{Window}"] = ResultDf.groupby("unit_number")[
+                Col
+            ].transform(lambda X: X.rolling(Window, min_periods=1).mean())
+            ResultDf[f"{Col}_rolling_std_{Window}"] = (
+                ResultDf.groupby("unit_number")[Col]
+                .transform(lambda X: X.rolling(Window, min_periods=1).std())
+                .fillna(0)
+            )
 
     print(
-        f"rolling 특성 추가 완료: 센서 {len(TopSensors)}개 x 평균/표준편차 = {len(TopSensors) * 2}개 컬럼"
+        f"rolling 특성 추가 완료: 센서 {len(TopSensors)}개 x window {len(Windows)}개 x 평균/표준편차"
+        f" = {len(TopSensors) * len(Windows) * 2}개 컬럼"
     )
 
     return ResultDf
@@ -272,6 +280,10 @@ def Main():
 
     KeySensors = SelectKeySensors(TrendDf)
 
+    # 핵심 센서가 없으면 이후 단계 불가 → 종료
+    if not KeySensors:
+        sys.exit("핵심 센서가 0개라 종료합니다. SelectKeySensors의 Threshold를 낮춰보세요.")
+
     PlotTopSensorsByUnit(Df, TrendDf, KeySensors)
 
     PlotSensorTrendByProgress(Df, KeySensors)
@@ -285,4 +297,5 @@ def Main():
     print("저장 완료:", FeaturePath)
 
 
-Main()
+if __name__ == "__main__":
+    Main()
