@@ -13,6 +13,14 @@ venv/
 env/
 ENV/
 
+# --- 폴더 무시
+__pycache__/
+CH.1/Data/Processed/
+CH.2/Data/Processed/
+CH.3/Data/Processed/
+CH.4/Data/Processed/
+
+
 # --- Environment / secrets ---
 .env
 .env.*
@@ -23,13 +31,6 @@ ENV/
 !.vscode/settings.json
 !.vscode/extensions.json
 .history/
-
-# --- 폴더 무시
-__pycache__/
-CH.1/Data/Processed/
-CH.2/Data/Processed/
-CH.3/Data/Processed/
-CH.4/Data/Processed/
 
 # --- PyCharm / JetBrains ---
 .idea/
