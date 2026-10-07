@@ -1,147 +1,231 @@
-import os
 import sys
-from tkinter import filedialog
-import pandas as pd
+from pathlib import Path
 import tkinter as tk
+from tkinter import filedialog
+
+import pandas as pd
 
 SensorCols = ["WD-SPD", "WD-LOD", "OSC-FRQ", "OSC-STK", "MLD-LVL"]
 KeyCols = ["EQP_CD", "SLAB_NO", "MEAS_DT"]
+GroupCols = ["EQP_CD", "SLAB_NO"]
+
+DataCols = ["MEAS_DT", "EQP_CD", "SLAB_NO"] + SensorCols
+OutputCols = DataCols + ["IS_OUTLIER"]
 
 
-# CSV 파일 로드 및 Df 변환하여 반환 (rolling, 보간처럼 행 순서에 의존하는 계산이 있어서 미리 정렬)
+# 저장 기준이 되는 CH.3 폴더 찾기
+def GetChapterDir():
+    ScriptDir = Path(__file__).resolve().parent
+
+    for Folder in [ScriptDir, *ScriptDir.parents]:
+        if Folder.name == "CH.3":
+            return Folder
+
+    return ScriptDir / "CH.3"
+
+
+# CSV 로드 및 정렬
 def LoadData(FileLocation):
     Df = pd.read_csv(FileLocation, encoding="utf-8-sig")
-    Df["MEAS_DT"] = pd.to_datetime(Df["MEAS_DT"])
-    Df = Df.sort_values(KeyCols).reset_index(drop=True)
 
-    return Df
+    MissingCols = [Col for Col in DataCols if Col not in Df.columns]
+    if MissingCols:
+        raise ValueError(f"필수 컬럼이 없습니다: {MissingCols}")
 
-# 현재 남아 있는 센서 컬럼 목록 (저변동 센서를 지운 뒤에도 쓸 수 있게)
-def GetSensorCols(Df):
-    return [Col for Col in SensorCols if Col in Df.columns]
+    Df = Df[DataCols].copy()
 
-# 결측치 개수 반환
-def CheckMissing(Df):
-    MissingCount = Df.isna().sum()
-    MissingCount = MissingCount[MissingCount > 0]
-    print("결측치 없음" if len(MissingCount) == 0 else f"결측치 개수: {MissingCount}")
+    # 원본 CSV에서의 행 순서 보관
+    Df["_ROW_ORDER"] = range(len(Df))
 
-    return MissingCount
+    Df["MEAS_DT"] = pd.to_datetime(Df["MEAS_DT"], errors="coerce")
 
-# 결측치 보간 (슬라브별로 따로 - 전체에 한 번에 하면 앞 슬라브 끝 값이 다음 슬라브 첫 값과 이어져서 보간됨)
-def InterpolateMissing(Df):
+    for Col in ["EQP_CD", "SLAB_NO"]:
+        Df[Col] = Df[Col].astype("string").str.strip().replace("", pd.NA)
+
+    for Col in SensorCols:
+        Df[Col] = pd.to_numeric(Df[Col], errors="coerce")
+
+    Df[SensorCols] = Df[SensorCols].replace([float("inf"), float("-inf")], float("nan"))
+
+    return Df.sort_values(KeyCols + ["_ROW_ORDER"]).reset_index(drop=True)
+
+
+# 결측치가 하나라도 있는 행 전체 삭제
+def DeleteMissingRows(Df):
+    ResultDf = Df.dropna(subset=DataCols).copy().reset_index(drop=True)
+
+    print("결측치/유효하지 않은 값으로 삭제한 행:", len(Df) - len(ResultDf))
+
+    return ResultDf
+
+
+# 이상치 표시: 행 삭제 및 값 변경 없음
+def MarkOutliers(Df, IQRMultiplier=3.0, ChangeRatio=0.05, Window=11):
     ResultDf = Df.copy()
-    Cols = GetSensorCols(ResultDf)
-    ResultDf[Cols] = ResultDf.groupby("SLAB_NO")[Cols].transform(
-        lambda X: X.interpolate(method="linear", limit_direction="both")
-    )
-
-    return ResultDf
-
-# 중복 행 개수 반환 (완전히 같은 행 / 같은 설비·슬라브·시각인데 값이 다른 행)
-def CheckDuplicates(Df):
-    ExactCount = Df.duplicated().sum()
-    SameTimeCount = Df.drop_duplicates().duplicated(subset=KeyCols).sum()
-    print("완전히 같은 행:", ExactCount)
-    print("같은 시각에 값이 다른 행:", SameTimeCount)
-
-    return ExactCount, SameTimeCount
-
-# 중복 정리 (완전히 같은 행은 삭제, 같은 시각에 여러 번 측정된 값은 평균으로 한 행으로 합침)
-def MergeDuplicates(Df):
-    ResultDf = Df.drop_duplicates()
-    ResultDf = ResultDf.groupby(KeyCols, as_index=False)[SensorCols].mean()
-
-    return ResultDf
-
-# 상수/저변동 센서 확인 (완전히 똑같은 센서 vs 거의 안 변하는 센서 구분)
-def CheckConstantSensors(Df, DominantRatio=0.9):
-    UniqueCounts = Df[SensorCols].nunique()
-    ExactConstantCols = UniqueCounts[UniqueCounts == 1].index.tolist()
-
-    # 최빈값 하나가 전체의 90% 이상을 차지하면 사실상 상수로 취급
-    TopValueRatio = Df[SensorCols].apply(lambda Col: Col.value_counts(normalize=True).iloc[0])
-    LowVarianceCols = TopValueRatio[TopValueRatio >= DominantRatio].index.tolist()
-
-    print("완전히 똑같은 센서:", ExactConstantCols if ExactConstantCols else "없음")
-    print("거의 안 변하는 센서(완전 동일 포함):", LowVarianceCols if LowVarianceCols else "없음")
-
-    return ExactConstantCols, LowVarianceCols
-
-# Rolling Median 방식 이상치 탐지 (슬라브별 시간 흐름 기준, 주변 11개 값의 중앙값보다 20% 넘게 튀는 값)
-# CC1/CC2는 정상 범위 자체가 달라서 전체 기준(IQR 등)으로 잡으면 정상값까지 이상치로 잡힘
-# 실제 데이터에서는 OSC-STK가 6,000 근처에서 28,000~50,000으로 한 번씩 튀는 센서 오류만 잡힘
-def CheckOutliersRollingMedian(Df, Window=11, Ratio=0.2):
-    Report = []
     OutlierMasks = {}
+    Report = []
 
-    for Col in GetSensorCols(Df):
-        RollingMedian = Df.groupby("SLAB_NO")[Col].transform(
+    EqGroups = ResultDf.groupby("EQP_CD", sort=False).groups
+
+    for Col in SensorCols:
+        # 설비별 전체 데이터로 IQR 범위 계산
+        Grouped = ResultDf.groupby("EQP_CD", sort=False)[Col]
+
+        Q1 = Grouped.transform("quantile", q=0.25)
+        Q3 = Grouped.transform("quantile", q=0.75)
+        IQR = Q3 - Q1
+
+        Lower = Q1 - IQRMultiplier * IQR
+        Upper = Q3 + IQRMultiplier * IQR
+
+        IQRMask = (ResultDf[Col] < Lower) | (ResultDf[Col] > Upper)
+
+        # 같은 설비·슬래브 내 주변 11행 중앙값
+        # 중복 시각을 합치기 전이며 현재 행도 포함
+        RollingMedian = ResultDf.groupby(GroupCols, sort=False)[Col].transform(
             lambda X: X.rolling(Window, center=True, min_periods=1).median()
         )
-        OutlierMask = (Df[Col] / RollingMedian - 1).abs() > Ratio
 
-        Report.append({"sensor": Col, "outlier_count": OutlierMask.sum()})
+        Difference = (ResultDf[Col] - RollingMedian).abs()
+
+        # 중앙값 대비 차이가 5% 이상인지 확인
+        # 중앙값이 0일 때는 0이 아닌 값만 변화 조건 충족
+        ChangeMask = (Difference > 0) & (
+            Difference >= RollingMedian.abs() * ChangeRatio
+        )
+
+        # IQR 범위 이탈 AND 변화율 5% 이상
+        OutlierMask = IQRMask & ChangeMask
+
         OutlierMasks[Col] = OutlierMask
+        ResultDf[f"{Col}_OUTLIER"] = OutlierMask
 
-    ReportDf = pd.DataFrame(Report).sort_values("outlier_count", ascending=False)
+        for Eq, Indexes in EqGroups.items():
+            FirstIndex = Indexes[0]
 
-    return ReportDf, OutlierMasks
+            Report.append(
+                {
+                    "EQP_CD": Eq,
+                    "sensor": Col,
+                    "IQR_lower": Lower.loc[FirstIndex],
+                    "IQR_upper": Upper.loc[FirstIndex],
+                    "outlier_count": int(OutlierMask.loc[Indexes].sum()),
+                }
+            )
 
-# 이상치를 결측치로 바꾼 뒤 슬라브별 보간
-def ReplaceOutliers(Df, OutlierMasks):
-    ResultDf = Df.copy()
-    for Col, Mask in OutlierMasks.items():
-        ResultDf.loc[Mask, Col] = None
+    # 센서 하나라도 이상치이면 해당 행을 이상치로 표시
+    ResultDf["IS_OUTLIER"] = pd.DataFrame(OutlierMasks, index=ResultDf.index).any(
+        axis=1
+    )
 
-    ResultDf = InterpolateMissing(ResultDf)
+    ReportDf = pd.DataFrame(
+        Report, columns=["EQP_CD", "sensor", "IQR_lower", "IQR_upper", "outlier_count"]
+    ).sort_values(["EQP_CD", "outlier_count"], ascending=[True, False])
 
-    return ResultDf
+    return ResultDf, ReportDf
 
-# CSV 저장
+
+# 같은 시각의 대표값 선택
+def MergeDuplicates(Df):
+    UnknownEqp = set(Df["EQP_CD"].unique()) - {"CC1", "CC2"}
+    if UnknownEqp:
+        raise ValueError(f"처리 규칙이 없는 설비입니다: {UnknownEqp}")
+
+    GroupSizes = Df.groupby(KeyCols).size()
+    if (GroupSizes > 2).any():
+        raise ValueError(
+            "같은 설비·슬래브·시각에 3행 이상 남아 있습니다. " "처리 규칙을 확인하세요."
+        )
+
+    Df = Df.sort_values(KeyCols + ["_ROW_ORDER"])
+
+    AllOutliers = Df.groupby(KeyCols, sort=False)["IS_OUTLIER"].transform("all")
+
+    # 정상 행이 있으면 정상 행만 대표값 후보로 선택
+    # 전부 이상치이면 이상치 행도 후보로 유지
+    # 입력 데이터의 행은 삭제하지 않음
+    Candidates = Df.loc[~Df["IS_OUTLIER"] | AllOutliers].copy()
+
+    # CC1: 첫 번째 후보 행 사용
+    CC1 = Candidates.loc[Candidates["EQP_CD"].eq("CC1")].drop_duplicates(
+        subset=KeyCols, keep="first"
+    )[OutputCols]
+
+    # CC2: 후보 행의 센서별 평균
+    # 한 행만 후보이면 그 값 그대로 사용
+    # 전부 이상치이면 평균을 내도 이상치 표시 유지
+    Aggregations = {Col: "mean" for Col in SensorCols}
+    Aggregations["IS_OUTLIER"] = "any"
+
+    CC2 = (
+        Candidates.loc[Candidates["EQP_CD"].eq("CC2")]
+        .groupby(KeyCols, as_index=False, sort=False)
+        .agg(Aggregations)
+    )
+
+    ResultDf = pd.concat([CC1, CC2[OutputCols]], ignore_index=True)
+
+    return ResultDf.sort_values(KeyCols).reset_index(drop=True)
+
+
+# 최종 CSV 저장
 def SaveCleaned(Df, SavePath):
-    Df.to_csv(SavePath, index=False)
+    SavePath = Path(SavePath)
+    SavePath.parent.mkdir(parents=True, exist_ok=True)
+
+    Df.to_csv(SavePath, index=False, encoding="utf-8-sig")
 
 
-# 자동 실행 함수
 def Main():
-    # GUI 라이브러리 초기화
+    ChapterDir = GetChapterDir()
+
     Root = tk.Tk()
     Root.withdraw()
 
-    # 파일탐색기 실행 (CSV 파일 외 필터링) - T-CC-INS01_주편.csv 선택
-    BaseDir = os.path.dirname(os.path.abspath(__file__))
-    SelectedFile = filedialog.askopenfilename(initialdir=os.path.join(BaseDir, "Data", "Raw"), title="센서 CSV 파일을 선택하세요",
-                                              filetypes=(("CSV 파일", "*.csv"),))
+    try:
+        SelectedFile = filedialog.askopenfilename(
+            initialdir=str(ChapterDir / "Data" / "Raw"),
+            title="센서 CSV 파일을 선택하세요",
+            filetypes=(("CSV 파일", "*.csv"),),
+        )
+    finally:
+        Root.destroy()
 
-    # 파일 선택 취소 시 종료 (Main.py에서도 다음 단계로 안 넘어감)
     if not SelectedFile:
         sys.exit("파일을 선택하지 않아 종료합니다.")
 
     Df = LoadData(SelectedFile)
+    print("원본 행 수:", len(Df))
 
-    # 결측치 확인 후 있으면 보간
-    MissingCount = CheckMissing(Df)
-    if len(MissingCount) > 0:
-        Df = InterpolateMissing(Df)
+    # 1. 결측치 행 삭제
+    Df = DeleteMissingRows(Df)
 
-    # 중복 확인 후 정리 (같은 시각 값은 평균)
-    CheckDuplicates(Df)
-    Df = MergeDuplicates(Df)
-    print("중복 정리 후 행 수:", len(Df))
+    # 2. 이상치 표시
+    MarkedDf, OutlierReport = MarkOutliers(Df)
 
-    ExactConstantCols, LowVarianceCols = CheckConstantSensors(Df)
-    Df = Df.drop(columns=LowVarianceCols)
+    print("\n설비·센서별 이상치 판정 결과:")
+    print(OutlierReport.to_string(index=False))
 
-    # 이상치 탐지 후 결측치로 바꿔서 보간
-    RollingReport, RollingMasks = CheckOutliersRollingMedian(Df)
-    print(RollingReport)
-    Df = ReplaceOutliers(Df, RollingMasks)
+    print("\n대표값 선택 전 이상치 행 수:", int(MarkedDf["IS_OUTLIER"].sum()))
 
-    CleanedPath = os.path.join(BaseDir, "Data", "Processed", "cleaned_data.csv")
-    os.makedirs(os.path.dirname(CleanedPath), exist_ok=True)
-    SaveCleaned(Df, CleanedPath)
-    print("저장 완료:", CleanedPath)
+    # 3. 설비별 규칙으로 대표값 선택
+    CleanedDf = MergeDuplicates(MarkedDf)
+
+    print("\n최종 행 수:", len(CleanedDf))
+    print("설비별 최종 행 수:")
+    print(CleanedDf.groupby("EQP_CD").size().to_string())
+
+    print("\n최종 데이터에 유지된 이상치 행 수:")
+    print(CleanedDf.groupby("EQP_CD")["IS_OUTLIER"].sum().to_string())
+
+    # CH.3/Data/Processed/cleaned_data.csv
+    CleanedPath = ChapterDir / "Data" / "Processed" / "cleaned_data.csv"
+
+    SaveCleaned(CleanedDf, CleanedPath)
+    print("\n저장 완료:", CleanedPath)
+
+    # MarkedDf는 대표값 선택 전 데이터이며 별도로 저장하지 않음
+    return CleanedDf, MarkedDf
 
 
 if __name__ == "__main__":
