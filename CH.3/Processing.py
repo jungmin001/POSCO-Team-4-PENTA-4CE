@@ -59,7 +59,8 @@ def DeleteMissingRows(Df):
     return ResultDf
 
 
-# 이상치 표시: 행 삭제 및 값 변경 없음
+# 이상치 후보를 비교 기준에서 제외하고 최종 이상치 표시
+# 원본 행이나 센서값은 삭제·변경하지 않음
 def MarkOutliers(Df, IQRMultiplier=3.0, ChangeRatio=0.05, Window=11):
     ResultDf = Df.copy()
     OutlierMasks = {}
@@ -68,7 +69,7 @@ def MarkOutliers(Df, IQRMultiplier=3.0, ChangeRatio=0.05, Window=11):
     EqGroups = ResultDf.groupby("EQP_CD", sort=False).groups
 
     for Col in SensorCols:
-        # 설비별 전체 데이터로 IQR 범위 계산
+        # 1. 설비별 전체 데이터로 IQR 범위 계산
         Grouped = ResultDf.groupby("EQP_CD", sort=False)[Col]
 
         Q1 = Grouped.transform("quantile", q=0.25)
@@ -78,23 +79,38 @@ def MarkOutliers(Df, IQRMultiplier=3.0, ChangeRatio=0.05, Window=11):
         Lower = Q1 - IQRMultiplier * IQR
         Upper = Q3 + IQRMultiplier * IQR
 
+        # 아직 최종 이상치가 아닌, IQR 기준 이상치 후보
         IQRMask = (ResultDf[Col] < Lower) | (ResultDf[Col] > Upper)
 
-        # 같은 설비·슬래브 내 주변 11행 중앙값
-        # 중복 시각을 합치기 전이며 현재 행도 포함
-        RollingMedian = ResultDf.groupby(GroupCols, sort=False)[Col].transform(
-            lambda X: X.rolling(Window, center=True, min_periods=1).median()
-        )
+        # 2. 후보값은 비교용 자료에서만 결측값으로 처리
+        # ResultDf의 원본 센서값은 그대로 유지
+        ReferenceValues = ResultDf[Col].mask(IQRMask)
 
+        # 3. 같은 설비·슬래브의 주변 11행에서
+        # 제외되지 않은 값만 사용하여 중앙값 계산
+        RollingMedian = ReferenceValues.groupby(
+            [ResultDf["EQP_CD"], ResultDf["SLAB_NO"]], sort=False
+        ).transform(lambda X: X.rolling(Window, center=True, min_periods=1).median())
+
+        # 주변 11행이 모두 제외되면 중앙값을 계산할 수 없음
+        # 이 경우 해당 설비 전체의 IQR 범위 안 값들의
+        # 중앙값을 비교 기준으로 사용
+        EquipmentMedian = ReferenceValues.groupby(
+            ResultDf["EQP_CD"], sort=False
+        ).transform("median")
+
+        RollingMedian = RollingMedian.fillna(EquipmentMedian)
+
+        # 4. 원본 값과 비교 기준의 차이 계산
         Difference = (ResultDf[Col] - RollingMedian).abs()
 
-        # 중앙값 대비 차이가 5% 이상인지 확인
-        # 중앙값이 0일 때는 0이 아닌 값만 변화 조건 충족
+        # 중앙값 대비 차이가 5% 이상
+        # 중앙값이 0이면 0이 아닌 값만 변화 조건 충족
         ChangeMask = (Difference > 0) & (
             Difference >= RollingMedian.abs() * ChangeRatio
         )
 
-        # IQR 범위 이탈 AND 변화율 5% 이상
+        # 5. 두 조건을 모두 만족할 때 최종 이상치
         OutlierMask = IQRMask & ChangeMask
 
         OutlierMasks[Col] = OutlierMask
