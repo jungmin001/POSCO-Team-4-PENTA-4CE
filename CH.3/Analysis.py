@@ -1,139 +1,164 @@
 import os
-import numpy as np
+import platform
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-plt.rcParams["font.family"] = "Malgun Gothic"
+# =========================================================
+# 폰트 설정 - Windows / Mac
+# =========================================================
+
+Font = "Malgun Gothic" if platform.system() == "Windows" else "AppleGothic"
+
+plt.rcParams["font.family"] = Font
 plt.rcParams["axes.unicode_minus"] = False
 
+
+# =========================================================
+# 전역 설정
+# =========================================================
+
 BaseDir = os.path.dirname(os.path.abspath(__file__))
-FilePath = os.path.join(BaseDir, "Data", "Processed", "cleaned_data.csv")
+CleanedPath = os.path.join(BaseDir, "Data", "Processed", "cleaned_data.csv")
 
-Sensors = ["WD-SPD", "WD-LOD", "OSC-FRQ", "OSC-STK", "MLD-LVL"]
-CastingSensors = ["OSC-FRQ", "OSC-STK", "MLD-LVL"]
+SensorCols = ["OSC-FRQ", "OSC-STK", "MLD-LVL"]
+UseCols = ["EQP_CD", "SLAB_NO", "MEAS_DT"] + SensorCols
+
+IQRMultiplier = 3.0
+
+# IQR 정상 범위 계산
+GetBounds = lambda X: (
+    X.quantile(0.25) - IQRMultiplier * (X.quantile(0.75) - X.quantile(0.25)),
+    X.quantile(0.75) + IQRMultiplier * (X.quantile(0.75) - X.quantile(0.25)),
+)
 
 
 # =========================================================
-# 데이터 로드
+# 정제 데이터 로드
 # =========================================================
 
-Df = pd.read_csv(FilePath, parse_dates=["MEAS_DT"])
 
-Df = Df.sort_values(["EQP_CD", "SLAB_NO", "MEAS_DT"]).reset_index(drop=True)
+def LoadData(FilePath):
+    Df = pd.read_csv(FilePath, usecols=UseCols, parse_dates=["MEAS_DT"])
+
+    Df["EQP_CD"] = Df["EQP_CD"].astype("category")
+
+    return Df.sort_values(["EQP_CD", "SLAB_NO", "MEAS_DT"]).reset_index(drop=True)
 
 
 # =========================================================
-# 슬라브별 공정 진행률 생성
+# 설비별 센서 정상 범위 계산
+# =========================================================
+
+
+def GetNormalRanges(LineDf):
+    return {Sensor: GetBounds(LineDf[Sensor]) for Sensor in SensorCols}
+
+
+# =========================================================
+# SLAB별 센서 대표값 생성
+# 중앙값을 사용해 전체적인 주편 흐름 확인
+# =========================================================
+
+
+def GetSlabProfile(LineDf):
+    return LineDf.groupby("SLAB_NO", observed=True)[SensorCols].median().reset_index()
+
+
+# =========================================================
+# 정상 범위를 벗어난 실제 측정값 반환
+# =========================================================
+
+
+def GetOutliers(LineDf, Sensor, Lower, Upper):
+    return LineDf[(LineDf[Sensor] < Lower) | (LineDf[Sensor] > Upper)][
+        ["SLAB_NO", Sensor]
+    ]
+
+
+# =========================================================
+# 설비별 차트 생성
 #
-# 목적:
-# 슬라브마다 길이가 다르므로
-# 시작 0% ~ 종료 100%로 맞춰 공통 흐름 확인
+# 사용:
+# PlotEquipment(Df, "CC1")
+# PlotEquipment(Df, "CC2")
 # =========================================================
 
-Df["STEP"] = Df.groupby(["EQP_CD", "SLAB_NO"]).cumcount()
 
-Df["MAX_STEP"] = Df.groupby(["EQP_CD", "SLAB_NO"])["STEP"].transform("max")
+def PlotEquipment(Df, Line):
+    LineDf = Df[Df["EQP_CD"] == Line]
+    SlabDf = GetSlabProfile(LineDf)
+    Ranges = GetNormalRanges(LineDf)
 
-Df["PROGRESS"] = Df["STEP"] / Df["MAX_STEP"].replace(0, np.nan) * 100
+    X = range(len(SlabDf))
 
-Df["PROGRESS_BIN"] = Df["PROGRESS"] // 10 * 10
+    Fig, Axes = plt.subplots(3, 1, figsize=(14, 9), sharex=True)
 
+    for Ax, Sensor in zip(Axes, SensorCols):
+        Lower, Upper = Ranges[Sensor]
 
-# =========================================================
-# 1. CC1 / CC2 기본 센서 상태
-# =========================================================
+        # SLAB별 중앙값 흐름
+        Ax.plot(
+            X,
+            SlabDf[Sensor],
+            marker="o",
+            markersize=4,
+            linewidth=1.5,
+            label="SLAB 중앙값",
+        )
 
-print("\n===== CC1 / CC2 기본 센서 상태 =====")
+        # 정상 운전 범위
+        Ax.axhspan(Lower, Upper, alpha=0.15, label="정상 범위")
 
-print(Df.groupby("EQP_CD")[Sensors].agg(["mean", "std", "min", "max"]).round(2))
+        # 실제 이상치가 발생한 SLAB 표시
+        Outliers = GetOutliers(LineDf, Sensor, Lower, Upper)
 
+        if not Outliers.empty:
+            SlabIndex = {Slab: Index for Index, Slab in enumerate(SlabDf["SLAB_NO"])}
 
-# =========================================================
-# 2. 공정 초반 → 후반 변화
-#
-# 목적:
-# 공정이 진행되면서 센서 중심값이 변하는지 확인
-# =========================================================
+            OutlierX = Outliers["SLAB_NO"].map(SlabIndex)
 
-for Line in ["CC1", "CC2"]:
+            Ax.scatter(
+                OutlierX, Outliers[Sensor], marker="x", s=45, label="이상치", zorder=3
+            )
 
-    Temp = Df[Df["EQP_CD"] == Line]
+        Ax.set_ylabel(Sensor)
+        Ax.set_title(f"{Sensor}  |  정상범위 {Lower:.1f} ~ {Upper:.1f}")
 
-    Early = Temp[Temp["PROGRESS"] <= 20][Sensors].median()
+        Ax.grid(alpha=0.2)
+        Ax.legend(loc="upper right")
 
-    Middle = Temp[Temp["PROGRESS"].between(40, 60)][Sensors].median()
+    # SLAB 번호가 너무 많으면 일부만 표시
+    Step = max(1, len(SlabDf) // 15)
 
-    Late = Temp[Temp["PROGRESS"] >= 80][Sensors].median()
+    Axes[-1].set_xticks(list(X)[::Step])
 
-    Result = pd.DataFrame(
-        {
-            "초반": Early,
-            "중반": Middle,
-            "후반": Late,
-            "변화율(%)": (Late - Early) / Early.abs() * 100,
-        }
-    ).round(2)
+    Axes[-1].set_xticklabels(
+        SlabDf["SLAB_NO"].astype(str).iloc[::Step], rotation=45, ha="right"
+    )
 
-    print(f"\n[{Line}]")
-    print(Result)
+    Axes[-1].set_xlabel("SLAB_NO")
 
+    Fig.suptitle(f"{Line} 주편별 공정 센서 흐름", fontsize=16)
 
-# =========================================================
-# 3. 공정 진행 흐름 그래프
-#
-# 센서마다 단위가 다르므로
-# 각 센서의 중앙값 대비 변화율(%)로 비교
-# =========================================================
+    Fig.tight_layout()
 
-for Line in ["CC1", "CC2"]:
-
-    Temp = Df[Df["EQP_CD"] == Line]
-
-    Profile = Temp.groupby("PROGRESS_BIN")[Sensors].median()
-
-    Base = Temp[Sensors].median()
-
-    Profile = (Profile - Base) / Base.abs() * 100
-
-    plt.figure(figsize=(10, 5))
-
-    for Sensor in Sensors:
-        plt.plot(Profile.index, Profile[Sensor], marker="o", label=Sensor)
-
-    plt.axhline(0, linestyle="--", alpha=0.5)
-
-    plt.title(f"{Line} 주조 공정 센서 흐름")
-    plt.xlabel("공정 진행률 (%)")
-    plt.ylabel("평소 수준 대비 변화율 (%)")
-
-    plt.legend()
-    plt.grid(alpha=0.3)
-    plt.tight_layout()
     plt.show()
 
 
 # =========================================================
-# 4. OSC 계열 센서 상관관계
-#
-# 목적:
-# OSC-FRQ / OSC-STK / MLD-LVL이
-# 서로 같이 움직이는 센서인지 확인
+# 실행
 # =========================================================
 
-for Line in ["CC1", "CC2"]:
 
-    Temp = Df[Df["EQP_CD"] == Line]
+def Main():
+    Df = LoadData(CleanedPath)
 
-    Corr = Temp[CastingSensors].corr(method="spearman")
+    # 차트 1
+    PlotEquipment(Df, "CC1")
 
-    print(f"\n[{Line} 상관관계]")
-    print(Corr.round(2))
+    # 차트 2
+    PlotEquipment(Df, "CC2")
 
-    plt.figure(figsize=(5, 4))
 
-    sns.heatmap(Corr, annot=True, fmt=".2f", cmap="coolwarm", center=0, vmin=-1, vmax=1)
-
-    plt.title(f"{Line} 주조 센서 상관관계")
-    plt.tight_layout()
-    plt.show()
+if __name__ == "__main__":
+    Main()
