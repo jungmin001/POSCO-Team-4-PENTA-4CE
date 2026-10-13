@@ -1,5 +1,6 @@
 import os
 import gc
+import platform
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import (mean_absolute_error, mean_squared_error, r2_score,
                              confusion_matrix, precision_score, recall_score, f1_score)
 
-plt.rcParams["font.family"] = "Malgun Gothic"
+plt.rcParams["font.family"] = "Malgun Gothic" if platform.system() == "Windows" else "AppleGothic"
 plt.rcParams["axes.unicode_minus"] = False
 
 BaseDir = os.path.dirname(os.path.abspath(__file__))
@@ -135,9 +136,15 @@ def TrainModels(TrainDf, ValDf, FeatureCols):
     RfModel = TrainRandomForest(TrainDf[FeatureCols], TrainDf["TTF"])
     RfPred = RfModel.predict(ValDf[FeatureCols])
 
+    DummyMetrics = ComputeRegressionMetrics(ValDf["TTF"], DummyPred)
+    RfMetrics = ComputeRegressionMetrics(ValDf["TTF"], RfPred)
+
     print("\n===== 회귀 성능 (Validation) =====")
-    PrintRegressionMetrics("DummyRegressor", ComputeRegressionMetrics(ValDf["TTF"], DummyPred))
-    PrintRegressionMetrics("RandomForestRegressor", ComputeRegressionMetrics(ValDf["TTF"], RfPred))
+    PrintRegressionMetrics("DummyRegressor", DummyMetrics)
+    PrintRegressionMetrics("RandomForestRegressor", RfMetrics)
+
+    if RfMetrics["MAE"] >= DummyMetrics["MAE"]:
+        print("\n[경고] RandomForest가 평균 예측(Dummy)보다 MAE가 낮지 않습니다. 현재 Feature로는 TTF 예측력이 없다고 봐야 합니다.")
 
     return RfModel, RfPred
 
@@ -153,6 +160,7 @@ def SelectRiskThreshold(YVal, RfPred):
         FinalDangerThreshold = int(RecallOkDf.loc[RecallOkDf["F1"].idxmax(), "TTF_Threshold"])
     else:
         FinalDangerThreshold = int(ValidationRiskDf.loc[ValidationRiskDf["Recall"].idxmax(), "TTF_Threshold"])
+        print(f"\n[경고] Recall {TargetRecall} 이상인 기준이 없어 Recall 최대 기준을 임시로 선택했습니다. 실사용 가능한 기준이 아닙니다.")
     print("\n최종 위험 기준 (Validation으로 선택): TTF <=", FinalDangerThreshold, "시간")
 
     return ValidationRiskDf, FinalDangerThreshold
@@ -225,6 +233,16 @@ def Main():
     RfModel, RfPred = TrainModels(TrainDf, ValDf, FeatureCols)
 
     ValidationRiskDf, FinalDangerThreshold = SelectRiskThreshold(ValDf["TTF"], RfPred)
+
+    # 결과 저장 (UE 어댑터 등 외부에서 읽는 용도): 검증 슬라브의 예측과 최종 위험 기준
+    SaveDir = os.path.join(BaseDir, "Data", "Processed")
+    os.makedirs(SaveDir, exist_ok=True)
+    PredictionDf = ValDf[["EQP_CD", "SLAB_NO", "MEAS_DT", "TTF"]].copy()
+    PredictionDf["PRED"] = RfPred
+    PredictionDf.to_csv(os.path.join(SaveDir, "ttf_predictions.csv"), index=False, encoding="utf-8-sig")
+    FinalMetrics = ComputeRegressionMetrics(ValDf["TTF"], RfPred)
+    pd.DataFrame([{"DANGER_THRESHOLD_H": FinalDangerThreshold, **{k: float(v) for k, v in FinalMetrics.items()}}]).to_csv(
+        os.path.join(SaveDir, "ttf_threshold.csv"), index=False, encoding="utf-8-sig")
 
     PlotPrediction(ValDf["TTF"], RfPred)
 
