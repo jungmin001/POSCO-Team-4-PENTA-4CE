@@ -146,11 +146,45 @@ def PlotEquipment(Df, Line):
 
 
 # =========================================================
+# 시계열 특성 생성 (Modeling.py 입력)
+# =========================================================
+
+FeaturePath = os.path.join(BaseDir, "Data", "Processed", "timeseries_features.csv")
+
+# rolling window (단기 5 + 장기 30)
+RollingWindows = (5, 30)
+
+
+# 센서별 슬라브 단위 rolling 평균/표준편차 특성 추가 (슬라브 경계를 넘지 않게 SLAB_NO별로 계산)
+def AddRollingFeatures(Df, FeatureSensorCols, Windows=RollingWindows):
+    ResultDf = Df.copy()
+
+    for Window in Windows:
+        for Col in FeatureSensorCols:
+            Grouped = ResultDf.groupby("SLAB_NO", observed=True)[Col]
+            ResultDf[f"{Col}_rolling_mean_{Window}"] = Grouped.transform(lambda X: X.rolling(Window, min_periods=1).mean())
+            ResultDf[f"{Col}_rolling_std_{Window}"] = Grouped.transform(lambda X: X.rolling(Window, min_periods=1).std()).fillna(0)
+
+    print(f"rolling 특성 추가 완료: 센서 {len(FeatureSensorCols)}개 x window {len(Windows)}개 x 평균/표준편차"
+          f" = {len(FeatureSensorCols) * len(Windows) * 2}개 컬럼")
+
+    return ResultDf
+
+
+# =========================================================
 # 실행
 # =========================================================
 
 
 def Main():
+    # 특성 생성 (Modeling.py가 읽는 timeseries_features.csv). 센서는 전처리 결과 파일에 있는 것 전부 사용
+    FullDf = pd.read_csv(CleanedPath, parse_dates=["MEAS_DT"])
+    FullDf = FullDf.sort_values(["EQP_CD", "SLAB_NO", "MEAS_DT"]).reset_index(drop=True)
+    AllSensorCols = [Col for Col in ["WD-SPD", "WD-LOD", "OSC-FRQ", "OSC-STK", "MLD-LVL"] if Col in FullDf.columns]
+    FeatureDf = AddRollingFeatures(FullDf, AllSensorCols)
+    FeatureDf.to_csv(FeaturePath, index=False)
+    print("저장 완료:", FeaturePath)
+
     Df = LoadData(CleanedPath)
 
     # 차트 1
