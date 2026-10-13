@@ -10,7 +10,7 @@ def read_rows(path):
 def source_rows(root, scenario_id, file_id):
     """Stream one logical source CSV with its original chunk/row references."""
     root = Path(root)
-    manifest = json.loads((root / 'manifest.json').read_text())
+    manifest = json.loads((root / 'manifest.json').read_text(encoding='utf-8'))
     source = next(f for f in manifest['files'] if f['scenarioId'] == scenario_id and f['id'] == file_id)
     for chunk in source['chunks']:
         for index, row in enumerate(read_rows(root / 'chunks' / chunk['sha256'])):
@@ -20,7 +20,7 @@ def supervision_rows(root, scenario_id, kind='labels'):
     """Read public training/validation targets. These fields must not be predictors."""
     if kind not in ['labels', 'targets', 'diagnostics']:
         raise ValueError('kind must be labels, targets or diagnostics')
-    manifest = json.loads((Path(root) / 'manifest.json').read_text())
+    manifest = json.loads((Path(root) / 'manifest.json').read_text(encoding='utf-8'))
     scenario = next(s for s in manifest['scenarios'] if s['id'] == scenario_id)
     if scenario['split'] == 'test':
         raise ValueError('Test supervision is withheld for instructor evaluation.')

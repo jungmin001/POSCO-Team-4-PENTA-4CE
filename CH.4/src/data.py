@@ -30,7 +30,7 @@ MaintenanceCols = ["SCENARIO_ID", "WO_NO", "EQP_TAG", "PART_CD", "DETC_DT", "FAI
 
 # manifest.json 로드
 def LoadManifest(Root=RawDir):
-    return json.loads((Path(Root) / "manifest.json").read_text())
+    return json.loads((Path(Root) / "manifest.json").read_text(encoding="utf-8"))
 
 
 # 시나리오별 분할 {"S0001": "train", ...}
