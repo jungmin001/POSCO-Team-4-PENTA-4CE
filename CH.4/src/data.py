@@ -3,29 +3,11 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import posko
+from . import config
 
 BaseDir = Path(__file__).resolve().parent
 RawDir = BaseDir.parent / "Data" / "Raw"
-
-# 설비 이름 -> (설비 ID, 원자료 id), D·E·F는 구간별 특징 파일을 읽음
-Equipment = {
-    "A": ("P1-CR1-CAL01", "annealing"),
-    "B": ("P1-CR1-WLD01", "welding"),
-    "C": ("P1-CC1-INS01", "casting"),
-    "D": ("P1-CR1-SPM01", "temper-features"),
-    "E1": ("P1-SP1-EXF01", "fan-features"),
-    "E2": ("P1-SP2-EXF01", "fan-features"),
-    "F": ("P1-SP1-AGT01", "agitator-features"),
-}
-
-# 숫자로 바꾸지 않는 컬럼 (식별자, 시각, 문자 코드)
-TextCols = {"SCENARIO_ID", "MEAS_DT", "EQP_CD", "SLAB_NO", "LOT_NO", "COIL_ID",
-            "BURST_ID", "SESS_ID", "GRADE", "QUALITY_FLAG"}
-
-
-MaintenanceCols = ["SCENARIO_ID", "WO_NO", "EQP_TAG", "PART_CD", "DETC_DT", "FAILURE_DT",
-                   "STRT_DT", "END_DT", "MNT_TYPE", "DOWN_MIN", "COST_SCORE"]
+OutDir = BaseDir.parent.joinpath(*config.OutDirParts)
 
 
 # manifest.json 로드
@@ -34,67 +16,47 @@ def LoadManifest(Root=RawDir):
 
 
 # 시나리오별 분할 {"S0001": "train", ...}
-def GetScenarioSplit(Root=RawDir):
-    return {S["id"]: S["split"] for S in LoadManifest(Root)["scenarios"]}
+def GetScenarioSplit(Root=RawDir, Manifest=None):
+    Manifest = LoadManifest(Root) if Manifest is None else Manifest
+
+    return {S["id"]: S["split"] for S in Manifest["scenarios"]}
 
 
-# 분할(train / validation / test)에 속한 시나리오 ID 목록
-def GetScenarios(Split, Root=RawDir):
-    return [Id for Id, Name in GetScenarioSplit(Root).items() if Name == Split]
+# 원자료 종류 하나를 가진 시나리오 ID 목록 (manifest 순서)
+def GetSourceScenarios(Source, Root=RawDir, Manifest=None):
+    Manifest = LoadManifest(Root) if Manifest is None else Manifest
+
+    return [F["scenarioId"] for F in Manifest["files"] if F["id"] == Source]
 
 
-# 한 시나리오, 한 설비의 센서 표 (숫자·시간형 변환, 빈 값은 NaN)
-def LoadSensor(ScenarioId, Equip, Root=RawDir):
-    EqpCd, Source = Equipment[Equip]
+# 시나리오 하나의 청크를 모두 열어 순서대로 이어 붙인 표 (청크는 해시 이름의 CSV)
+def ReadScenario(Source, ScenarioId, Root=RawDir, Manifest=None, AsText=False):
+    Manifest = LoadManifest(Root) if Manifest is None else Manifest
+    File = next(F for F in Manifest["files"] if F["id"] == Source and F["scenarioId"] == ScenarioId)
 
-    Df = pd.DataFrame(posko.source_rows(Root, ScenarioId, Source))
-    Df = Df[Df["EQP_CD"] == EqpCd].drop(columns=["_SOURCE_CHUNK", "_SOURCE_ROW"])
+    # 행이 없는 원자료(예: 정비가 없는 시나리오)는 청크가 0개
+    if not File["chunks"]:
+        return pd.DataFrame(columns=File["columns"])
 
-    NumCols = [Col for Col in Df.columns if Col not in TextCols]
-    Df[NumCols] = Df[NumCols].apply(pd.to_numeric, errors="coerce")
-    Df["MEAS_DT"] = pd.to_datetime(Df["MEAS_DT"], utc=True)
+    # AsText: 값을 숫자로 바꾸지 않고 원본 글자 그대로 읽음 (빈칸은 빈 문자열)
+    Options = {"dtype": str, "keep_default_na": False} if AsText else {}
+    Parts = [pd.read_csv(Path(Root) / "chunks" / Chunk["sha256"], encoding="utf-8-sig", **Options) for Chunk in File["chunks"]]
 
-    return Df.reset_index(drop=True)
-
-
-# 한 시나리오의 정비 이력 (모든 설비), 정비가 없는 시나리오는 빈 표 반환
-def LoadMaintenance(ScenarioId, Root=RawDir):
-    Df = pd.DataFrame(posko.source_rows(Root, ScenarioId, "maintenance"), columns=MaintenanceCols + ["_SOURCE_CHUNK", "_SOURCE_ROW"])
-    Df = Df.drop(columns=["_SOURCE_CHUNK", "_SOURCE_ROW"])
-
-    for Col in ["DETC_DT", "FAILURE_DT", "STRT_DT", "END_DT"]:
-        Df[Col] = pd.to_datetime(Df[Col], utc=True)
-
-    return Df
+    return pd.concat(Parts, ignore_index=True)
 
 
-# 정답 CSV 로드 (test 시나리오는 정답 파일이 없음), 설비를 주면 해당 설비 행만 반환
-def LoadTruth(Kind, TimeCols, ScenarioId, Equip, Root):
+# 정답 CSV 로드 (분석 확인용, 입력 특징으로 쓰지 않음), test 시나리오는 정답 파일이 없음
+def LoadTruth(Kind, ScenarioId, EqpCode=None, Root=RawDir):
     Path_ = Path(Root) / Kind / f"{ScenarioId}.csv"
     if not Path_.exists():
         raise FileNotFoundError(f"{Kind} 정답이 없습니다 (test 시나리오): {ScenarioId}")
 
     Df = pd.read_csv(Path_)
 
-    if Equip is not None:
-        Df = Df[Df["EQP_CD"] == Equipment[Equip][0]]
+    if EqpCode is not None:
+        Df = Df[Df[config.EqpCol] == EqpCode]
 
-    for Col in TimeCols:
+    for Col in config.TruthTimeCols[Kind]:
         Df[Col] = pd.to_datetime(Df[Col], utc=True)
 
     return Df.reset_index(drop=True)
-
-
-# 상태·원인 구간 정답 (입력 특징으로 쓰지 않음)
-def LoadDiagnostics(ScenarioId, Equip=None, Root=RawDir):
-    return LoadTruth("diagnostics", ["START_AT", "END_AT"], ScenarioId, Equip, Root)
-
-
-# 6·24시간 고장 위험 정답 (공란은 NaN으로 유지)
-def LoadLabels(ScenarioId, Equip=None, Root=RawDir):
-    return LoadTruth("labels", ["OBSERVED_AT"], ScenarioId, Equip, Root)
-
-
-# 잔여수명·검열·정비 시점 정답 (RUL_HOURS 공란은 NaN으로 유지)
-def LoadTargets(ScenarioId, Equip=None, Root=RawDir):
-    return LoadTruth("targets", ["OBSERVED_AT"], ScenarioId, Equip, Root)
