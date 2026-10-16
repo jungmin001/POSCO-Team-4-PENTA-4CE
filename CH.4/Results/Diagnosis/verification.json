@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "scenario_disjointness": true,
+  "input_truth_leakage_check": true,
+  "all_2520_inputs_audited": true,
+  "saved_metrics_recomputed": true,
+  "probability_sums_checked": true,
+  "saved_model_inference_verified": "A/S0289, 864 rows, batch and independent sensor-only inference matched",
+  "checks": [
+    {
+      "equipment": "A",
+      "task": "state",
+      "validation_rows": 62208,
+      "status": "passed"
+    },
+    {
+      "equipment": "A",
+      "task": "cause",
+      "validation_rows": 3045,
+      "status": "passed"
+    },
+    {
+      "equipment": "B",
+      "task": "state",
+      "validation_rows": 31104,
+      "status": "passed"
+    },
+    {
+      "equipment": "B",
+      "task": "cause",
+      "validation_rows": 1496,
+      "status": "passed"
+    },
+    {
+      "equipment": "C",
+      "task": "state",
+      "validation_rows": 62208,
+      "status": "passed"
+    },
+    {
+      "equipment": "C",
+      "task": "cause",
+      "validation_rows": 10445,
+      "status": "passed"
+    },
+    {
+      "equipment": "D",
+      "task": "state",
+      "validation_rows": 62208,
+      "status": "passed"
+    },
+    {
+      "equipment": "D",
+      "task": "cause",
+      "validation_rows": 2995,
+      "status": "passed"
+    },
+    {
+      "equipment": "E1",
+      "task": "state",
+      "validation_rows": 2592,
+      "status": "passed"
+    },
+    {
+      "equipment": "E1",
+      "task": "cause",
+      "validation_rows": 109,
+      "status": "passed"
+    },
+    {
+      "equipment": "E2",
+      "task": "state",
+      "validation_rows": 2592,
+      "status": "passed"
+    },
+    {
+      "equipment": "E2",
+      "task": "cause",
+      "validation_rows": 121,
+      "status": "passed"
+    },
+    {
+      "equipment": "F",
+      "task": "state",
+      "validation_rows": 10368,
+      "status": "passed"
+    },
+    {
+      "equipment": "F",
+      "task": "cause",
+      "validation_rows": 534,
+      "status": "passed"
+    }
+  ]
+}
