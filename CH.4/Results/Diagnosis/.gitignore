@@ -1,0 +1,5 @@
+# Large reproducible local caches, trained models and row-level predictions.
+# Reports, metrics, case studies and figures remain visible to Git.
+features/
+models/
+predictions/
