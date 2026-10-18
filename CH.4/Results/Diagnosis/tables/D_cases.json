@@ -1,0 +1,830 @@
+[
+  {
+    "SCENARIO_ID": "S0239",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-08-13 22:25:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0239:P1-CR1-SPM01:3",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9999896725776921,
+    "candidate_2_probability": 1.0327422307888168e-05,
+    "margin": 0.9999793451553842,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9999896725776921,
+    "probability_failed": 1.8650797799621634e-20,
+    "probability_maintenance": 1.8650797799621634e-20,
+    "probability_normal": 1.0327422307888168e-05,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.6707000732421875,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.629370984694244
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.7576000094413757,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.594228479199554
+      },
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 1.1032999753952026,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.5667587656347723
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0252",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-10-03 10:05:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0252:P1-CR1-SPM01:3",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9997426593608816,
+    "candidate_2_probability": 0.00025734063911835313,
+    "margin": 0.9994853187217633,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9997426593608816,
+    "probability_failed": 1.9833028938411783e-20,
+    "probability_maintenance": 1.9833028938411783e-20,
+    "probability_normal": 0.00025734063911835313,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.812999963760376,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.9366757095134057
+      },
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 1.4498000144958496,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.7197025731426506
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.6294999718666077,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.10518363341796322
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0261",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-11-07 23:20:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0261:P1-CR1-SPM01:3",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.9987710304014166,
+    "candidate_2_probability": 0.001228969598583537,
+    "margin": 0.997542060802833,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.001228969598583537,
+    "probability_failed": 2.1313782787306346e-20,
+    "probability_maintenance": 2.1313782787306346e-20,
+    "probability_normal": 0.9987710304014166,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "LOAD",
+        "current_value": 0.7836999893188477,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.003650559269093634
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.4361000061035156,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.0008657771190188068
+      },
+      {
+        "observation": "VIB-TOP_STD",
+        "current_value": 0.4359999895095825,
+        "normal_reference": 0.3743000030517578,
+        "score_drop_to_reference": 0.0008127707377486582
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0239",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-08-13 16:10:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0239:P1-CR1-SPM01:3",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5003228097496766,
+    "candidate_2_probability": 0.49967719025032337,
+    "margin": 0.0006456194993532116,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.49967719025032337,
+    "probability_failed": 5.038196584021149e-20,
+    "probability_maintenance": 5.038196584021149e-20,
+    "probability_normal": 0.5003228097496766,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "LOAD",
+        "current_value": 0.9212999939918518,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.3119900795000331
+      },
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.5652999877929688,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": -0.14096351098990845
+      },
+      {
+        "observation": "VIB-TOP_STD",
+        "current_value": 0.6140999794006348,
+        "normal_reference": 0.3743000030517578,
+        "score_drop_to_reference": -0.2498704341546829
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0287",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-02-19 00:25:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0287:P1-CR1-SPM01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.5013925108035319,
+    "candidate_2_probability": 0.4986074891964681,
+    "margin": 0.0027850216070637868,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.5013925108035319,
+    "probability_failed": 5.038185588223733e-20,
+    "probability_maintenance": 5.038185588223733e-20,
+    "probability_normal": 0.4986074891964681,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 2.817500114440918,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.4900371310634155
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.959199905395508,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.4625196256322234
+      },
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.5547999739646912,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": 0.0871840127217926
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0278",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-01-14 11:45:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "roll-wear",
+    "DIAG_INTERVAL": "S0278:P1-CR1-SPM01:1",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5024856754018192,
+    "candidate_2_probability": 0.4975143245981809,
+    "margin": 0.004971350803638308,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.4975143245981809,
+    "probability_failed": 5.038160182244597e-20,
+    "probability_maintenance": 5.038160182244597e-20,
+    "probability_normal": 0.5024856754018192,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.4885999858379364,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": 0.20421506518697885
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.5013999938964844,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.13528252378424388
+      },
+      {
+        "observation": "VIB-TOP_STD",
+        "current_value": 0.5013999938964844,
+        "normal_reference": 0.3743000030517578,
+        "score_drop_to_reference": -0.1294083494710676
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0287",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-02-21 21:10:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0287:P1-CR1-SPM01:3",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 1.8219385614617603e-20,
+    "margin": 1.0,
+    "uncertainty_reasons": "outside_training_envelope",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 1.8219385614617603e-20,
+    "probability_maintenance": 1.8219385614617603e-20,
+    "probability_normal": 1.8219385614617603e-20,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 3.4237000942230225,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.3310332877775868
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 3.2026000022888184,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.1860507891280183
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.7355999946594238,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.01932485321506805
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0261",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-11-08 18:40:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "roll-wear",
+    "DIAG_INTERVAL": "S0261:P1-CR1-SPM01:4",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 1.8219385614617603e-20,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 1.8219385614617603e-20,
+    "probability_maintenance": 1.8219385614617603e-20,
+    "probability_normal": 1.8219385614617603e-20,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "CUR-MTR_RMS",
+        "current_value": 110.89019775390625,
+        "normal_reference": 87.5553970336914,
+        "score_drop_to_reference": 0.06002533467915738
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 1.5542000532150269,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.008710058013470134
+      },
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": -1.365399956703186,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.000344691317841761
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0239",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-08-11 15:15:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "bearing-damage",
+    "DIAG_INTERVAL": "S0239:P1-CR1-SPM01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 1.8219385614617603e-20,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 1.8219385614617603e-20,
+    "probability_maintenance": 1.8219385614617603e-20,
+    "probability_normal": 1.8219385614617603e-20,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.6542999744415283,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.21903663678264906
+      },
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 1.8906999826431274,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.1669337283276774
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.659600019454956,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.06152918167162691
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0287",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-02-21 22:25:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0287:P1-CR1-SPM01:3",
+    "task": "cause",
+    "prediction": "bearing::bearing-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "roll::background-wear",
+    "correct": false,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 0.9999797608327164,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 6.7463890945141515e-06,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 2.266900062561035,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.5311322802299254
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 3.10479998588562,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.3602562784982539
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.6834999918937683,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.35405786632673486
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0261",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-11-09 20:05:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0261:P1-CR1-SPM01:6",
+    "task": "cause",
+    "prediction": "roll::roll-wear",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "bearing::background-wear",
+    "correct": false,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 6.7463890945141515e-06,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 0.9999797608327164,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 1.6766999959945679,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.5911906555658921
+      },
+      {
+        "observation": "CUR-MTR_RMS",
+        "current_value": 102.92549896240234,
+        "normal_reference": 87.5553970336914,
+        "score_drop_to_reference": 0.16137223429689407
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.76910001039505,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.10687356387937275
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0252",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-10-03 14:50:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0252:P1-CR1-SPM01:4",
+    "task": "cause",
+    "prediction": "bearing::bearing-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "roll::background-wear",
+    "correct": false,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 0.9999797608327164,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 6.7463890945141515e-06,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 4.444799900054932,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.5797380784354269
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.6841999888420105,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.4334947537448306
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 3.021699905395508,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.39641118451712587
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0287",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-02-19 04:20:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "bearing-damage",
+    "DIAG_INTERVAL": "S0287:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "bearing::bearing-damage",
+    "candidate_2": "roll::background-wear",
+    "confidence": 0.5010195591643214,
+    "candidate_2_probability": 0.4989698811416438,
+    "margin": 0.0020496780226775813,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "bearing::bearing-damage",
+    "correct": true,
+    "probability_bearing::background-wear": 5.279847017409109e-06,
+    "probability_bearing::bearing-damage": 0.5010195591643214,
+    "probability_roll::background-wear": 0.4989698811416438,
+    "probability_roll::roll-wear": 5.279847017409109e-06,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": -0.18889999389648438,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.2155062269632924
+      },
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.5771999955177307,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": 0.13427587494143162
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.4647998809814453,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.10205146281828992
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0261",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-11-07 07:15:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "roll-wear",
+    "DIAG_INTERVAL": "S0261:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "roll::roll-wear",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.5020781332379887,
+    "candidate_2_probability": 0.4979113070299575,
+    "margin": 0.00416682620803116,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "roll::roll-wear",
+    "correct": true,
+    "probability_bearing::background-wear": 0.4979113070299575,
+    "probability_bearing::bearing-damage": 5.279866026886811e-06,
+    "probability_roll::background-wear": 5.279866026886811e-06,
+    "probability_roll::roll-wear": 0.5020781332379887,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 1.7755000591278076,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.24905638412513942
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.6855999827384949,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.04316050430603935
+      },
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": -1.2278000116348267,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.028607865453793235
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0278",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-01-14 11:40:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "roll-wear",
+    "DIAG_INTERVAL": "S0278:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "roll::roll-wear",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.5028650338768138,
+    "candidate_2_probability": 0.49712440634609073,
+    "margin": 0.005740627530723075,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "roll::roll-wear",
+    "correct": true,
+    "probability_bearing::background-wear": 0.49712440634609073,
+    "probability_bearing::bearing-damage": 5.27988854771741e-06,
+    "probability_roll::background-wear": 5.27988854771741e-06,
+    "probability_roll::roll-wear": 0.5028650338768138,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.4772000014781952,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": 0.05342649598569399
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.4982999861240387,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.04701845709985453
+      },
+      {
+        "observation": "VIB-TOP_STD",
+        "current_value": 0.49799999594688416,
+        "normal_reference": 0.3743000030517578,
+        "score_drop_to_reference": 0.03331367585146999
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0287",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-02-20 12:20:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "bearing-damage",
+    "DIAG_INTERVAL": "S0287:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "bearing::bearing-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "bearing::bearing-damage",
+    "correct": true,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 0.9999797608327164,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 6.7463890945141515e-06,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 3.388000011444092,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.4826101493654147
+      },
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 2.835900068283081,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.3288042387590855
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 1.3939000368118286,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.2949832899687732
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0278",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2028-01-14 19:15:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "roll",
+    "GT_FAULT_MODE": "roll-wear",
+    "DIAG_INTERVAL": "S0278:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "roll::roll-wear",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "roll::roll-wear",
+    "correct": true,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 6.7463890945141515e-06,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 0.9999797608327164,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-TOP_CRF",
+        "current_value": 1.6360000371932983,
+        "normal_reference": 1.5174000263214111,
+        "score_drop_to_reference": 0.5214474310101924
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.699400007724762,
+        "normal_reference": 0.7803000211715698,
+        "score_drop_to_reference": 0.10201842298554253
+      },
+      {
+        "observation": "VIB-TOP_STD",
+        "current_value": 0.47620001435279846,
+        "normal_reference": 0.3743000030517578,
+        "score_drop_to_reference": 0.09549786697385998
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0239",
+    "EQP_CD": "P1-CR1-SPM01",
+    "MEAS_DT": "2027-08-11 15:20:01.800000+00:00",
+    "equipment": "D",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "bearing-damage",
+    "DIAG_INTERVAL": "S0239:P1-CR1-SPM01:1",
+    "task": "cause",
+    "prediction": "bearing::bearing-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999797608327164,
+    "candidate_2_probability": 6.7463890945141515e-06,
+    "margin": 0.999973014443622,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "bearing::bearing-damage",
+    "correct": true,
+    "probability_bearing::background-wear": 6.7463890945141515e-06,
+    "probability_bearing::bearing-damage": 0.9999797608327164,
+    "probability_roll::background-wear": 6.7463890945141515e-06,
+    "probability_roll::roll-wear": 6.7463890945141515e-06,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-TOP_KUR",
+        "current_value": 1.0994999408721924,
+        "normal_reference": -1.3463000059127808,
+        "score_drop_to_reference": 0.5364818546122117
+      },
+      {
+        "observation": "VIB-TOP_RMS",
+        "current_value": 0.6525999903678894,
+        "normal_reference": 0.39430001378059387,
+        "score_drop_to_reference": 0.37632170255964525
+      },
+      {
+        "observation": "VIB-BOT_RMS",
+        "current_value": 0.6320000290870667,
+        "normal_reference": 0.38659998774528503,
+        "score_drop_to_reference": 0.3607797035707462
+      }
+    ]
+  }
+]
