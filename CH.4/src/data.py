@@ -12,7 +12,7 @@ OutDir = BaseDir.parent.joinpath(*config.OutDirParts)
 
 # manifest.json 로드
 def LoadManifest(Root=RawDir):
-    return json.loads((Path(Root) / "manifest.json").read_text())
+    return json.loads((Path(Root) / "manifest.json").read_text(encoding="utf-8"))
 
 
 # 시나리오별 분할 {"S0001": "train", ...}
