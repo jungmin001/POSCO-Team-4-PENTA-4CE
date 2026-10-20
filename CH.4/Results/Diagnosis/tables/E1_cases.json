@@ -12,35 +12,35 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9919264974226606,
-    "candidate_2_probability": 0.008073476252541211,
-    "margin": 0.9838530211701194,
+    "confidence": 0.9919360020028835,
+    "candidate_2_probability": 0.00806397178517514,
+    "margin": 0.9838720302177083,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9919264974226606,
-    "probability_maintenance": 2.6324798199197196e-08,
-    "probability_normal": 0.008073476252541211,
+    "probability_degraded": 0.9919360020028835,
+    "probability_maintenance": 2.6211941492029353e-08,
+    "probability_normal": 0.00806397178517514,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.5802000164985657,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.4676790204058038
+        "score_drop_to_reference": 0.46768254928309094
       },
       {
         "observation": "VIB-FDE_RMS",
         "current_value": 0.6000000238418579,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.36207891290093475
+        "score_drop_to_reference": 0.36205782852859747
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": -0.7519000172615051,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.28480646347552285
+        "score_drop_to_reference": 0.2847709117317133
       }
     ]
   },
@@ -57,35 +57,35 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9902077543410687,
-    "candidate_2_probability": 0.00979221934457704,
-    "margin": 0.9804155349964916,
+    "confidence": 0.9902187968064518,
+    "candidate_2_probability": 0.00978117699195579,
+    "margin": 0.980437619814496,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9902077543410687,
-    "probability_maintenance": 2.631435446588057e-08,
-    "probability_normal": 0.00979221934457704,
+    "probability_degraded": 0.9902187968064518,
+    "probability_maintenance": 2.6201592310395946e-08,
+    "probability_normal": 0.00978117699195579,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.5695000290870667,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.45331462713605775
+        "score_drop_to_reference": 0.45331659626439436
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": 1.3463000059127808,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.340934120836476
+        "score_drop_to_reference": 0.3409105485746483
       },
       {
         "observation": "VIB-FDE_RMS",
         "current_value": 0.5849999785423279,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.3312855530421682
+        "score_drop_to_reference": 0.3312600671751681
       }
     ]
   },
@@ -102,35 +102,35 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.8750886309243301,
-    "candidate_2_probability": 0.12491134319513383,
-    "margin": 0.7501772877291962,
+    "confidence": 0.8751411455607825,
+    "candidate_2_probability": 0.12485882866764517,
+    "margin": 0.7502823168931373,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.8750886309243301,
-    "probability_maintenance": 2.5880536032824684e-08,
-    "probability_normal": 0.12491134319513383,
+    "probability_degraded": 0.8751411455607825,
+    "probability_maintenance": 2.577157236583962e-08,
+    "probability_normal": 0.12485882866764517,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-FDE_RMS",
         "current_value": 0.690500020980835,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.3937528432477481
+        "score_drop_to_reference": 0.39380996045975547
       },
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.4584999978542328,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.25482999286818686
+        "score_drop_to_reference": 0.2548539826095567
       },
       {
         "observation": "VIB-MDE_RMS",
         "current_value": 0.8899000287055969,
         "normal_reference": 0.41370001435279846,
-        "score_drop_to_reference": 0.21044561865536104
+        "score_drop_to_reference": 0.2104604997170232
       }
     ]
   },
@@ -147,35 +147,35 @@
     "task": "state",
     "prediction": "normal",
     "candidate_2": "degraded",
-    "confidence": 0.5134920113858484,
-    "candidate_2_probability": 0.4865079631760103,
-    "margin": 0.02698404820983813,
+    "confidence": 0.5034062139303486,
+    "candidate_2_probability": 0.4965937607372197,
+    "margin": 0.006812453193128842,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "normal",
     "correct": true,
-    "probability_degraded": 0.4865079631760103,
-    "probability_maintenance": 2.5438141269865383e-08,
-    "probability_normal": 0.5134920113858484,
+    "probability_degraded": 0.4965937607372197,
+    "probability_maintenance": 2.533243161957823e-08,
+    "probability_normal": 0.5034062139303486,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 1.5583000183105469,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.027250933650258824
+        "score_drop_to_reference": 0.027258953273939956
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": -1.4768999814987183,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.02248582271510141
+        "score_drop_to_reference": 0.022491948141461937
       },
       {
         "observation": "RPM",
         "current_value": 1163.6456298828125,
         "normal_reference": 1134.057861328125,
-        "score_drop_to_reference": 0.015354285171388704
+        "score_drop_to_reference": 0.015357964643052169
       }
     ]
   },
@@ -192,35 +192,35 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9837716131219516,
-    "candidate_2_probability": 0.01622836060006749,
-    "margin": 0.9675432525218841,
+    "confidence": 0.9837877802792965,
+    "candidate_2_probability": 0.016212193555157482,
+    "margin": 0.967575586724139,
     "uncertainty_reasons": "outside_training_envelope",
     "needs_review": true,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9837716131219516,
-    "probability_maintenance": 2.6277980820940156e-08,
-    "probability_normal": 0.01622836060006749,
+    "probability_degraded": 0.9837877802792965,
+    "probability_maintenance": 2.6165545924667082e-08,
+    "probability_normal": 0.016212193555157482,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-FDE_RMS",
         "current_value": 1.123900055885315,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.3120091889666564
+        "score_drop_to_reference": 0.3119863793216828
       },
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 1.0999000072479248,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.2402343619681625
+        "score_drop_to_reference": 0.24020043123083856
       },
       {
         "observation": "VIB-MNDE_RMS",
         "current_value": 1.1435999870300293,
         "normal_reference": 0.41100001335144043,
-        "score_drop_to_reference": 0.22364642982846927
+        "score_drop_to_reference": 0.22361069241058384
       }
     ]
   },
@@ -237,170 +237,170 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9975770178803275,
-    "candidate_2_probability": 0.002422955756868712,
-    "margin": 0.9951540621234588,
+    "confidence": 0.997580607147917,
+    "candidate_2_probability": 0.002419366602483358,
+    "margin": 0.9951612405454336,
     "uncertainty_reasons": "outside_training_envelope",
     "needs_review": true,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9975770178803275,
-    "probability_maintenance": 2.6362803770198085e-08,
-    "probability_normal": 0.002422955756868712,
+    "probability_degraded": 0.997580607147917,
+    "probability_maintenance": 2.624959959699009e-08,
+    "probability_normal": 0.002419366602483358,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-FDE_RMS",
         "current_value": 0.9192000031471252,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.44948814792070435
+        "score_drop_to_reference": 0.44947994065110963
       },
       {
         "observation": "VIB-MDE_STD",
         "current_value": 1.166200041770935,
         "normal_reference": 0.4133000075817108,
-        "score_drop_to_reference": 0.3130203599354754
+        "score_drop_to_reference": 0.3129826537960859
       },
       {
         "observation": "VIB-MNDE_RMS",
         "current_value": 1.1058000326156616,
         "normal_reference": 0.41100001335144043,
-        "score_drop_to_reference": 0.29162175009374747
+        "score_drop_to_reference": 0.29158046616005606
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0244",
+    "EQP_CD": "P1-SP1-EXF01",
+    "MEAS_DT": "2027-09-01 10:00:00.500000+00:00",
+    "equipment": "E1",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "mount",
+    "GT_FAULT_MODE": "looseness",
+    "DIAG_INTERVAL": "S0244:P1-SP1-EXF01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "maintenance",
+    "confidence": 0.9999999474600006,
+    "candidate_2_probability": 2.6269999725063064e-08,
+    "margin": 0.9999999211900009,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.9999999474600006,
+    "probability_maintenance": 2.6269999725063064e-08,
+    "probability_normal": 2.6269999725063064e-08,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-FDE_RMS",
+        "current_value": 1.011199951171875,
+        "normal_reference": 0.3984000086784363,
+        "score_drop_to_reference": 0.2989763319673032
+      },
+      {
+        "observation": "VIB-FNDE_RMS",
+        "current_value": 0.9857000112533569,
+        "normal_reference": 0.38029998540878296,
+        "score_drop_to_reference": 0.25904120118343177
+      },
+      {
+        "observation": "VIB-MDE_STD",
+        "current_value": 1.0319000482559204,
+        "normal_reference": 0.4133000075817108,
+        "score_drop_to_reference": 0.21708775174774375
       }
     ]
   },
   {
     "SCENARIO_ID": "S0219",
     "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2027-05-23 14:00:00.500000+00:00",
+    "MEAS_DT": "2027-05-25 22:00:00.500000+00:00",
     "equipment": "E1",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "rotor",
     "GT_FAULT_MODE": "imbalance",
-    "DIAG_INTERVAL": "S0219:P1-SP1-EXF01:1",
+    "DIAG_INTERVAL": "S0219:P1-SP1-EXF01:8",
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "maintenance",
-    "confidence": 0.9999999472332052,
-    "candidate_2_probability": 2.6383397509394414e-08,
-    "margin": 0.9999999208498077,
+    "confidence": 0.9999999474600006,
+    "candidate_2_probability": 2.6269999725063064e-08,
+    "margin": 0.9999999211900009,
     "uncertainty_reasons": "outside_training_envelope",
     "needs_review": true,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9999999472332052,
-    "probability_maintenance": 2.6383397509394414e-08,
-    "probability_normal": 2.6383397509394414e-08,
+    "probability_degraded": 0.9999999474600006,
+    "probability_maintenance": 2.6269999725063064e-08,
+    "probability_normal": 2.6269999725063064e-08,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "VIB-FDE_RMS",
-        "current_value": 1.1268999576568604,
+        "current_value": 0.9904999732971191,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.40197673973470405
+        "score_drop_to_reference": 0.4138441258300587
       },
       {
         "observation": "VIB-FNDE_RMS",
-        "current_value": 0.8251000046730042,
+        "current_value": 0.7089999914169312,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.3176602934343917
+        "score_drop_to_reference": 0.3112890762175595
       },
       {
-        "observation": "VIB-MNDE_RMS",
-        "current_value": 1.3356000185012817,
-        "normal_reference": 0.41100001335144043,
-        "score_drop_to_reference": 0.2912916835018392
+        "observation": "VIB-MDE_STD",
+        "current_value": 1.2460999488830566,
+        "normal_reference": 0.4133000075817108,
+        "score_drop_to_reference": 0.2796930657601807
       }
     ]
   },
   {
     "SCENARIO_ID": "S0226",
     "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2027-06-22 20:00:00.500000+00:00",
+    "MEAS_DT": "2027-06-20 16:00:00.500000+00:00",
     "equipment": "E1",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "bearing",
     "GT_FAULT_MODE": "bearing-damage",
-    "DIAG_INTERVAL": "S0226:P1-SP1-EXF01:4",
+    "DIAG_INTERVAL": "S0226:P1-SP1-EXF01:1",
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "maintenance",
-    "confidence": 0.9999999472332052,
-    "candidate_2_probability": 2.6383397509394414e-08,
-    "margin": 0.9999999208498077,
-    "uncertainty_reasons": "outside_training_envelope",
-    "needs_review": true,
-    "truth": "degraded",
-    "correct": true,
-    "probability_degraded": 0.9999999472332052,
-    "probability_maintenance": 2.6383397509394414e-08,
-    "probability_normal": 2.6383397509394414e-08,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "VIB-FDE_RMS",
-        "current_value": 1.0448999404907227,
-        "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.2833038010677641
-      },
-      {
-        "observation": "VIB-FNDE_RMS",
-        "current_value": 1.0190000534057617,
-        "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.262888142004406
-      },
-      {
-        "observation": "VIB-MNDE_RMS",
-        "current_value": 1.066100001335144,
-        "normal_reference": 0.41100001335144043,
-        "score_drop_to_reference": 0.18057161741366956
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0275",
-    "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2028-01-02 22:00:00.500000+00:00",
-    "equipment": "E1",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "mount",
-    "GT_FAULT_MODE": "looseness",
-    "DIAG_INTERVAL": "S0275:P1-SP1-EXF01:1",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "maintenance",
-    "confidence": 0.9999999472332052,
-    "candidate_2_probability": 2.6383397509394414e-08,
-    "margin": 0.9999999208498077,
+    "confidence": 0.9999999474600006,
+    "candidate_2_probability": 2.6269999725063064e-08,
+    "margin": 0.9999999211900009,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9999999472332052,
-    "probability_maintenance": 2.6383397509394414e-08,
-    "probability_normal": 2.6383397509394414e-08,
+    "probability_degraded": 0.9999999474600006,
+    "probability_maintenance": 2.6269999725063064e-08,
+    "probability_normal": 2.6269999725063064e-08,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "VIB-FNDE_RMS",
-        "current_value": 0.8111000061035156,
+        "current_value": 0.6747000217437744,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.30979006492906425
+        "score_drop_to_reference": 0.3888632274977658
       },
       {
         "observation": "VIB-FDE_RMS",
-        "current_value": 0.8323000073432922,
+        "current_value": 0.6980999708175659,
         "normal_reference": 0.3984000086784363,
-        "score_drop_to_reference": 0.29790171281330047
+        "score_drop_to_reference": 0.29529535316067257
       },
       {
         "observation": "VIB-MNDE_RMS",
-        "current_value": 0.8457000255584717,
+        "current_value": 0.7170000076293945,
         "normal_reference": 0.41100001335144043,
-        "score_drop_to_reference": 0.19321380388695197
+        "score_drop_to_reference": 0.18253040354767414
       }
     ]
   },
@@ -417,37 +417,37 @@
     "task": "cause",
     "prediction": "rotor::imbalance",
     "candidate_2": "bearing::background-wear",
-    "confidence": 0.9999967927947109,
-    "candidate_2_probability": 8.018013222837723e-07,
-    "margin": 0.9999959909933885,
+    "confidence": 0.9999967504916623,
+    "candidate_2_probability": 8.1237708443997e-07,
+    "margin": 0.9999959381145778,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "bearing::background-wear",
     "correct": false,
-    "probability_bearing::background-wear": 8.018013222837723e-07,
-    "probability_bearing::bearing-damage": 8.018013222837723e-07,
-    "probability_mount::looseness": 8.018013222837723e-07,
-    "probability_rotor::background-wear": 8.018013222837723e-07,
-    "probability_rotor::imbalance": 0.9999967927947109,
+    "probability_bearing::background-wear": 8.1237708443997e-07,
+    "probability_bearing::bearing-damage": 8.1237708443997e-07,
+    "probability_mount::looseness": 8.1237708443997e-07,
+    "probability_rotor::background-wear": 8.1237708443997e-07,
+    "probability_rotor::imbalance": 0.9999967504916623,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.579200029373169,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.2517026504833374
+        "score_drop_to_reference": 0.25189425649068775
       },
       {
         "observation": "VIB-MDE_RMS",
         "current_value": 1.0917999744415283,
         "normal_reference": 0.41370001435279846,
-        "score_drop_to_reference": 0.23545676406835858
+        "score_drop_to_reference": 0.2358339166102963
       },
       {
         "observation": "VIB-MDE_STD",
         "current_value": 1.090499997138977,
         "normal_reference": 0.4133000075817108,
-        "score_drop_to_reference": 0.19294049443086836
+        "score_drop_to_reference": 0.19322309742365285
       }
     ]
   },
@@ -464,37 +464,37 @@
     "task": "cause",
     "prediction": "rotor::background-wear",
     "candidate_2": "mount::looseness",
-    "confidence": 0.6423140906273225,
-    "candidate_2_probability": 0.35768384383020824,
-    "margin": 0.28463024679711424,
+    "confidence": 0.6421885005899844,
+    "candidate_2_probability": 0.3578094075992231,
+    "margin": 0.28437909299076136,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "mount::looseness",
     "correct": false,
-    "probability_bearing::background-wear": 6.88514156456876e-07,
-    "probability_bearing::bearing-damage": 6.88514156456876e-07,
-    "probability_mount::looseness": 0.35768384383020824,
-    "probability_rotor::background-wear": 0.6423140906273225,
-    "probability_rotor::imbalance": 6.88514156456876e-07,
+    "probability_bearing::background-wear": 6.972702641422359e-07,
+    "probability_bearing::bearing-damage": 6.972702641422359e-07,
+    "probability_mount::looseness": 0.3578094075992231,
+    "probability_rotor::background-wear": 0.6421885005899844,
+    "probability_rotor::imbalance": 6.972702641422359e-07,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 1.9491000175476074,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.32634897686101133
+        "score_drop_to_reference": 0.3262821422594374
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": -0.7314000129699707,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.26997846342784143
+        "score_drop_to_reference": 0.26996239470478967
       },
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.5300999879837036,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.053353122143072196
+        "score_drop_to_reference": 0.053480957572418775
       }
     ]
   },
@@ -511,37 +511,37 @@
     "task": "cause",
     "prediction": "bearing::background-wear",
     "candidate_2": "rotor::imbalance",
-    "confidence": 0.5893428185418611,
-    "candidate_2_probability": 0.402206233387213,
-    "margin": 0.1871365851546481,
+    "confidence": 0.5892384969156567,
+    "candidate_2_probability": 0.4022784884857333,
+    "margin": 0.18696000842992339,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "rotor::imbalance",
     "correct": false,
-    "probability_bearing::background-wear": 0.5893428185418611,
-    "probability_bearing::bearing-damage": 6.791003671899427e-07,
-    "probability_mount::looseness": 6.791003671899427e-07,
-    "probability_rotor::background-wear": 0.008449589870191699,
-    "probability_rotor::imbalance": 0.402206233387213,
+    "probability_bearing::background-wear": 0.5892384969156567,
+    "probability_bearing::bearing-damage": 6.877030706394588e-07,
+    "probability_mount::looseness": 6.877030706394588e-07,
+    "probability_rotor::background-wear": 0.00848163919246889,
+    "probability_rotor::imbalance": 0.4022784884857333,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 1.561400055885315,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.056615004848125206
+        "score_drop_to_reference": 0.05665262590939402
       },
       {
         "observation": "VIB-MDE_RMS",
         "current_value": 0.8258000016212463,
         "normal_reference": 0.41370001435279846,
-        "score_drop_to_reference": 0.03059871520501789
+        "score_drop_to_reference": 0.030728153740516073
       },
       {
         "observation": "LOAD",
         "current_value": 0.7361000180244446,
         "normal_reference": 0.7802000045776367,
-        "score_drop_to_reference": 0.027963898137853382
+        "score_drop_to_reference": 0.027932059152186772
       }
     ]
   },
@@ -558,37 +558,37 @@
     "task": "cause",
     "prediction": "bearing::background-wear",
     "candidate_2": "rotor::imbalance",
-    "confidence": 0.5348860800423965,
-    "candidate_2_probability": 0.4540836778534086,
-    "margin": 0.08080240218898788,
+    "confidence": 0.5348236964547509,
+    "candidate_2_probability": 0.4541001408175046,
+    "margin": 0.08072355563724631,
     "uncertainty_reasons": "low_confidence;close_candidates",
     "needs_review": true,
     "truth": "rotor::imbalance",
     "correct": false,
-    "probability_bearing::background-wear": 0.5348860800423965,
-    "probability_bearing::bearing-damage": 6.744657969252773e-07,
-    "probability_mount::looseness": 0.005459836251492733,
-    "probability_rotor::background-wear": 0.005569731386905284,
-    "probability_rotor::imbalance": 0.4540836778534086,
+    "probability_bearing::background-wear": 0.5348236964547509,
+    "probability_bearing::bearing-damage": 6.829935850837275e-07,
+    "probability_mount::looseness": 0.005482615079492871,
+    "probability_rotor::background-wear": 0.00559286465466648,
+    "probability_rotor::imbalance": 0.4541001408175046,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 1.5698000192642212,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.039145758815069376
+        "score_drop_to_reference": 0.039186838218545406
       },
       {
         "observation": "VIB-MDE_RMS",
         "current_value": 0.807200014591217,
         "normal_reference": 0.41370001435279846,
-        "score_drop_to_reference": 0.034941706341084955
+        "score_drop_to_reference": 0.035046598287427344
       },
       {
         "observation": "VIB-MDE_STD",
         "current_value": 0.8068000078201294,
         "normal_reference": 0.4133000075817108,
-        "score_drop_to_reference": 0.0013756313246671148
+        "score_drop_to_reference": 0.001432659933047753
       }
     ]
   },
@@ -605,37 +605,37 @@
     "task": "cause",
     "prediction": "bearing::bearing-damage",
     "candidate_2": "rotor::background-wear",
-    "confidence": 0.6025029793267515,
-    "candidate_2_probability": 0.3974949676640831,
-    "margin": 0.20500801166266835,
+    "confidence": 0.598171970401676,
+    "candidate_2_probability": 0.40182595161471296,
+    "margin": 0.19634601878696306,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "bearing::bearing-damage",
     "correct": true,
-    "probability_bearing::background-wear": 6.843363884856558e-07,
-    "probability_bearing::bearing-damage": 0.6025029793267515,
-    "probability_mount::looseness": 6.843363884856558e-07,
-    "probability_rotor::background-wear": 0.3974949676640831,
-    "probability_rotor::imbalance": 6.843363884856558e-07,
+    "probability_bearing::background-wear": 6.926612036521701e-07,
+    "probability_bearing::bearing-damage": 0.598171970401676,
+    "probability_mount::looseness": 6.926612036521701e-07,
+    "probability_rotor::background-wear": 0.40182595161471296,
+    "probability_rotor::imbalance": 6.926612036521701e-07,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 3.2808001041412354,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.48589531904059924
+        "score_drop_to_reference": 0.48149993831157345
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": 1.6511000394821167,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.25399967460265
+        "score_drop_to_reference": 0.2535600216219474
       },
       {
         "observation": "VIB-MDE_RMS",
         "current_value": 0.6848999857902527,
         "normal_reference": 0.41370001435279846,
-        "score_drop_to_reference": 0.0970223780144881
+        "score_drop_to_reference": 0.09493937816010678
       }
     ]
   },
@@ -652,138 +652,138 @@
     "task": "cause",
     "prediction": "rotor::background-wear",
     "candidate_2": "mount::looseness",
-    "confidence": 0.6423140906273225,
-    "candidate_2_probability": 0.35768384383020824,
-    "margin": 0.28463024679711424,
+    "confidence": 0.6421885005899844,
+    "candidate_2_probability": 0.3578094075992231,
+    "margin": 0.28437909299076136,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "mount::looseness",
     "correct": false,
-    "probability_bearing::background-wear": 6.88514156456876e-07,
-    "probability_bearing::bearing-damage": 6.88514156456876e-07,
-    "probability_mount::looseness": 0.35768384383020824,
-    "probability_rotor::background-wear": 0.6423140906273225,
-    "probability_rotor::imbalance": 6.88514156456876e-07,
+    "probability_bearing::background-wear": 6.972702641422359e-07,
+    "probability_bearing::bearing-damage": 6.972702641422359e-07,
+    "probability_mount::looseness": 0.3578094075992231,
+    "probability_rotor::background-wear": 0.6421885005899844,
+    "probability_rotor::imbalance": 6.972702641422359e-07,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
         "current_value": 1.9491000175476074,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.3263489768610113
+        "score_drop_to_reference": 0.3262821422594374
       },
       {
         "observation": "VIB-MDE_KUR",
         "current_value": -0.7314000129699707,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.26997846342784143
+        "score_drop_to_reference": 0.26996239470478967
       },
       {
         "observation": "VIB-FNDE_RMS",
         "current_value": 0.5300999879837036,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.053353122143072196
+        "score_drop_to_reference": 0.053480957572418775
       }
     ]
   },
   {
-    "SCENARIO_ID": "S0226",
+    "SCENARIO_ID": "S0246",
     "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2027-06-22 16:00:00.500000+00:00",
+    "MEAS_DT": "2027-09-08 20:00:00.500000+00:00",
     "equipment": "E1",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "bearing",
-    "GT_FAULT_MODE": "bearing-damage",
-    "DIAG_INTERVAL": "S0226:P1-SP1-EXF01:4",
+    "GT_CAUSE_PART": "rotor",
+    "GT_FAULT_MODE": "imbalance",
+    "DIAG_INTERVAL": "S0246:P1-SP1-EXF01:1",
     "task": "cause",
-    "prediction": "bearing::bearing-damage",
+    "prediction": "rotor::imbalance",
     "candidate_2": "bearing::background-wear",
-    "confidence": 0.9999967927947113,
-    "candidate_2_probability": 8.018013222837726e-07,
-    "margin": 0.999995990993389,
+    "confidence": 0.9999967504916623,
+    "candidate_2_probability": 8.1237708443997e-07,
+    "margin": 0.9999959381145778,
     "uncertainty_reasons": "",
     "needs_review": false,
-    "truth": "bearing::bearing-damage",
+    "truth": "rotor::imbalance",
     "correct": true,
-    "probability_bearing::background-wear": 8.018013222837726e-07,
-    "probability_bearing::bearing-damage": 0.9999967927947113,
-    "probability_mount::looseness": 8.018013222837726e-07,
-    "probability_rotor::background-wear": 8.018013222837726e-07,
-    "probability_rotor::imbalance": 8.018013222837726e-07,
+    "probability_bearing::background-wear": 8.1237708443997e-07,
+    "probability_bearing::bearing-damage": 8.1237708443997e-07,
+    "probability_mount::looseness": 8.1237708443997e-07,
+    "probability_rotor::background-wear": 8.1237708443997e-07,
+    "probability_rotor::imbalance": 0.9999967504916623,
     "kind": "correct_abnormal",
     "observations": [
-      {
-        "observation": "VIB-MDE_CRF",
-        "current_value": 3.4001998901367188,
-        "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.7785226835665523
-      },
-      {
-        "observation": "VIB-MDE_KUR",
-        "current_value": 2.552799940109253,
-        "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.5247477323964032
-      },
       {
         "observation": "VIB-FNDE_RMS",
-        "current_value": 0.9358999729156494,
+        "current_value": 0.7031000256538391,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.11430628611007976
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0275",
-    "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2028-01-04 22:00:00.500000+00:00",
-    "equipment": "E1",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "mount",
-    "GT_FAULT_MODE": "looseness",
-    "DIAG_INTERVAL": "S0275:P1-SP1-EXF01:5",
-    "task": "cause",
-    "prediction": "mount::looseness",
-    "candidate_2": "bearing::background-wear",
-    "confidence": 0.9999967927947111,
-    "candidate_2_probability": 8.018013222837724e-07,
-    "margin": 0.9999959909933888,
-    "uncertainty_reasons": "",
-    "needs_review": false,
-    "truth": "mount::looseness",
-    "correct": true,
-    "probability_bearing::background-wear": 8.018013222837724e-07,
-    "probability_bearing::bearing-damage": 8.018013222837724e-07,
-    "probability_mount::looseness": 0.9999967927947111,
-    "probability_rotor::background-wear": 8.018013222837724e-07,
-    "probability_rotor::imbalance": 8.018013222837724e-07,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "VIB-MDE_CRF",
-        "current_value": 1.958299994468689,
-        "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.6257276799525829
+        "score_drop_to_reference": 0.2840576515088903
       },
       {
-        "observation": "VIB-MDE_KUR",
-        "current_value": -0.7540000081062317,
-        "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.3970147266354005
+        "observation": "VIB-MDE_RMS",
+        "current_value": 1.1608999967575073,
+        "normal_reference": 0.41370001435279846,
+        "score_drop_to_reference": 0.2298838974748323
       },
       {
         "observation": "VIB-MDE_STD",
-        "current_value": 0.6992999911308289,
+        "current_value": 1.1586999893188477,
         "normal_reference": 0.4133000075817108,
-        "score_drop_to_reference": 0.3730693306138666
+        "score_drop_to_reference": 0.1358225666224694
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0219",
+    "EQP_CD": "P1-SP1-EXF01",
+    "MEAS_DT": "2027-05-24 14:00:00.500000+00:00",
+    "equipment": "E1",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "rotor",
+    "GT_FAULT_MODE": "imbalance",
+    "DIAG_INTERVAL": "S0219:P1-SP1-EXF01:4",
+    "task": "cause",
+    "prediction": "rotor::imbalance",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.9999967504916623,
+    "candidate_2_probability": 8.1237708443997e-07,
+    "margin": 0.9999959381145778,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "rotor::imbalance",
+    "correct": true,
+    "probability_bearing::background-wear": 8.1237708443997e-07,
+    "probability_bearing::bearing-damage": 8.1237708443997e-07,
+    "probability_mount::looseness": 8.1237708443997e-07,
+    "probability_rotor::background-wear": 8.1237708443997e-07,
+    "probability_rotor::imbalance": 0.9999967504916623,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-FNDE_RMS",
+        "current_value": 1.0045000314712524,
+        "normal_reference": 0.38029998540878296,
+        "score_drop_to_reference": 0.25038391533971716
+      },
+      {
+        "observation": "VIB-MDE_RMS",
+        "current_value": 1.5270999670028687,
+        "normal_reference": 0.41370001435279846,
+        "score_drop_to_reference": 0.22643378975589545
+      },
+      {
+        "observation": "VIB-MDE_STD",
+        "current_value": 1.5264999866485596,
+        "normal_reference": 0.4133000075817108,
+        "score_drop_to_reference": 0.13165931566039513
       }
     ]
   },
   {
     "SCENARIO_ID": "S0244",
     "EQP_CD": "P1-SP1-EXF01",
-    "MEAS_DT": "2027-09-01 10:00:00.500000+00:00",
+    "MEAS_DT": "2027-09-01 06:00:00.500000+00:00",
     "equipment": "E1",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -793,37 +793,37 @@
     "task": "cause",
     "prediction": "mount::looseness",
     "candidate_2": "bearing::background-wear",
-    "confidence": 0.9999967927947111,
-    "candidate_2_probability": 8.018013222837724e-07,
-    "margin": 0.9999959909933888,
+    "confidence": 0.999996750491662,
+    "candidate_2_probability": 8.123770844399699e-07,
+    "margin": 0.9999959381145775,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "mount::looseness",
     "correct": true,
-    "probability_bearing::background-wear": 8.018013222837724e-07,
-    "probability_bearing::bearing-damage": 8.018013222837724e-07,
-    "probability_mount::looseness": 0.9999967927947111,
-    "probability_rotor::background-wear": 8.018013222837724e-07,
-    "probability_rotor::imbalance": 8.018013222837724e-07,
+    "probability_bearing::background-wear": 8.123770844399699e-07,
+    "probability_bearing::bearing-damage": 8.123770844399699e-07,
+    "probability_mount::looseness": 0.999996750491662,
+    "probability_rotor::background-wear": 8.123770844399699e-07,
+    "probability_rotor::imbalance": 8.123770844399699e-07,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "VIB-MDE_CRF",
-        "current_value": 1.9443000555038452,
+        "current_value": 1.930299997329712,
         "normal_reference": 1.6226999759674072,
-        "score_drop_to_reference": 0.5734703680716997
+        "score_drop_to_reference": 0.6015117724658623
       },
       {
         "observation": "VIB-MDE_KUR",
-        "current_value": -0.8740000128746033,
+        "current_value": -0.8924999833106995,
         "normal_reference": -1.4668999910354614,
-        "score_drop_to_reference": 0.38421139897810475
+        "score_drop_to_reference": 0.3944165387503741
       },
       {
         "observation": "VIB-FNDE_RMS",
-        "current_value": 0.9857000112533569,
+        "current_value": 0.9157000184059143,
         "normal_reference": 0.38029998540878296,
-        "score_drop_to_reference": 0.2745918294471048
+        "score_drop_to_reference": 0.3059466207234799
       }
     ]
   }

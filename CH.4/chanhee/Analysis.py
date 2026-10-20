@@ -1,5 +1,9 @@
+import json
+from datetime import datetime, timezone
 from pathlib import Path
 from collections import Counter
+
+import joblib
 
 import numpy as np
 import pandas as pd
@@ -20,6 +24,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCENARIOS_ROOT = PROJECT_ROOT / "Data" / "Processed" / "Scenarios"
 
 INDEX_PATH = SCENARIOS_ROOT / "index.csv"
+
+# 저장 위치: 학습한 모델과 흐름별 예측 (Main.py all 의 quality 단계, Bundle.py가 Results/Unreal로 복사)
+OUTPUT_DIR = PROJECT_ROOT / "Results" / "Quality"
 
 # 앞선 학습 자료 내부 평가에서 선택한 기준
 THRESHOLD = 0.13108238272783354
@@ -841,6 +848,65 @@ def summarize_scenarios(result):
 # ==================================================
 
 
+# ==================================================
+# 14. 모델·예측 저장 (언리얼 연동)
+# ==================================================
+
+
+def save_outputs(model, features, valid, scores, metrics):
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    joblib.dump(
+        {
+            "model": model,
+            "features": features,
+            "threshold": THRESHOLD,
+            "predict_at": "C 검사 직후",
+            "generated_at": generated_at,
+            "validation": metrics,
+        },
+        OUTPUT_DIR / "quality_model.joblib",
+        compress=3,
+    )
+
+    # 흐름 하나당 한 줄: C 검사 직후의 최종(D) 결함 위험
+    # actual_defect는 validation 정답이라 평가·피드백용 (실제 운영 예측에는 없음)
+    table = pd.DataFrame(
+        {
+            "SCENARIO_ID": valid["SCENARIO_ID"],
+            "FLOW_ID": valid["FLOW_ID"],
+            "PREDICTED_AT": pd.to_datetime(valid["C_INSPECTED_AT"], utc=True).dt.strftime(
+                "%Y-%m-%dT%H:%M:%SZ"
+            ),
+            "defect_score": scores.round(4),
+            "inspection_requested": scores >= THRESHOLD,
+            "threshold": round(THRESHOLD, 4),
+            "origin_eqp": valid["origin_eqp"],
+            "actual_defect": valid["target_D"].astype(int),
+        }
+    ).sort_values(["SCENARIO_ID", "PREDICTED_AT", "FLOW_ID"])
+
+    table.to_csv(OUTPUT_DIR / "flow_quality.csv", index=False, encoding="utf-8-sig")
+
+    summary = {
+        "Version": 1,
+        "GeneratedAt": generated_at,
+        "Task": "C 검사 직후 최종(D) 결함 위험 예측 (흐름 단위)",
+        "Split": "validation",
+        "Threshold": THRESHOLD,
+        "Features": len(features),
+        "Metrics": metrics,
+    }
+
+    (OUTPUT_DIR / "quality_summary.json").write_text(
+        json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    print(f"\n저장 위치: {OUTPUT_DIR}")
+
+
 def main():
     import io
     from contextlib import redirect_stdout
@@ -916,6 +982,23 @@ def main():
     print(f"발견한 결함: {tp:,}개")
     print(f"놓친 결함: {fn:,}개")
     print(f"오경보: {fp:,}개")
+
+    save_outputs(
+        model,
+        features,
+        valid,
+        scores,
+        {
+            "AP": round(float(ap), 4),
+            "Precision": round(precision, 4),
+            "Recall": round(recall, 4),
+            "ActualDefects": int(actual.sum()),
+            "Found": tp,
+            "Missed": fn,
+            "FalseAlarms": fp,
+            "Flows": int(len(valid)),
+        },
+    )
 
     print("\n※ D 작업이 완료된 FLOW만 평가했습니다.")
     print("※ 검사 요망은 불량 확정이 아니며, 테스트 평가는 별도입니다.")

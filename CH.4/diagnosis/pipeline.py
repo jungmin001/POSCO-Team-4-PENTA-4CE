@@ -354,6 +354,30 @@ def write_first_read(all_metrics,out,run):
         '원인 유형 뜻: '+', '.join(f'{k}={v}' for k,v in MODE_KO.items())+'.','']
     (out/'먼저읽기_진단결과.md').write_text('\n'.join(lines),encoding='utf-8')
 
+def export_validation_dashboard(args):
+    # 저장된 모델과 특징 캐시로 validation 시나리오 전체의 화면용 예측을 만든다 (재학습 없음).
+    # 원인은 정답이 아니라 "예측된 상태가 degraded/failed인 행"에만 붙인다 (test 화면용 예측과 같은 규칙).
+    # actual_* 열은 validation 정답이라 시연에서 예측과 비교하는 용도다.
+    for eq in args.equipment:
+        table=joblib.load(args.output/'features'/f'{eq}.joblib')['table']
+        val=table[table.split.eq('validation')]
+        res={}
+        for task in ['state','cause']:
+            model=joblib.load(args.output/'models'/f'{eq}_{task}.joblib')
+            res[task],_=result_table(model,val,model['columns'],task)
+        dashboard=res['state'].rename(columns={'prediction':'state_prediction','confidence':'state_probability'})
+        dashboard=dashboard[['SCENARIO_ID','EQP_CD','MEAS_DT','equipment','state_prediction','state_probability','needs_review','uncertainty_reasons']].copy()
+        cause=res['cause'];mask=dashboard.state_prediction.isin(['degraded','failed'])
+        dashboard['cause_candidate']=cause.prediction.where(mask,'')
+        dashboard['cause_candidate_2']=cause.candidate_2.where(mask,'')
+        dashboard['cause_probability_conditional']=cause.confidence.where(mask,np.nan)
+        dashboard['cause_needs_review']=cause.needs_review.where(mask,False)
+        dashboard['cause_uncertainty_reasons']=cause.uncertainty_reasons.where(mask,'')
+        dashboard['actual_state']=val.GT_HEALTH_STATE.to_numpy()
+        dashboard['actual_cause']=(val.GT_CAUSE_PART.fillna('')+'::'+val.GT_FAULT_MODE.fillna('')).where(val.GT_CAUSE_PART.fillna('').ne(''),'').to_numpy()
+        save=args.output/'predictions'/f'{eq}_dashboard_validation.csv.gz'
+        dashboard.to_csv(save,index=False,compression='gzip');print(save,len(dashboard),flush=True)
+
 def predict_scenario(args,manifest):
     # Independent inference path: does not read any GT or diagnostics files.
     for eq in args.equipment:
@@ -384,12 +408,14 @@ def main():
     parser.add_argument('--reuse-features',action='store_true')
     parser.add_argument('--skip-test',action='store_true')
     parser.add_argument('--predict-scenario')
+    parser.add_argument('--validation-dashboard',action='store_true',help='저장된 모델로 validation 시나리오의 화면용 예측 생성 (재학습 없음)')
     parser.add_argument('--report-only',action='store_true',help='저장된 평가 결과로 보고서만 다시 생성')
     args=parser.parse_args()
     for folder in ['features','models','figures','tables','predictions']:(args.output/folder).mkdir(parents=True,exist_ok=True)
     plt.rcParams.update({'font.family':'Malgun Gothic','axes.unicode_minus':False})
     manifest=manifest_at(args.raw)
     if args.predict_scenario:return predict_scenario(args,manifest)
+    if args.validation_dashboard:return export_validation_dashboard(args)
     if args.report_only:
         run=json.loads((args.output/'run_manifest.json').read_text(encoding='utf-8'))
         metrics={};cases=[]
