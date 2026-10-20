@@ -1,0 +1,180 @@
+{
+  "model_type": "RobustNormalRangeAnomalyModel",
+  "version": "1.0",
+  "created_at_utc": "2026-10-16T08:14:46.639213+00:00",
+  "schema": {
+    "time_column": "MEAS_DT",
+    "sensor_columns": [
+      "LOAD",
+      "WD-SPD",
+      "WD-LOD",
+      "OSC-STK",
+      "MLD-LVL",
+      "CONTROL_DELAY"
+    ]
+  },
+  "feature_config": {
+    "resample_rule": "1min",
+    "short_window": 5,
+    "long_window": 15,
+    "top_k": 3
+  },
+  "event_type_used_for_evaluation": "FAULT",
+  "feature_columns": [
+    "CUR__LOAD",
+    "CUR__WD-SPD",
+    "CUR__WD-LOD",
+    "CUR__OSC-STK",
+    "CUR__MLD-LVL",
+    "CUR__CONTROL_DELAY",
+    "DIFF__LOAD",
+    "DIFF__WD-SPD",
+    "DIFF__WD-LOD",
+    "DIFF__OSC-STK",
+    "DIFF__MLD-LVL",
+    "DIFF__CONTROL_DELAY",
+    "MEAN5__LOAD",
+    "MEAN5__WD-SPD",
+    "MEAN5__WD-LOD",
+    "MEAN5__OSC-STK",
+    "MEAN5__MLD-LVL",
+    "MEAN5__CONTROL_DELAY",
+    "STD5__LOAD",
+    "STD5__WD-SPD",
+    "STD5__WD-LOD",
+    "STD5__OSC-STK",
+    "STD5__MLD-LVL",
+    "STD5__CONTROL_DELAY",
+    "SLOPE15__LOAD",
+    "SLOPE15__WD-SPD",
+    "SLOPE15__WD-LOD",
+    "SLOPE15__OSC-STK",
+    "SLOPE15__MLD-LVL",
+    "SLOPE15__CONTROL_DELAY"
+  ],
+  "normal_range": {
+    "median": {
+      "CUR__LOAD": 0.78005,
+      "CUR__WD-SPD": 0.93605,
+      "CUR__WD-LOD": 83.379075,
+      "CUR__OSC-STK": 4.15135,
+      "CUR__MLD-LVL": 70.05302499999999,
+      "CUR__CONTROL_DELAY": 0.1068,
+      "DIFF__LOAD": 0.0,
+      "DIFF__WD-SPD": 0.0,
+      "DIFF__WD-LOD": -0.00035000000000096065,
+      "DIFF__OSC-STK": 8.881784197001252e-16,
+      "DIFF__MLD-LVL": 2.4999999993724487e-05,
+      "DIFF__CONTROL_DELAY": 0.0,
+      "MEAN5__LOAD": 0.77996,
+      "MEAN5__WD-SPD": 0.9358699999999999,
+      "MEAN5__WD-LOD": 83.37833499999999,
+      "MEAN5__OSC-STK": 4.15139,
+      "MEAN5__MLD-LVL": 70.05802,
+      "MEAN5__CONTROL_DELAY": 0.10678500000000002,
+      "STD5__LOAD": 0.001043671404232957,
+      "STD5__WD-SPD": 0.001249199743859287,
+      "STD5__WD-LOD": 0.19419810312426594,
+      "STD5__OSC-STK": 0.007185123520140443,
+      "STD5__MLD-LVL": 0.453700897880687,
+      "STD5__CONTROL_DELAY": 0.0004827007354424268,
+      "SLOPE15__LOAD": -6.666666666665932e-06,
+      "SLOPE15__WD-SPD": 0.0,
+      "SLOPE15__WD-LOD": 0.00023333333333350008,
+      "SLOPE15__OSC-STK": 0.0,
+      "SLOPE15__MLD-LVL": -0.001016666666667258,
+      "SLOPE15__CONTROL_DELAY": 0.0
+    },
+    "scale": {
+      "CUR__LOAD": 0.16805271000000008,
+      "CUR__WD-SPD": 0.20170773,
+      "CUR__WD-LOD": 18.772014029999998,
+      "CUR__OSC-STK": 0.7163923200000001,
+      "CUR__MLD-LVL": 1.7048788049999837,
+      "CUR__CONTROL_DELAY": 0.04996362000000001,
+      "DIFF__LOAD": 0.0009636900000000584,
+      "DIFF__WD-SPD": 0.0011860799999998694,
+      "DIFF__WD-LOD": 0.269684939999993,
+      "DIFF__OSC-STK": 0.011119500000001737,
+      "DIFF__MLD-LVL": 0.4372558050000093,
+      "DIFF__CONTROL_DELAY": 0.0007413000000000006,
+      "MEAN5__LOAD": 0.1680527099999999,
+      "MEAN5__WD-SPD": 0.2016632520000002,
+      "MEAN5__WD-LOD": 18.77106516599999,
+      "MEAN5__OSC-STK": 0.7164071459999996,
+      "MEAN5__MLD-LVL": 1.6325649900000059,
+      "MEAN5__CONTROL_DELAY": 0.04996362000000001,
+      "STD5__LOAD": 0.0005391192906651966,
+      "STD5__WD-SPD": 0.0006563361788304974,
+      "STD5__WD-LOD": 0.07234829091318848,
+      "STD5__OSC-STK": 0.0025995049151229343,
+      "STD5__MLD-LVL": 0.23594227491568548,
+      "STD5__CONTROL_DELAY": 0.00017242536624854706,
+      "SLOPE15__LOAD": 0.0009735740000000024,
+      "SLOPE15__WD-SPD": 0.0011712540000000026,
+      "SLOPE15__WD-LOD": 0.09566229399999986,
+      "SLOPE15__OSC-STK": 0.0008401399999999733,
+      "SLOPE15__MLD-LVL": 0.17656777600000004,
+      "SLOPE15__CONTROL_DELAY": 6.424599999999841e-05
+    }
+  },
+  "candidate_thresholds": {
+    "95": 2.109352325061537,
+    "97": 2.204052857774541,
+    "99": 2.395491285669147
+  },
+  "operating_point": {
+    "threshold_percentile": 97,
+    "threshold_score": 2.204052857774541,
+    "action_persistence_min": 2,
+    "warning_persistence_min": 1,
+    "selection_reason": "탐지율 95.0% 이상 조합 중 오경보/일 최소",
+    "selected_metrics": {
+      "recall_24h_pct": 95.06172839506173,
+      "recall_6h_pct": 87.65432098765432,
+      "false_alarms_day": 6.029212788851837,
+      "median_lead_h": 6.45,
+      "missed_24h": 4
+    }
+  },
+  "alarm_config": {
+    "alarm_merge_minutes": 30
+  },
+  "quality": {
+    "casting_stage": "C",
+    "casting_equipment": "P1-CC1-INS01"
+  },
+  "training_summary": {
+    "event_counts": {
+      "FAULT": 81,
+      "UNPLANNED_STOP": 10,
+      "OUTLIER": 0
+    },
+    "selected_event_type": "FAULT",
+    "train_scenarios": 195,
+    "eval_scenarios": 165,
+    "casting_equipment": "P1-CC1-INS01",
+    "quality_group_compare": [
+      {
+        "ALARM_RESULT": "기준 완화로 추가 탐지",
+        "SCENARIOS": 26,
+        "FINAL_DEFECT_SCENARIOS": 20,
+        "CASTING_DEFECT_SCENARIOS": 20,
+        "TOTAL_FINAL_OBSERVED": 696,
+        "TOTAL_FINAL_DEFECT": 154,
+        "SCENARIO_FINAL_DEFECT_RATE_%": 76.92307692307693,
+        "FLOW_FINAL_DEFECT_RATE_%": 22.126436781609197
+      },
+      {
+        "ALARM_RESULT": "본 경보 미탐",
+        "SCENARIOS": 4,
+        "FINAL_DEFECT_SCENARIOS": 3,
+        "CASTING_DEFECT_SCENARIOS": 3,
+        "TOTAL_FINAL_OBSERVED": 107,
+        "TOTAL_FINAL_DEFECT": 19,
+        "SCENARIO_FINAL_DEFECT_RATE_%": 75.0,
+        "FLOW_FINAL_DEFECT_RATE_%": 17.75700934579439
+      }
+    ]
+  }
+}

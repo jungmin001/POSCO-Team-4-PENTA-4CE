@@ -5,8 +5,8 @@
   "sklearn": "1.9.1",
   "pandas": "3.0.5",
   "dataset_version": "pdm-v2.2.0",
-  "raw_root": "C:\\Users\\admin\\Desktop\\포스코 K-뉴딜 데이터분석\\팀플\\POSCO-Team-4-PENTA-4CE\\CH.4\\Data\\Raw",
-  "scenario_root": "C:\\Users\\admin\\Desktop\\포스코 K-뉴딜 데이터분석\\팀플\\POSCO-Team-4-PENTA-4CE\\CH.4\\Data\\Processed\\Scenarios",
+  "raw_root": "/Users/jungmin/Documents/Data Analysis/POSCO-Team-4-PENTA-4CE/CH.4/Data/Raw",
+  "scenario_root": "/Users/jungmin/Documents/Data Analysis/POSCO-Team-4-PENTA-4CE/CH.4/Data/Processed/Scenarios",
   "fit_scenarios": [
     "S0002",
     "S0003",
@@ -451,7 +451,7 @@
         "TEMP_ERROR__bin_std__change",
         "MISSING_RATE__bin_std__change"
       ],
-      "input_signature": "87ab43ff2e43bedbb86a952c462de26f9178d7fb87510023093426275d664421"
+      "input_signature": "7985a1b5a70bb794f022b0da7b0d7a99a242b8d42c6fcb7dbd04f78ec5f7810e"
     },
     "B": {
       "columns": [
@@ -528,7 +528,7 @@
         "POWER_ERROR__position_std__change",
         "MISSING_RATE__position_std__change"
       ],
-      "input_signature": "d6e1608ca3c0e91df47897bc0caaf3fc0e2870627f05fd9c6e77729deb8172ab"
+      "input_signature": "38ae1fc38089752603398bac15846891bfbc217326ef2160ec5247e0b62ad28a"
     },
     "C": {
       "columns": [
@@ -605,7 +605,7 @@
         "RUNNING__bin_std__change",
         "MISSING_RATE__bin_std__change"
       ],
-      "input_signature": "f0808b351acfae164af8a07f7884139e1b36b80df809575c1d10d6ab82d676e6"
+      "input_signature": "716ca116fb3a74ed2b40f1912a12366ecea2df3021c3264cdddf1c69a5be4881"
     },
     "D": {
       "columns": [
@@ -642,7 +642,7 @@
         "CUR-MTR_RMS__change",
         "MISSING_RATE__change"
       ],
-      "input_signature": "38386a8b699c602f9aa5aaee7f5ae1a520f8e63c7d97fae438e923c852724203"
+      "input_signature": "a8d6c232a230e94e9b0f2656ed488db5d24c26985eaefcfc7c19c4a0f889965b"
     },
     "E1": {
       "columns": [
@@ -687,7 +687,7 @@
         "VIB-FNDE_RMS__change",
         "MISSING_RATE__change"
       ],
-      "input_signature": "b7b7bba2cb9f96249b020fe8e593bcd82a5c4f59d51c613236bfe4f3ac7d8699"
+      "input_signature": "052a0af641247ccd727768ae4dc956de49c1abe73f9b4298cef96e252c953ec6"
     },
     "E2": {
       "columns": [
@@ -732,7 +732,7 @@
         "VIB-FNDE_RMS__change",
         "MISSING_RATE__change"
       ],
-      "input_signature": "f59d5c7c29beb9c754e1fe557148cb16f3f5bd9a1c014d11486fbc7b78637d02"
+      "input_signature": "473092cfd6b6362b4f5f85a05e052674b77a09269ce7875fe94f44aadbc77ac1"
     },
     "F": {
       "columns": [
@@ -765,7 +765,7 @@
         "VIB-AGT_CRF__change",
         "MISSING_RATE__change"
       ],
-      "input_signature": "7471f5dc99c566a86f7a4b0ab975f05bcbfbaded78b471f40e5566be775035c3"
+      "input_signature": "ef0f5480a25335e20de205b672db2d5fd76063757108ac03bcc265bcbe4500c1"
     }
   },
   "calibration_target": "at most 10% error among calibration accepted rows, minimum max(20,10% of calibration rows)",

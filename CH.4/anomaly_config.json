@@ -1,0 +1,44 @@
+{
+  "process_file_name": "C.csv",
+  "quality_relative_path": "flow/quality.csv",
+  "time_column": "auto",
+  "sensor_columns": "auto",
+  "resample_rule": "1min",
+  "short_window": 5,
+  "long_window": 15,
+  "top_k": 3,
+  "threshold_percentiles": [
+    95,
+    97,
+    99
+  ],
+  "persistence_options": [
+    1,
+    2,
+    3
+  ],
+  "target_recall_24h": 95.0,
+  "comparison_baseline_persistence": 3,
+  "alarm_merge_minutes": 30,
+  "max_lead_hours": 24,
+  "short_lead_hours": 6,
+  "train_scenario_ratio": 0.7,
+  "max_train_rows_per_scenario": 800,
+  "random_state": 42,
+  "min_event_scenarios": 10,
+  "quality": {
+    "enabled": true,
+    "casting_stage": "C",
+    "casting_equipment": "auto"
+  },
+  "ground_truth": {
+    "running": "RUNNING",
+    "quality_flag": "QUALITY_FLAG",
+    "is_missing": "IS_MISSING",
+    "is_stopped": "IS_STOPPED",
+    "is_maintenance": "IS_MAINTENANCE",
+    "is_outlier": "IS_OUTLIER",
+    "health_state": "GT_HEALTH_STATE",
+    "fault_mode": "GT_FAULT_MODE"
+  }
+}

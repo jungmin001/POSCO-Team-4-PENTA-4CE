@@ -1,0 +1,231 @@
+{
+  "Version": 1,
+  "GeneratedAt": "2026-10-19T01:26:46Z",
+  "Schema": "SCHEMA.md",
+  "Files": [
+    {
+      "File": "UNREAL_PROMPT.md",
+      "Part": "언리얼 작업 지시문 (정비 의사결정 솔루션)",
+      "Producer": "직접 작성",
+      "Status": "ok",
+      "Bytes": 14160,
+      "SourceModified": "2026-10-19T01:26:44Z"
+    },
+    {
+      "File": "ontology.json",
+      "Part": "설비·부품·공정 구조",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 8990,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "costs.json",
+      "Part": "정비 비용 가정값",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 5125,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "anomaly_model.json",
+      "Part": "이상탐지 모델 (C 연주)",
+      "Producer": "AnomalyModel.py",
+      "Status": "ok",
+      "Bytes": 5444,
+      "SourceModified": "2026-10-18T23:53:16Z"
+    },
+    {
+      "File": "flow_quality.csv",
+      "Part": "최종 결함 위험 예측 (흐름 단위)",
+      "Producer": "chanhee/Analysis.py",
+      "Status": "ok",
+      "Bytes": 161218,
+      "SourceModified": "2026-10-19T00:49:02Z"
+    },
+    {
+      "File": "quality_summary.json",
+      "Part": "최종 결함 위험 모델 성능",
+      "Producer": "chanhee/Analysis.py",
+      "Status": "ok",
+      "Bytes": 401,
+      "SourceModified": "2026-10-19T00:49:02Z"
+    },
+    {
+      "File": "diagnosis_metrics.csv",
+      "Part": "상태·원인 진단 성능",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 2440,
+      "SourceModified": "2026-10-19T01:11:46Z"
+    },
+    {
+      "File": "risk_A.json",
+      "Part": "고장 위험 예측 (설비 A)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 660012,
+      "SourceModified": "2026-10-19T00:30:21Z"
+    },
+    {
+      "File": "decisions_A_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 A)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 107072,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_A.csv",
+      "Part": "상태·원인 진단 예측 (설비 A)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 6368769,
+      "SourceModified": "2026-10-19T01:22:38Z"
+    },
+    {
+      "File": "risk_B.json",
+      "Part": "고장 위험 예측 (설비 B)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 564253,
+      "SourceModified": "2026-10-19T00:31:04Z"
+    },
+    {
+      "File": "decisions_B_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 B)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 105563,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_B.csv",
+      "Part": "상태·원인 진단 예측 (설비 B)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 2766785,
+      "SourceModified": "2026-10-19T01:22:39Z"
+    },
+    {
+      "File": "risk_C.json",
+      "Part": "고장 위험 예측 (설비 C)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 654183,
+      "SourceModified": "2026-10-19T00:32:16Z"
+    },
+    {
+      "File": "decisions_C_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 C)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 109576,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_C.csv",
+      "Part": "상태·원인 진단 예측 (설비 C)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 7089635,
+      "SourceModified": "2026-10-19T01:22:41Z"
+    },
+    {
+      "File": "risk_D.json",
+      "Part": "고장 위험 예측 (설비 D)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 555644,
+      "SourceModified": "2026-10-19T00:33:27Z"
+    },
+    {
+      "File": "decisions_D_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 D)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 106983,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_D.csv",
+      "Part": "상태·원인 진단 예측 (설비 D)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 5964424,
+      "SourceModified": "2026-10-19T01:22:43Z"
+    },
+    {
+      "File": "risk_E1.json",
+      "Part": "고장 위험 예측 (설비 E1)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 425703,
+      "SourceModified": "2026-10-19T00:34:57Z"
+    },
+    {
+      "File": "decisions_E1_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 E1)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 104866,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_E1.csv",
+      "Part": "상태·원인 진단 예측 (설비 E1)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 267321,
+      "SourceModified": "2026-10-19T01:22:43Z"
+    },
+    {
+      "File": "risk_E2.json",
+      "Part": "고장 위험 예측 (설비 E2)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 489516,
+      "SourceModified": "2026-10-19T00:36:23Z"
+    },
+    {
+      "File": "decisions_E2_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 E2)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 107038,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_E2.csv",
+      "Part": "상태·원인 진단 예측 (설비 E2)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 267718,
+      "SourceModified": "2026-10-19T01:22:43Z"
+    },
+    {
+      "File": "risk_F.json",
+      "Part": "고장 위험 예측 (설비 F)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 458436,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "decisions_F_check.csv",
+      "Part": "기대 비용 계산 확인표 (설비 F)",
+      "Producer": "jungmin/unreal.py",
+      "Status": "ok",
+      "Bytes": 107854,
+      "SourceModified": "2026-10-19T00:37:33Z"
+    },
+    {
+      "File": "diagnosis_F.csv",
+      "Part": "상태·원인 진단 예측 (설비 F)",
+      "Producer": "Diagnosis.py",
+      "Status": "ok",
+      "Bytes": 930931,
+      "SourceModified": "2026-10-19T01:22:43Z"
+    }
+  ]
+}
