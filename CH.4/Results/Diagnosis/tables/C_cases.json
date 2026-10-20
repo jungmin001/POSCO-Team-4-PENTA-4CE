@@ -1,0 +1,839 @@
+[
+  {
+    "SCENARIO_ID": "S0284",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-02-07 08:40:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "sticking",
+    "DIAG_INTERVAL": "S0284:P1-CC1-INS01:1",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.9999859710530512,
+    "candidate_2_probability": 4.676315649635541e-06,
+    "margin": 0.9999812947374016,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 4.676315649635541e-06,
+    "probability_failed": 4.676315649635541e-06,
+    "probability_maintenance": 4.676315649635541e-06,
+    "probability_normal": 0.9999859710530512,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 69.2672119140625,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.06572008501368443
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.08345833420753479,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.03567685817898114
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.4958765506744385,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.0010499608857308385
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0260",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-11-05 19:40:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0260:P1-CC1-INS01:4",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.9999859710530512,
+    "candidate_2_probability": 4.676315649635541e-06,
+    "margin": 0.9999812947374016,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 4.676315649635541e-06,
+    "probability_failed": 4.676315649635541e-06,
+    "probability_maintenance": 4.676315649635541e-06,
+    "probability_normal": 0.9999859710530512,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.07728166878223419,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.2554377150289354
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.351226568222046,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.05182961824576704
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 66.51978302001953,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.0038556035350000295
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0276",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-01-06 06:25:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0276:P1-CC1-INS01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9888346641989536,
+    "candidate_2_probability": 0.011156080112924757,
+    "margin": 0.9776785840860288,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9888346641989536,
+    "probability_failed": 4.6278440607715565e-06,
+    "probability_maintenance": 4.6278440607715565e-06,
+    "probability_normal": 0.011156080112924757,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 68.61196899414062,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.5418900269413625
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.21580666303634644,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.15578853479072774
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 4.884271621704102,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.041818670706112004
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0252",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-10-02 04:45:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0252:P1-CC1-INS01:0",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.4999982433462999,
+    "candidate_2_probability": 0.49999433550194594,
+    "margin": 3.907844353945311e-06,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.49999433550194594,
+    "probability_failed": 3.7105758770984923e-06,
+    "probability_maintenance": 3.7105758770984923e-06,
+    "probability_normal": 0.4999982433462999,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.16919666528701782,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.15401092513815445
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 4.734538555145264,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.034236677130419335
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 0.9477616548538208,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.01637819083074138
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0237",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-08-03 18:05:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "friction",
+    "DIAG_INTERVAL": "S0237:P1-CC1-INS01:1",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5000083036029335,
+    "candidate_2_probability": 0.49998427524531125,
+    "margin": 2.4028357622218888e-05,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.49998427524531125,
+    "probability_failed": 3.7105758776208613e-06,
+    "probability_maintenance": 3.7105758776208613e-06,
+    "probability_normal": 0.5000083036029335,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "LOAD",
+        "current_value": 0.9330766797065735,
+        "normal_reference": 0.7808949947357178,
+        "score_drop_to_reference": 0.052179248710576
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 1.1196916103363037,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.022142414489590923
+      },
+      {
+        "observation": "OSC-FRQ",
+        "current_value": 2.0,
+        "normal_reference": 2.0,
+        "score_drop_to_reference": 1.1102230246251565e-16
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0235",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-07-27 06:50:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0235:P1-CC1-INS01:0",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5000138108378452,
+    "candidate_2_probability": 0.4999787680103983,
+    "margin": 3.5042827446929437e-05,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.4999787680103983,
+    "probability_failed": 3.7105758782255315e-06,
+    "probability_maintenance": 3.7105758782255315e-06,
+    "probability_normal": 0.5000138108378452,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.487563371658325,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.020270514924487837
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 98.37565612792969,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.01954217018599097
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 1.0336999893188477,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.01912254295130683
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0286",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-02-16 16:05:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "control-delay",
+    "DIAG_INTERVAL": "S0286:P1-CC1-INS01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 0.9999859710530514,
+    "candidate_2_probability": 4.6763156496355415e-06,
+    "margin": 0.9999812947374018,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.9999859710530514,
+    "probability_failed": 4.6763156496355415e-06,
+    "probability_maintenance": 4.6763156496355415e-06,
+    "probability_normal": 4.6763156496355415e-06,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 72.41571044921875,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.7608938381516129
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.15965333580970764,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.24767747479859192
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.7724949717521667,
+        "normal_reference": 0.7808949947357178,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0277",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-01-12 02:30:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "sticking",
+    "DIAG_INTERVAL": "S0277:P1-CC1-INS01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 0.9999859710530514,
+    "candidate_2_probability": 4.6763156496355415e-06,
+    "margin": 0.9999812947374018,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.9999859710530514,
+    "probability_failed": 4.6763156496355415e-06,
+    "probability_maintenance": 4.6763156496355415e-06,
+    "probability_normal": 4.6763156496355415e-06,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 68.56686401367188,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.9103980072323229
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.6991400122642517,
+        "normal_reference": 0.7808949947357178,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 0.8389700055122375,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0237",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-08-04 15:35:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "friction",
+    "DIAG_INTERVAL": "S0237:P1-CC1-INS01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 0.9999859710530514,
+    "candidate_2_probability": 4.6763156496355415e-06,
+    "margin": 0.9999812947374018,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.9999859710530514,
+    "probability_failed": 4.6763156496355415e-06,
+    "probability_maintenance": 4.6763156496355415e-06,
+    "probability_normal": 4.6763156496355415e-06,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 68.18726348876953,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.6420268844386228
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.264781653881073,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.29459784666036404
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.7854166626930237,
+        "normal_reference": 0.7808949947357178,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0286",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-02-17 12:25:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "control-delay",
+    "DIAG_INTERVAL": "S0286:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "oscillator::friction",
+    "candidate_2": "valve::background-wear",
+    "confidence": 0.7710950166861752,
+    "candidate_2_probability": 0.20574303167472505,
+    "margin": 0.5653519850114501,
+    "uncertainty_reasons": "low_confidence;outside_training_envelope",
+    "needs_review": true,
+    "truth": "valve::control-delay",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.007720650546366634,
+    "probability_oscillator::friction": 0.7710950166861752,
+    "probability_valve::background-wear": 0.20574303167472505,
+    "probability_valve::control-delay": 0.007720650546366634,
+    "probability_valve::sticking": 0.007720650546366634,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.0821216106414795,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.498525765784108
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 101.42857360839844,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.3566140853880381
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 72.55765533447266,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.3564786650738198
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0277",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-01-11 11:15:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "sticking",
+    "DIAG_INTERVAL": "S0277:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "oscillator::friction",
+    "candidate_2": "valve::sticking",
+    "confidence": 0.7388483077635183,
+    "candidate_2_probability": 0.23892604150308197,
+    "margin": 0.49992226626043634,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "valve::sticking",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.007408550244466522,
+    "probability_oscillator::friction": 0.7388483077635183,
+    "probability_valve::background-wear": 0.007408550244466522,
+    "probability_valve::control-delay": 0.007408550244466522,
+    "probability_valve::sticking": 0.23892604150308197,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 65.4707260131836,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.49461736477116497
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 102.63272094726562,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.3275340893933576
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.15119333565235138,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.26766375749683324
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0271",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-12-18 01:20:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "control-delay",
+    "DIAG_INTERVAL": "S0271:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "valve::sticking",
+    "candidate_2": "oscillator::friction",
+    "confidence": 0.5755033988667264,
+    "candidate_2_probability": 0.4062473204834582,
+    "margin": 0.16925607838326823,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "valve::control-delay",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.0060830935499384215,
+    "probability_oscillator::friction": 0.4062473204834582,
+    "probability_valve::background-wear": 0.0060830935499384215,
+    "probability_valve::control-delay": 0.0060830935499384215,
+    "probability_valve::sticking": 0.5755033988667264,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.18203499913215637,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.386152690047796
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 66.14244842529297,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.2990488654911746
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 117.54481506347656,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.2633077248292644
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0253",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-10-06 23:35:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "friction",
+    "DIAG_INTERVAL": "S0253:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "valve::sticking",
+    "candidate_2": "valve::control-delay",
+    "confidence": 0.49124553320004194,
+    "candidate_2_probability": 0.4912290924947518,
+    "margin": 1.6440705290166058e-05,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "oscillator::friction",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.0058417914350687265,
+    "probability_oscillator::friction": 0.0058417914350687265,
+    "probability_valve::background-wear": 0.0058417914350687265,
+    "probability_valve::control-delay": 0.4912290924947518,
+    "probability_valve::sticking": 0.49124553320004194,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 73.31871795654297,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.21565267953314993
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 60.34691619873047,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.18122925712917293
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.1891299933195114,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.12091433127232892
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0225",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-06-18 01:10:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0225:P1-CC1-INS01:3",
+    "task": "cause",
+    "prediction": "oscillator::friction",
+    "candidate_2": "valve::control-delay",
+    "confidence": 0.23966492358110614,
+    "candidate_2_probability": 0.23962409658534486,
+    "margin": 4.08269957612728e-05,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "oscillator::background-wear",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.23857345217344278,
+    "probability_oscillator::friction": 0.23966492358110614,
+    "probability_valve::background-wear": 0.09461753963292549,
+    "probability_valve::control-delay": 0.23962409658534486,
+    "probability_valve::sticking": 0.18751998802718076,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 68.5399398803711,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.03762125002773131
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.08246833086013794,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.018976997060751982
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 0.81256502866745,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.0018329146638584037
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0237",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-08-03 17:15:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "friction",
+    "DIAG_INTERVAL": "S0237:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "valve::control-delay",
+    "candidate_2": "valve::sticking",
+    "confidence": 0.23107418700867396,
+    "candidate_2_probability": 0.23102353231011138,
+    "margin": 5.065469856257998e-05,
+    "uncertainty_reasons": "low_confidence;close_candidates;outside_training_envelope",
+    "needs_review": true,
+    "truth": "oscillator::friction",
+    "correct": false,
+    "probability_oscillator::background-wear": 0.11567484291310987,
+    "probability_oscillator::friction": 0.22617506727539122,
+    "probability_valve::background-wear": 0.19605237049271357,
+    "probability_valve::control-delay": 0.23107418700867396,
+    "probability_valve::sticking": 0.23102353231011138,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.9432148933410645,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.04097477045736844
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 72.01217651367188,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.03893426042003423
+      },
+      {
+        "observation": "WD-SPD",
+        "current_value": 1.128000020980835,
+        "normal_reference": 0.9370200037956238,
+        "score_drop_to_reference": 0.006466036185213159
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0277",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2028-01-12 07:15:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "sticking",
+    "DIAG_INTERVAL": "S0277:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "valve::sticking",
+    "candidate_2": "oscillator::friction",
+    "confidence": 0.4853361469958326,
+    "candidate_2_probability": 0.35377119836203585,
+    "margin": 0.13156494863379675,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "valve::sticking",
+    "correct": true,
+    "probability_oscillator::background-wear": 0.005173908175369216,
+    "probability_oscillator::friction": 0.35377119836203585,
+    "probability_valve::background-wear": 0.005173908175369216,
+    "probability_valve::control-delay": 0.1505448382913932,
+    "probability_valve::sticking": 0.4853361469958326,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "MLD-LVL",
+        "current_value": 65.21210479736328,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.2549882915077267
+      },
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.20350666344165802,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.2383638841750574
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.589134931564331,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.13507928403804026
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0260",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-11-04 07:00:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "oscillator",
+    "GT_FAULT_MODE": "friction",
+    "DIAG_INTERVAL": "S0260:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "oscillator::friction",
+    "candidate_2": "valve::sticking",
+    "confidence": 0.4826108819992612,
+    "candidate_2_probability": 0.2746027744926158,
+    "margin": 0.20800810750664545,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "oscillator::friction",
+    "correct": true,
+    "probability_oscillator::background-wear": 0.005007361210067479,
+    "probability_oscillator::friction": 0.4826108819992612,
+    "probability_valve::background-wear": 0.005007361210067479,
+    "probability_valve::control-delay": 0.232771621087988,
+    "probability_valve::sticking": 0.2746027744926158,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "OSC-STK",
+        "current_value": 2.941206693649292,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.18858338906440814
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 66.47334289550781,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.1643992549230246
+      },
+      {
+        "observation": "WD-LOD",
+        "current_value": 100.09942626953125,
+        "normal_reference": 84.7793960571289,
+        "score_drop_to_reference": 0.16112686333788195
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0234",
+    "EQP_CD": "P1-CC1-INS01",
+    "MEAS_DT": "2027-07-23 12:45:00+00:00",
+    "equipment": "C",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "valve",
+    "GT_FAULT_MODE": "sticking",
+    "DIAG_INTERVAL": "S0234:P1-CC1-INS01:1",
+    "task": "cause",
+    "prediction": "valve::sticking",
+    "candidate_2": "oscillator::friction",
+    "confidence": 0.43794911673057174,
+    "candidate_2_probability": 0.2832934994234547,
+    "margin": 0.15465561730711702,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "valve::sticking",
+    "correct": true,
+    "probability_oscillator::background-wear": 0.004692638683879497,
+    "probability_oscillator::friction": 0.2832934994234547,
+    "probability_valve::background-wear": 0.004692638683879497,
+    "probability_valve::control-delay": 0.2693721064782145,
+    "probability_valve::sticking": 0.43794911673057174,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "CONTROL_DELAY",
+        "current_value": 0.21972833573818207,
+        "normal_reference": 0.1126733347773552,
+        "score_drop_to_reference": 0.19713908106939682
+      },
+      {
+        "observation": "MLD-LVL",
+        "current_value": 68.5826416015625,
+        "normal_reference": 70.19473266601562,
+        "score_drop_to_reference": 0.17620085889320164
+      },
+      {
+        "observation": "OSC-STK",
+        "current_value": 3.373734951019287,
+        "normal_reference": 4.175236701965332,
+        "score_drop_to_reference": 0.14914338463636967
+      }
+    ]
+  }
+]

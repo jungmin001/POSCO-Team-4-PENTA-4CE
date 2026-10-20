@@ -1,0 +1,18 @@
+{
+  "Version": 1,
+  "GeneratedAt": "2026-10-19T00:49:02Z",
+  "Task": "C 검사 직후 최종(D) 결함 위험 예측 (흐름 단위)",
+  "Split": "validation",
+  "Threshold": 0.13108238272783354,
+  "Features": 145,
+  "Metrics": {
+    "AP": 0.9635,
+    "Precision": 0.757,
+    "Recall": 0.9708,
+    "ActualDefects": 308,
+    "Found": 299,
+    "Missed": 9,
+    "FalseAlarms": 96,
+    "Flows": 1978
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "fingerprint": {
+    "bearing::bearing-damage": {
+      "cur_load": 136.17492827044398,
+      "VIB-TOP_RMS": 0.72385,
+      "VIB-TOP_KUR": 1.7394,
+      "VIB-TOP_CRF": 2.7878999999999996,
+      "asym": 1.0187151928106095,
+      "CUR-MTR_RMS": 108.01685
+    },
+    "roll::roll-wear": {
+      "cur_load": 134.39944831209772,
+      "VIB-TOP_RMS": 0.4595,
+      "VIB-TOP_KUR": -1.2052,
+      "VIB-TOP_CRF": 1.6459,
+      "asym": 1.0363514719000892,
+      "CUR-MTR_RMS": 105.4589
+    },
+    "bearing::background-wear": {
+      "cur_load": 124.14803543614553,
+      "VIB-TOP_RMS": 0.44865,
+      "VIB-TOP_KUR": -1.2697,
+      "VIB-TOP_CRF": 1.59785,
+      "asym": 1.0277513808777783,
+      "CUR-MTR_RMS": 97.45275
+    },
+    "roll::background-wear": {
+      "cur_load": 123.52167781750092,
+      "VIB-TOP_RMS": 0.5326,
+      "VIB-TOP_KUR": 1.31805,
+      "VIB-TOP_CRF": 2.6818,
+      "asym": 1.0195735877572218,
+      "CUR-MTR_RMS": 98.6805
+    }
+  },
+  "normal": {
+    "cur_load": 111.44303543010713,
+    "VIB-TOP_RMS": 0.3931,
+    "VIB-TOP_KUR": -1.3486,
+    "VIB-TOP_CRF": 1.514,
+    "asym": 1.0133878191059624,
+    "CUR-MTR_RMS": 87.17859999999999
+  },
+  "episodes": [
+    {
+      "scenario": "S0236",
+      "mode": "roll::roll-wear",
+      "start_h": 40.416666666666664,
+      "length_h": 0.08333333333333333,
+      "detected": false,
+      "delay_h": null
+    },
+    {
+      "scenario": "S0239",
+      "mode": "bearing::bearing-damage",
+      "start_h": 10.25,
+      "length_h": 42.75,
+      "detected": true,
+      "delay_h": 0.0
+    },
+    {
+      "scenario": "S0252",
+      "mode": "bearing::bearing-damage",
+      "start_h": 7.75,
+      "length_h": 16.25,
+      "detected": true,
+      "delay_h": 1.75
+    },
+    {
+      "scenario": "S0252",
+      "mode": "roll::background-wear",
+      "start_h": 37.0,
+      "length_h": 35.0,
+      "detected": true,
+      "delay_h": 0.0
+    },
+    {
+      "scenario": "S0261",
+      "mode": "roll::roll-wear",
+      "start_h": 4.0,
+      "length_h": 17.0,
+      "detected": true,
+      "delay_h": 1.1666666666666665
+    },
+    {
+      "scenario": "S0261",
+      "mode": "bearing::background-wear",
+      "start_h": 23.0,
+      "length_h": 20.0,
+      "detected": true,
+      "delay_h": 0.75
+    },
+    {
+      "scenario": "S0261",
+      "mode": "bearing::background-wear",
+      "start_h": 51.0,
+      "length_h": 21.0,
+      "detected": true,
+      "delay_h": 0.16666666666666666
+    },
+    {
+      "scenario": "S0278",
+      "mode": "roll::roll-wear",
+      "start_h": 11.0,
+      "length_h": 23.75,
+      "detected": true,
+      "delay_h": 1.1666666666666665
+    },
+    {
+      "scenario": "S0278",
+      "mode": "roll::roll-wear",
+      "start_h": 58.5,
+      "length_h": 13.5,
+      "detected": true,
+      "delay_h": 0.0
+    },
+    {
+      "scenario": "S0287",
+      "mode": "bearing::bearing-damage",
+      "start_h": 3.75,
+      "length_h": 34.0,
+      "detected": true,
+      "delay_h": 0.9166666666666666
+    },
+    {
+      "scenario": "S0287",
+      "mode": "roll::background-wear",
+      "start_h": 45.75,
+      "length_h": 26.25,
+      "detected": true,
+      "delay_h": 0.41666666666666663
+    }
+  ],
+  "order": [
+    "bearing::bearing-damage",
+    "roll::roll-wear",
+    "bearing::background-wear",
+    "roll::background-wear"
+  ],
+  "families": {
+    "bearing::bearing-damage": "충격형",
+    "roll::background-wear": "충격형",
+    "roll::roll-wear": "마찰형",
+    "bearing::background-wear": "마찰형"
+  }
+}

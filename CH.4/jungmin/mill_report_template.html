@@ -1,0 +1,467 @@
+<title>조질압연기 건강 모니터</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+/* 레이아웃: 계측기 패널. 위에서 아래로 요약 → 스코프(시간축 하나에 신호·정답·예측) → 지문과 혼동 → 신뢰 범위 → 고장 구간 목록 */
+:root {
+  --bg: #f1f3f5;
+  --surface: #ffffff;
+  --ink: #0f151c;
+  --ink2: #45505c;
+  --ink3: #6c7884;
+  --line: #e0e5ea;
+  --axis: #bcc6d0;
+  --impact: #2a78d6;
+  --impact-soft: rgba(42, 120, 214, 0.15);
+  --friction: #eb6834;
+  --friction-soft: rgba(235, 104, 52, 0.16);
+  --chip: #e8ecf0;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1116;
+    --surface: #151b22;
+    --ink: #e8edf2;
+    --ink2: #aab4be;
+    --ink3: #7d8895;
+    --line: #232b34;
+    --axis: #38424d;
+    --impact: #3987e5;
+    --impact-soft: rgba(57, 135, 229, 0.22);
+    --friction: #d95926;
+    --friction-soft: rgba(217, 89, 38, 0.24);
+    --chip: #1e262f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1116;
+  --surface: #151b22;
+  --ink: #e8edf2;
+  --ink2: #aab4be;
+  --ink3: #7d8895;
+  --line: #232b34;
+  --axis: #38424d;
+  --impact: #3987e5;
+  --impact-soft: rgba(57, 135, 229, 0.22);
+  --friction: #d95926;
+  --friction-soft: rgba(217, 89, 38, 0.24);
+  --chip: #1e262f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 14px; line-height: 1.55; }
+.page { max-width: 1120px; margin: 0 auto; padding-block: 28px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 22px; }
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; }
+.top h1 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+.top p { margin: 4px 0 0; color: var(--ink2); max-width: 62ch; }
+.tag { font-family: var(--font-data); font-size: 12px; color: var(--ink3); letter-spacing: 0.04em; }
+h2 { margin: 0; font-size: 15px; font-weight: 600; }
+.sub { color: var(--ink2); font-size: 13px; margin: 2px 0 0; max-width: 70ch; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 380px) { .kpis { grid-template-columns: minmax(0, 1fr); } }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.kpi .k { font-size: 12px; color: var(--ink2); letter-spacing: 0.02em; }
+.kpi .v { font-family: var(--font-data); font-size: 30px; font-weight: 500; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.kpi .v small { font-size: 14px; color: var(--ink3); font-weight: 400; letter-spacing: 0; }
+.kpi .n { font-size: 12px; color: var(--ink3); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-family: var(--font-data); font-size: 12px; color: var(--ink2); background: var(--chip); border: 1px solid transparent; border-radius: 6px; padding: 5px 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.chip:hover { border-color: var(--axis); }
+.chip:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.chip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.chip i.f1 { background: var(--impact); }
+.chip i.f2 { background: var(--friction); border-radius: 2px; }
+.chip i.none { background: transparent; border: 1px solid var(--ink3); }
+.chip[aria-pressed="true"] i.none { border-color: var(--bg); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.sw.f1 { background: var(--impact-soft); border: 1px solid var(--impact); }
+.sw.f2 { background: var(--friction-soft); border: 1px solid var(--friction); }
+.ln { width: 16px; height: 0; border-top: 2px solid var(--ink); display: inline-block; }
+.ln.dash { border-top: 1.5px dashed var(--ink3); }
+
+#scopeWrap { position: relative; }
+#scope { width: 100%; display: block; touch-action: pan-y; }
+#tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); border-radius: 6px; padding: 8px 10px; font-size: 12px; line-height: 1.5; min-width: 190px; max-width: 260px; z-index: 2; }
+#tip .t { font-family: var(--font-data); font-weight: 500; margin-bottom: 2px; }
+#tip .r { display: flex; justify-content: space-between; gap: 12px; }
+#tip .r b { font-family: var(--font-data); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.scroll { overflow-x: auto; }
+th { text-align: left; font-weight: 500; color: var(--ink3); font-size: 12px; padding: 6px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.mx td.c { text-align: center; font-family: var(--font-data); font-variant-numeric: tabular-nums; padding: 8px 6px; min-width: 64px; }
+.mx td.c.same { outline: 1.5px dashed var(--ink3); outline-offset: -4px; }
+.mx th { white-space: normal; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; border-radius: 999px; padding: 2px 10px; white-space: nowrap; border: 1px solid var(--ink); }
+.pill.hi { background: var(--ink); color: var(--bg); }
+.pill.mid { background: transparent; color: var(--ink); }
+.pill.lo { background: transparent; color: var(--ink2); border-style: dashed; border-color: var(--ink3); }
+.mode { display: inline-flex; align-items: center; gap: 6px; }
+.mode i { width: 10px; height: 10px; display: inline-block; }
+.mode i.f1 { background: var(--impact); border-radius: 50%; }
+.mode i.f2 { background: var(--friction); border-radius: 2px; }
+.bar { display: inline-block; height: 8px; background: var(--ink); border-radius: 0 4px 4px 0; vertical-align: middle; margin-right: 8px; }
+.note { color: var(--ink3); font-size: 12px; max-width: 90ch; }
+.callout { font-size: 13px; color: var(--ink2); border-left: 3px solid var(--axis); padding: 2px 0 2px 12px; max-width: 70ch; }
+svg text { font-family: var(--font-data); }
+@media (max-width: 520px) { .top h1 { font-size: 22px; } .kpi .v { font-size: 26px; } }
+</style>
+
+<main class="page">
+  <header class="top">
+    <div>
+      <div class="tag">SPM01 · 조질압연기 · 검증 시나리오 재생</div>
+      <h1>조질압연기 건강 모니터</h1>
+      <p>5분마다 올라오는 진동과 모터 전류에서 고장이 진행 중인지 알아채고, 어느 계통이 문제인지 가려내고, 24시간 안에 멈출지를 예측합니다.</p>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="핵심 성능"></section>
+
+  <section class="panel" aria-labelledby="h-scope">
+    <div>
+      <h2 id="h-scope">시나리오 스코프</h2>
+      <p class="sub">72시간 동안의 신호와 모델 판단을 한 시간축에 겹쳐 놓았습니다. 맨 위 두 줄은 실제 고장 구간과 모델이 경보로 가리킨 계열이고, 마우스를 올리면 그 시각의 값을 볼 수 있습니다.</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="시나리오 선택"></div>
+    <div class="legend">
+      <span><i class="sw f1"></i>충격형 (베어링 손상, 롤 일반 마모)</span>
+      <span><i class="sw f2"></i>마찰형 (롤 마모, 베어링 일반 마모)</span>
+      <span><i class="ln"></i>모델 감지 확률</span>
+      <span><i class="ln dash"></i>경보 기준</span>
+    </div>
+    <div id="scopeWrap"><svg id="scope" role="img" aria-label="선택한 시나리오의 시계열"></svg><div id="tip" hidden></div></div>
+    <p class="note" id="scopeNote"></p>
+  </section>
+
+  <section class="two">
+    <div class="panel" aria-labelledby="h-fp">
+      <div>
+        <h2 id="h-fp">유형별 신호 지문</h2>
+        <p class="sub">정상(세로 막대)에서 얼마나 벗어나는지 유형마다 다릅니다. 첨도와 파고율이 오르면 충격형, 전류와 상하 비대칭이 오르면 마찰형입니다.</p>
+      </div>
+      <svg id="fp" role="img" aria-label="유형별 신호 지문"></svg>
+      <div class="legend" id="fpLegend"></div>
+    </div>
+    <div class="panel" aria-labelledby="h-cm">
+      <div>
+        <h2 id="h-cm">예측이 맞고 틀린 곳</h2>
+        <p class="sub">고장 중인 5분 구간 <span id="cmRows"></span>개의 유형 판별 결과입니다. 점선 칸은 유형은 달라도 같은 계열 안에서 생긴 혼동입니다.</p>
+      </div>
+      <div class="scroll"><table class="mx" id="cm"></table></div>
+      <p class="callout" id="cmNote"></p>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-trust">
+    <div>
+      <h2 id="h-trust">어디까지 믿을 수 있나</h2>
+      <p class="sub">검증 시나리오 72개 기준입니다. 고장 사례가 적은 항목은 교차검증 결과를 함께 적었습니다.</p>
+    </div>
+    <div class="scroll"><table id="trust"></table></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-ep">
+    <div>
+      <h2 id="h-ep">검증 시나리오의 고장 구간</h2>
+      <p class="sub">고장이 시작된 뒤 모델이 경보를 낼 때까지 걸린 시간입니다. 경보는 15분 연속 감지돼야 켜집니다.</p>
+    </div>
+    <div class="scroll"><table id="ep"></table></div>
+  </section>
+
+  <p class="note">학습에는 train 시나리오 216개만 썼고, 경보 기준도 train 안의 교차검증으로 정했습니다. 검증 시나리오는 모델 학습과 기준 선택에 쓰지 않았지만, 특징을 고르는 실험에서는 교차검증에 포함했습니다. 데이터는 합성 데이터셋(pdm-v2.2.0)입니다.</p>
+</main>
+
+<script>
+const DATA = __DATA__;
+const M = DATA.metrics;
+const NS = "http://www.w3.org/2000/svg";
+const FAM = { 1: { name: "충격형", v: "--impact", soft: "--impact-soft" }, 2: { name: "마찰형", v: "--friction", soft: "--friction-soft" } };
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (x, d = 0) => x == null ? "-" : x.toLocaleString("ko-KR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (x, d = 0) => x == null ? "-" : fmt(x * 100, d) + "%";
+const mk = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const html = (s) => { const t = document.createElement("template"); t.innerHTML = s.trim(); return t.content.firstChild; };
+
+/* ---------- 핵심 지표 ---------- */
+(function kpis() {
+  const ep = M.detect.episode_validation, ty = M.type, r24 = M.risk["24H"];
+  const eps = DATA.scenarios.flatMap((s) => s.episodes), missed = eps.filter((e) => e.delay == null);
+  const missNote = missed.length ? `놓친 ${missed.length}건은 길이 ${Math.round((missed[0].e - missed[0].s) * 60)}분짜리` : "놓친 구간 없음";
+  const perDay = ep.false_alarms_per_day, every = perDay > 0 ? Math.round(1 / perDay) : null;
+  const items = [
+    { k: "고장 구간 감지", v: `${ep.detected}<small> / ${ep.episodes}</small>`, n: `중앙값 ${Math.round(ep.delay_median_h * 60)}분 만에 경보 · ${missNote}` },
+    { k: "오경보", v: `${fmt(perDay, 2)}<small> 회/일</small>`, n: every ? `정상 구간에서 약 ${every}일에 한 번` : "정상 구간에서 오경보 없음" },
+    { k: "고장 계열 구분", v: `${pct(ty.family_accuracy)}`, n: `충격형 / 마찰형 · 교차검증 ${pct(ty.cv_family_accuracy)}` },
+    { k: "24시간 내 고장 예측", v: `${fmt(r24.validation.PR_AUC, 2)}<small> PR-AUC</small>`, n: `정밀도 ${pct(r24.validation.precision)} · 재현율 ${pct(r24.validation.recall)} · 무작위 기준 ${fmt(r24.baseline * 100, 1)}%` },
+  ];
+  const root = document.getElementById("kpis");
+  items.forEach((it) => root.appendChild(html(`<div class="kpi"><div class="k">${it.k}</div><div class="v">${it.v}</div><div class="n">${it.n}</div></div>`)));
+})();
+
+/* ---------- 스코프 ---------- */
+let cur = 0, hover = null;
+const chips = document.getElementById("chips");
+const def = DATA.scenarios.map((s, i) => [s.episodes.length, -i]).reduce((b, v, i, a) => (v[0] > a[b][0] ? i : b), 0);
+cur = def;
+DATA.scenarios.forEach((s, i) => {
+  const dots = s.episodes.length ? s.episodes.map((e) => `<i class="f${e.fam}"></i>`).join("") : '<i class="none"></i>';
+  const b = html(`<button class="chip" type="button" aria-pressed="${i === cur}">${s.id}${dots}</button>`);
+  b.addEventListener("click", () => { cur = i; hover = null; [...chips.children].forEach((c, j) => c.setAttribute("aria-pressed", j === i)); drawScope(); });
+  chips.appendChild(b);
+});
+
+const svg = document.getElementById("scope"), tip = document.getElementById("tip"), wrap = document.getElementById("scopeWrap");
+const ML = 66, MR = 14;
+let geo = null;
+
+function runs(arr, pick) {
+  const out = []; let s = null, v = 0;
+  for (let i = 0; i <= arr.length; i++) {
+    const x = i < arr.length ? pick(i) : 0;
+    if (x !== v) { if (v) out.push([s, i - 1, v]); s = i; v = x; }
+  }
+  return out;
+}
+function linePath(vals, X, Y) {
+  let d = "", pen = false;
+  vals.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1); pen = true; });
+  return d;
+}
+function areaPaths(vals, X, Y, base) {
+  const out = []; let seg = [];
+  const flush = () => { if (seg.length > 1) out.push("M" + X(seg[0]).toFixed(1) + " " + base + seg.map((i) => "L" + X(i).toFixed(1) + " " + Y(vals[i]).toFixed(1)).join("") + "L" + X(seg[seg.length - 1]).toFixed(1) + " " + base + "Z"); seg = []; };
+  vals.forEach((v, i) => { if (v == null) flush(); else seg.push(i); }); flush();
+  return out.join("");
+}
+function domain(vals, pad = 0.08) {
+  const v = vals.filter((x) => x != null); let lo = Math.min(...v), hi = Math.max(...v); const p = (hi - lo || 1) * pad;
+  return [lo - p, hi + p];
+}
+function niceTicks(lo, hi, n = 3) {
+  const step0 = (hi - lo) / n, mag = Math.pow(10, Math.floor(Math.log10(step0))), f = step0 / mag;
+  const step = (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * mag, out = [];
+  for (let t = Math.ceil(lo / step) * step; t <= hi + 1e-9; t += step) out.push(+t.toFixed(6));
+  return out;
+}
+
+function drawScope() {
+  const s = DATA.scenarios[cur], W = Math.max(320, wrap.clientWidth), n = s.p.length;
+  const ink = css("--ink"), ink2 = css("--ink2"), ink3 = css("--ink3"), line = css("--line"), axis = css("--axis");
+  const hours = 72, X = (h) => ML + (h / hours) * (W - ML - MR), Xi = (i) => X(i * 5 / 60);
+  const H = { strip: 12, gap: 5, a: 118, b: 80, c: 80, d: 112, pad: 26, axis: 24 };
+  let y = 4; const Y = {};
+  Y.truth = y; y += H.strip + H.gap; Y.pred = y; y += H.strip + H.pad;
+  Y.a = y; y += H.a + H.pad; Y.b = y; y += H.b + H.pad; Y.c = y; y += H.c + H.pad; Y.d = y; y += H.d + H.axis;
+  svg.setAttribute("viewBox", `0 0 ${W} ${y}`); svg.setAttribute("height", y); svg.replaceChildren();
+  geo = { W, n, Y, H, X, Xi, ML, MR, total: y };
+
+  /* 정답 구간 배경 (모든 패널을 가로지르는 띠) */
+  const band = mk("g", {}, svg);
+  s.episodes.forEach((e) => {
+    mk("rect", { x: X(e.s), y: Y.a - 22, width: Math.max(1.5, X(e.e) - X(e.s)), height: Y.d + H.d - Y.a + 26, fill: css(FAM[e.fam].soft) }, band);
+  });
+  /* 세로 격자 + 시간축 */
+  for (let h = 0; h <= hours; h += 12) {
+    mk("line", { x1: X(h), x2: X(h), y1: Y.a - 22, y2: Y.d + H.d, stroke: line, "stroke-width": 1 }, svg);
+    const t = mk("text", { x: X(h), y: Y.d + H.d + 16, "text-anchor": h === 0 ? "start" : h === hours ? "end" : "middle", "font-size": 11, fill: ink3 }, svg); t.textContent = h + "시간";
+  }
+  /* 정답/예측 줄 */
+  const lab = (txt, yy) => { const t = mk("text", { x: 0, y: yy + 10, "font-size": 11, fill: ink2 }, svg); t.textContent = txt; };
+  lab("정답", Y.truth); lab("모델 판단", Y.pred);
+  mk("rect", { x: ML, y: Y.truth, width: W - ML - MR, height: H.strip, fill: "none", stroke: line }, svg);
+  mk("rect", { x: ML, y: Y.pred, width: W - ML - MR, height: H.strip, fill: "none", stroke: line }, svg);
+  runs(s.truth, (i) => s.truth[i]).forEach(([a, b, v]) => mk("rect", { x: Xi(a), y: Y.truth, width: Math.max(1.5, Xi(b + 1) - Xi(a)), height: H.strip, fill: css(FAM[v].v) }, svg));
+  runs(s.pred, (i) => (s.alarm[i] ? s.pred[i] : 0)).forEach(([a, b, v]) => mk("rect", { x: Xi(a), y: Y.pred, width: Math.max(1.5, Xi(b + 1) - Xi(a)), height: H.strip, fill: css(FAM[v].v) }, svg));
+
+  const title = (txt, yy) => { const t = mk("text", { x: ML, y: yy - 9, "font-size": 11, fill: ink2 }, svg); t.textContent = txt; };
+  const yAxis = (lo, hi, top, ht, fmtv) => {
+    niceTicks(lo, hi).forEach((v) => {
+      const yy = top + ht - ((v - lo) / (hi - lo)) * ht;
+      mk("line", { x1: ML, x2: W - MR, y1: yy, y2: yy, stroke: line, "stroke-width": 1, "stroke-dasharray": "2 3" }, svg);
+      const t = mk("text", { x: ML - 6, y: yy + 4, "text-anchor": "end", "font-size": 10.5, fill: ink3 }, svg); t.textContent = fmtv(v);
+    });
+  };
+
+  /* A. 감지 확률 */
+  title("고장 감지 확률 (5분 단위)", Y.a);
+  const ya = (v) => Y.a + H.a - v * H.a;
+  yAxis(0, 1, Y.a, H.a, (v) => fmt(v, 1));
+  mk("path", { d: areaPaths(s.p, Xi, ya, Y.a + H.a), fill: ink, opacity: 0.1 }, svg);
+  mk("path", { d: linePath(s.p, Xi, ya), fill: "none", stroke: ink, "stroke-width": 1.4, "stroke-linejoin": "round" }, svg);
+  mk("line", { x1: ML, x2: W - MR, y1: ya(DATA.detThreshold), y2: ya(DATA.detThreshold), stroke: ink3, "stroke-width": 1.2, "stroke-dasharray": "5 4" }, svg);
+  s.episodes.forEach((e) => {
+    if (X(e.e) - X(e.s) > 80) { const t = mk("text", { x: X(e.s) + 5, y: Y.a + 11, "font-size": 10.5, fill: ink2 }, svg); t.textContent = e.label; }
+    if (e.delay != null) {
+      const xx = X(e.s + e.delay), tri = mk("path", { d: `M${xx} ${Y.a + H.a - 1} l-4.5 -8 h9 z`, fill: css(FAM[e.fam].v), stroke: css("--surface"), "stroke-width": 1.2 }, svg);
+    }
+  });
+
+  /* B. 전류 ÷ 부하 */
+  title("모터 전류 ÷ 부하", Y.b);
+  let [lb, hb] = domain(s.cl.concat([DATA.normal.cur_load])); const yb = (v) => Y.b + H.b - ((v - lb) / (hb - lb)) * H.b;
+  yAxis(lb, hb, Y.b, H.b, (v) => fmt(v, 0));
+  mk("line", { x1: ML, x2: W - MR, y1: yb(DATA.normal.cur_load), y2: yb(DATA.normal.cur_load), stroke: ink3, "stroke-width": 1, "stroke-dasharray": "1.5 3" }, svg);
+  mk("path", { d: linePath(s.cl, Xi, yb), fill: "none", stroke: ink, "stroke-width": 1.2, "stroke-linejoin": "round" }, svg);
+
+  /* C. 진동 첨도 */
+  title("진동 첨도", Y.c);
+  let [lc, hc] = domain(s.ku.concat([DATA.normal.VIB_TOP_KUR ?? DATA.normal["VIB-TOP_KUR"]])); const yc = (v) => Y.c + H.c - ((v - lc) / (hc - lc)) * H.c;
+  yAxis(lc, hc, Y.c, H.c, (v) => fmt(v, 1));
+  const nk = DATA.normal["VIB-TOP_KUR"];
+  mk("line", { x1: ML, x2: W - MR, y1: yc(nk), y2: yc(nk), stroke: ink3, "stroke-width": 1, "stroke-dasharray": "1.5 3" }, svg);
+  mk("path", { d: linePath(s.ku, Xi, yc), fill: "none", stroke: ink, "stroke-width": 1.2, "stroke-linejoin": "round" }, svg);
+
+  /* D. 6시간 간격 고장 임박 예측 */
+  title("24시간 내 고장 확률 (6시간 간격)", Y.d);
+  const hd = H.d - 16, yd = (v) => Y.d + hd - v * hd;
+  yAxis(0, 1, Y.d, hd, (v) => fmt(v, 1));
+  const bw = Math.max(4, (X(6) - X(0)) * 0.46);
+  s.risk.forEach((r) => {
+    if (r.p24 == null) return;
+    const on = r.p24 >= DATA.p24Threshold, x0 = X(r.h) - bw / 2;
+    mk("rect", { x: x0, y: yd(r.p24), width: bw, height: Math.max(1, Y.d + hd - yd(r.p24)), fill: on ? ink : ink3, opacity: on ? 1 : 0.5, rx: 2 }, svg);
+    if (r.y24 === 1) mk("circle", { cx: X(r.h), cy: Y.d + H.d - 5, r: 3.4, fill: ink }, svg);
+  });
+  mk("line", { x1: ML, x2: W - MR, y1: yd(DATA.p24Threshold), y2: yd(DATA.p24Threshold), stroke: ink3, "stroke-width": 1.2, "stroke-dasharray": "5 4" }, svg);
+  const ct = mk("text", { x: ML - 6, y: Y.d + H.d - 1, "text-anchor": "end", "font-size": 10, fill: ink3 }, svg); ct.textContent = "실제";
+
+  /* 커서 */
+  geo.cursor = mk("line", { y1: Y.a - 22, y2: Y.d + H.d, stroke: ink, "stroke-width": 1, visibility: "hidden" }, svg);
+  const eps = s.episodes.length;
+  document.getElementById("scopeNote").textContent = eps
+    ? `${s.id} · 고장 구간 ${eps}개. 삼각형은 모델이 처음 경보를 낸 시점, 맨 아래 점은 실제로 24시간 안에 고장이 난 시점입니다.`
+    : `${s.id} · 고장이 없는 시나리오입니다. 평상시 신호와 감지 확률이 어떻게 보이는지 비교해 보세요.`;
+}
+
+function showHover(clientX, clientY) {
+  const s = DATA.scenarios[cur], r = svg.getBoundingClientRect(), x = (clientX - r.left) * (geo.W / r.width);
+  if (x < geo.ML || x > geo.W - geo.MR) { hideHover(); return; }
+  const h = ((x - geo.ML) / (geo.W - geo.ML - geo.MR)) * 72, i = Math.min(s.p.length - 1, Math.max(0, Math.round(h * 12)));
+  geo.cursor.setAttribute("x1", geo.Xi(i)); geo.cursor.setAttribute("x2", geo.Xi(i)); geo.cursor.setAttribute("visibility", "visible");
+  const hr = i * 5 / 60, mode = s.episodes.find((e) => hr >= e.s && hr < e.e);
+  let g = null; s.risk.forEach((q) => { if (q.h <= hr + 1e-6) g = q; });
+  const row = (k, v) => `<div class="r"><span>${k}</span><b>${v}</b></div>`;
+  tip.innerHTML = `<div class="t">${fmt(hr, 1)}시간 지점</div>` +
+    row("감지 확률", s.p[i] == null ? "측정 없음" : pct(s.p[i], 0) + (s.alarm[i] ? " · 경보" : "")) +
+    row("모델 판단", s.alarm[i] && s.pred[i] ? FAM[s.pred[i]].name : "정상") +
+    row("전류 ÷ 부하", s.cl[i] == null ? "-" : fmt(s.cl[i], 1)) +
+    row("진동 첨도", s.ku[i] == null ? "-" : fmt(s.ku[i], 2)) +
+    row("정답", mode ? mode.label : "정상") +
+    (g && g.p24 != null ? row("24시간 내 고장", pct(g.p24) + (g.y24 === 1 ? " (실제 발생)" : "")) : "");
+  tip.hidden = false;
+  const w = wrap.getBoundingClientRect(), tw = tip.offsetWidth;
+  let left = clientX - w.left + 14; if (left + tw > w.width) left = clientX - w.left - tw - 14;
+  tip.style.left = Math.max(0, left) + "px"; tip.style.top = Math.max(0, clientY - w.top - 20) + "px";
+}
+function hideHover() { tip.hidden = true; if (geo && geo.cursor) geo.cursor.setAttribute("visibility", "hidden"); }
+svg.addEventListener("pointermove", (e) => showHover(e.clientX, e.clientY));
+svg.addEventListener("pointerleave", hideHover);
+
+/* ---------- 신호 지문 ---------- */
+function drawFingerprint() {
+  const root = document.getElementById("fp"), W = Math.max(300, root.parentElement.clientWidth - 36), rowH = 46, top = 6;
+  const feats = [["cur_load", "전류 ÷ 부하", 0], ["VIB-TOP_RMS", "진동 크기", 2], ["VIB-TOP_KUR", "진동 첨도", 1], ["VIB-TOP_CRF", "진동 파고율", 1], ["asym", "상하 비대칭", 3]];
+  const H = top + feats.length * rowH + 8, L = 94, R = 14;
+  root.setAttribute("viewBox", `0 0 ${W} ${H}`); root.setAttribute("height", H); root.replaceChildren();
+  const ink = css("--ink"), ink2 = css("--ink2"), ink3 = css("--ink3"), line = css("--line");
+  feats.forEach(([key, name, d], r) => {
+    const vals = [DATA.normal[key], ...DATA.order.map((m) => DATA.fingerprint[m][key])], lo = Math.min(...vals), hi = Math.max(...vals), pad = (hi - lo) * 0.14 || 1;
+    const X = (v) => L + ((v - (lo - pad)) / (hi - lo + 2 * pad)) * (W - L - R), yy = top + r * rowH + 24;
+    const t = mk("text", { x: 0, y: yy + 4, "font-size": 12, fill: ink2, style: "font-family:var(--font-body)" }, root); t.textContent = name;
+    mk("line", { x1: L, x2: W - R, y1: yy, y2: yy, stroke: line, "stroke-width": 1 }, root);
+    mk("line", { x1: X(DATA.normal[key]), x2: X(DATA.normal[key]), y1: yy - 13, y2: yy + 13, stroke: ink, "stroke-width": 2.2 }, root);
+    const lo_t = mk("text", { x: X(DATA.normal[key]), y: yy + 24, "text-anchor": "middle", "font-size": 10, fill: ink3 }, root); lo_t.textContent = fmt(DATA.normal[key], d);
+    DATA.order.forEach((m) => {
+      const v = DATA.fingerprint[m][key], fam = DATA.families[m], col = css(FAM[fam].v), hollow = m.includes("background");
+      const attrs = hollow ? { fill: css("--surface"), stroke: col, "stroke-width": 2 } : { fill: col, stroke: css("--surface"), "stroke-width": 1.5 };
+      let node;
+      if (fam === 1) node = mk("circle", { cx: X(v), cy: yy, r: 6, ...attrs }, root);
+      else node = mk("rect", { x: X(v) - 5.5, y: yy - 5.5, width: 11, height: 11, rx: 2, ...attrs }, root);
+      const ti = mk("title", {}, node); ti.textContent = `${DATA.labels[m]}: ${fmt(v, d + 1)}`;
+    });
+  });
+  const lg = document.getElementById("fpLegend"); lg.replaceChildren();
+  lg.appendChild(html(`<span><svg width="14" height="14"><line x1="7" x2="7" y1="1" y2="13" stroke="${ink}" stroke-width="2.2"/></svg>정상</span>`));
+  DATA.order.forEach((m) => {
+    const fam = DATA.families[m], col = css(FAM[fam].v), hollow = m.includes("background");
+    const shape = fam === 1 ? `<circle cx="7" cy="7" r="5" fill="${hollow ? css("--surface") : col}" stroke="${col}" stroke-width="2"/>` : `<rect x="2" y="2" width="10" height="10" rx="2" fill="${hollow ? css("--surface") : col}" stroke="${col}" stroke-width="2"/>`;
+    lg.appendChild(html(`<span><svg width="14" height="14">${shape}</svg>${DATA.labels[m]}</span>`));
+  });
+}
+
+/* ---------- 혼동 행렬 ---------- */
+function drawMatrix() {
+  const t = M.type, order = t.classes, short = { "bearing::bearing-damage": "베어링 손상", "roll::roll-wear": "롤 마모", "bearing::background-wear": "베어링 일반", "roll::background-wear": "롤 일반" };
+  document.getElementById("cmRows").textContent = fmt(t.rows);
+  const tb = document.getElementById("cm"); tb.replaceChildren();
+  tb.appendChild(html(`<thead><tr><th>실제 \\ 예측</th>${order.map((c) => `<th class="num">${short[c]}</th>`).join("")}</tr></thead>`));
+  const body = document.createElement("tbody");
+  let wrongSame = 0, wrong = 0;
+  t.confusion.forEach((row, i) => {
+    const total = row.reduce((a, b) => a + b, 0);
+    const cells = row.map((v, j) => {
+      const f = total ? v / total : 0, same = i !== j && DATA.families[order[i]] === DATA.families[order[j]] && v > 0;
+      if (i !== j) { wrong += v; if (DATA.families[order[i]] === DATA.families[order[j]]) wrongSame += v; }
+      const a = (f * 0.62).toFixed(2), bg = v ? `color-mix(in srgb, var(--impact) ${Math.round(f * 62)}%, transparent)` : "transparent";
+      return `<td class="c${same ? " same" : ""}" style="background:${bg}" title="${pct(f)}">${v ? fmt(v) : "·"}</td>`;
+    }).join("");
+    body.appendChild(html(`<tr><td><span class="mode"><i class="f${DATA.families[order[i]]}"></i>${short[order[i]]}</span></td>${cells}</tr>`));
+  });
+  tb.appendChild(body);
+  document.getElementById("cmNote").textContent = wrong ? `틀린 ${fmt(wrong)}개 중 ${fmt(wrongSame)}개(${pct(wrongSame / wrong)})가 같은 계열 안의 혼동입니다. 일반 마모 구간은 신호가 반대쪽 부품의 고장과 닮아서 센서만으로 부품 이름까지 가리기 어렵습니다.` : "틀린 판별이 없습니다.";
+}
+
+/* ---------- 신뢰 범위 ---------- */
+function drawTrust() {
+  const d = M.detect, ty = M.type, r6 = M.risk["6H"], r24 = M.risk["24H"], ep = d.episode_validation;
+  const P = (cls, txt) => `<span class="pill ${cls}">${txt}</span>`;
+  const rows = [
+    ["지금 고장 진행 중인지 감지", P("hi", "높음"), `행 단위 AP ${fmt(d.validation.PR_AUC, 3)} · 고장 구간 ${ep.detected}/${ep.episodes}개 · 하루 오경보 ${fmt(ep.false_alarms_per_day, 2)}회`, `교차검증 ${d.episode_train_cv.detected}/${d.episode_train_cv.episodes}개`],
+    ["고장 계열 구분 (충격형/마찰형)", P("hi", "높음"), `정확도 ${pct(ty.family_accuracy)} (고장 구간 ${fmt(ty.rows)}행)`, `교차검증 ${pct(ty.cv_family_accuracy)}`],
+    ["세부 4유형 구분", P("mid", "보통"), `macro-F1 ${fmt(ty.macro_f1, 2)} · 정확도 ${pct(ty.accuracy)}`, `교차검증 ${fmt(ty.cv_macro_f1, 2)} · 일반 마모 구간에서 혼동`],
+    ["24시간 내 고장 예측", P("mid", "보통"), `PR-AUC ${fmt(r24.validation.PR_AUC, 2)} (무작위 ${fmt(r24.baseline, 3)}) · 정밀도 ${pct(r24.validation.precision)} · 재현율 ${pct(r24.validation.recall)}`, `교차검증 PR-AUC ${fmt(r24.train_cv.PR_AUC, 2)} · 고장 ${r24.validation.positives}건`],
+    ["6시간 내 고장 예측", P("lo", "참고용"), `PR-AUC ${fmt(r6.validation.PR_AUC, 2)} (무작위 ${fmt(r6.baseline, 3)}) · 정밀도 ${pct(r6.validation.precision)} · 재현율 ${pct(r6.validation.recall)}`, `검증 고장이 ${r6.validation.positives}건뿐이라 수치가 크게 흔들림 · 교차검증 PR-AUC ${fmt(r6.train_cv.PR_AUC, 2)}`],
+  ];
+  const tb = document.getElementById("trust");
+  tb.innerHTML = `<thead><tr><th>항목</th><th>신뢰도</th><th>검증 성능</th><th>참고</th></tr></thead><tbody>` +
+    rows.map((r) => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td style="color:var(--ink3)">${r[3]}</td></tr>`).join("") + "</tbody>";
+}
+
+/* ---------- 고장 구간 목록 ---------- */
+function drawEpisodes() {
+  const list = DATA.scenarios.flatMap((s) => s.episodes.map((e) => ({ ...e, id: s.id })));
+  const max = Math.max(2, ...list.map((e) => e.delay ?? 0));
+  const tb = document.getElementById("ep");
+  tb.innerHTML = `<thead><tr><th>시나리오</th><th>실제 유형</th><th class="num">시작</th><th class="num">길이</th><th>경보까지 걸린 시간</th></tr></thead><tbody>` +
+    list.map((e) => {
+      const hrs = e.e - e.s, len = hrs < 1 ? `${Math.round(hrs * 60)}분` : `${fmt(hrs, 1)}시간`;
+      const d = e.delay == null ? `<span class="pill lo">감지 못함</span>` : `<span class="bar" style="width:${Math.max(3, (e.delay / max) * 120)}px"></span><span style="font-family:var(--font-data)">${e.delay === 0 ? "즉시" : Math.round(e.delay * 60) + "분"}</span>`;
+      return `<tr><td style="font-family:var(--font-data)">${e.id}</td><td><span class="mode"><i class="f${e.fam}"></i>${e.label}</span></td><td class="num">${fmt(e.s, 1)}시간</td><td class="num">${len}</td><td>${d}</td></tr>`;
+    }).join("") + "</tbody>";
+}
+
+function drawAll() { drawScope(); drawFingerprint(); }
+drawMatrix(); drawTrust(); drawEpisodes(); drawAll();
+let raf = 0;
+addEventListener("resize", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawAll); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { drawAll(); drawMatrix(); });
+new MutationObserver(() => { drawAll(); drawMatrix(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+</script>
