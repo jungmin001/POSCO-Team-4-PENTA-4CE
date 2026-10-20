@@ -1,0 +1,830 @@
+[
+  {
+    "SCENARIO_ID": "S0266",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-11-28 17:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "wear",
+    "DIAG_INTERVAL": "S0266:P1-SP1-AGT01:4",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.9967684212526492,
+    "candidate_2_probability": 0.003231578747350803,
+    "margin": 0.9935368425052984,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.003231578747350803,
+    "probability_maintenance": 2.9777458680366305e-18,
+    "probability_normal": 0.9967684212526492,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VISCOSITY",
+        "current_value": 1.1841000318527222,
+        "normal_reference": 0.9998999834060669,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.42149999737739563,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "VIB-AGT_STD",
+        "current_value": 0.42100000381469727,
+        "normal_reference": 0.4004000127315521,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0250",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-24 09:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0250:P1-SP1-AGT01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9910936731664991,
+    "candidate_2_probability": 0.00890632683350096,
+    "margin": 0.9821873463329981,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9910936731664991,
+    "probability_maintenance": 3.231166966501433e-18,
+    "probability_normal": 0.00890632683350096,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.4085999727249146,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.9726718234557642
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.73580002784729,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.7793903999341364
+      },
+      {
+        "observation": "VISCOSITY",
+        "current_value": 0.9265000224113464,
+        "normal_reference": 0.9998999834060669,
+        "score_drop_to_reference": 0.0022460196052574988
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0256",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-19 21:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0256:P1-SP1-AGT01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9893731369824755,
+    "candidate_2_probability": 0.010626863017524357,
+    "margin": 0.9787462739649512,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9893731369824755,
+    "probability_maintenance": 3.2888254727888498e-18,
+    "probability_normal": 0.010626863017524357,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": 1.6610000133514404,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.5906660174760963
+      },
+      {
+        "observation": "VIB-AGT_STD",
+        "current_value": 0.5975000262260437,
+        "normal_reference": 0.4004000127315521,
+        "score_drop_to_reference": 0.18050198008657004
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 3.222100019454956,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.16873706109392506
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0256",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-20 02:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "rotor-damage",
+    "DIAG_INTERVAL": "S0256:P1-SP1-AGT01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.5004475315561372,
+    "candidate_2_probability": 0.4995524684438628,
+    "margin": 0.0008950631122743857,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.5004475315561372,
+    "probability_maintenance": 5.864720057520062e-18,
+    "probability_normal": 0.4995524684438628,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.649399995803833,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.43573590546386665
+      },
+      {
+        "observation": "VIB-AGT_STD",
+        "current_value": 0.6485999822616577,
+        "normal_reference": 0.4004000127315521,
+        "score_drop_to_reference": 0.31746922231302266
+      },
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": 1.2233999967575073,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.2905421860165466
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0250",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-26 20:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0250:P1-SP1-AGT01:3",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5053496758320368,
+    "candidate_2_probability": 0.4946503241679631,
+    "margin": 0.010699351664073709,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.4946503241679631,
+    "probability_maintenance": 5.864538295284741e-18,
+    "probability_normal": 0.5053496758320368,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VISCOSITY",
+        "current_value": 1.1992000341415405,
+        "normal_reference": 0.9998999834060669,
+        "score_drop_to_reference": 0.07899527839447446
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.39239999651908875,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.05402063552257297
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.8532000184059143,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 0.02303004879364512
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0259",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-31 01:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0259:P1-SP1-AGT01:3",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.5157707422537321,
+    "candidate_2_probability": 0.48422925774626796,
+    "margin": 0.031541484507464135,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.5157707422537321,
+    "probability_maintenance": 5.863130229781586e-18,
+    "probability_normal": 0.48422925774626796,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.4119000434875488,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.48763141150898753
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.7493000030517578,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.3469167088891151
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.6901000142097473,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": -0.11561784380558382
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0272",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-12-22 19:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0272:P1-SP1-AGT01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "maintenance",
+    "confidence": 1.0,
+    "candidate_2_probability": 2.5543801588364243e-18,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_maintenance": 2.5543801588364243e-18,
+    "probability_normal": 2.5543801588364243e-18,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.8743000030517578,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.3352380487724994
+      },
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.2280000448226929,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.27152951406803527
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.8449000120162964,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0251",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-28 16:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "wear",
+    "DIAG_INTERVAL": "S0251:P1-SP1-AGT01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "maintenance",
+    "confidence": 1.0,
+    "candidate_2_probability": 2.5543801588364243e-18,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_maintenance": 2.5543801588364243e-18,
+    "probability_normal": 2.5543801588364243e-18,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.3329999446868896,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.4204903660863972
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.8070000410079956,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.36537627721037524
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.652899980545044,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 3.873549236921292e-08
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0259",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-30 15:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0259:P1-SP1-AGT01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "maintenance",
+    "confidence": 1.0,
+    "candidate_2_probability": 2.5543801588364243e-18,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_maintenance": 2.5543801588364243e-18,
+    "probability_normal": 2.5543801588364243e-18,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.322100043296814,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.3954039061330292
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.8443000316619873,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.3367279464476547
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.817799985408783,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 2.8761042232261502e-06
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0251",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-29 08:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "wear",
+    "DIAG_INTERVAL": "S0251:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "impeller::deposit",
+    "candidate_2": "bearing::wear",
+    "confidence": 0.7368764259524799,
+    "candidate_2_probability": 0.2545718826869176,
+    "margin": 0.4823045432655623,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "bearing::wear",
+    "correct": false,
+    "probability_bearing::background-wear": 0.002850563786867448,
+    "probability_bearing::wear": 0.2545718826869176,
+    "probability_impeller::background-wear": 0.002850563786867448,
+    "probability_impeller::deposit": 0.7368764259524799,
+    "probability_impeller::rotor-damage": 0.002850563786867448,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.1647000312805176,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.40774675799597027
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 2.0488998889923096,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.4054111563672974
+      },
+      {
+        "observation": "VISCOSITY",
+        "current_value": 0.8392999768257141,
+        "normal_reference": 0.9998999834060669,
+        "score_drop_to_reference": 0.2956134532212904
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0272",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-12-23 07:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0272:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "bearing::wear",
+    "candidate_2": "impeller::deposit",
+    "confidence": 0.6550942735098615,
+    "candidate_2_probability": 0.3371267624157292,
+    "margin": 0.3179675110941323,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "impeller::deposit",
+    "correct": false,
+    "probability_bearing::background-wear": 0.0025929880248030243,
+    "probability_bearing::wear": 0.6550942735098615,
+    "probability_impeller::background-wear": 0.0025929880248030243,
+    "probability_impeller::deposit": 0.3371267624157292,
+    "probability_impeller::rotor-damage": 0.0025929880248030243,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.1432000398635864,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.29567160448406415
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 2.053999900817871,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.2585025705708262
+      },
+      {
+        "observation": "VISCOSITY",
+        "current_value": 1.2000000476837158,
+        "normal_reference": 0.9998999834060669,
+        "score_drop_to_reference": 0.2196235655330987
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0259",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-31 16:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0259:P1-SP1-AGT01:4",
+    "task": "cause",
+    "prediction": "bearing::wear",
+    "candidate_2": "impeller::deposit",
+    "confidence": 0.6357737456917963,
+    "candidate_2_probability": 0.3566024991667099,
+    "margin": 0.27917124652508646,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "impeller::deposit",
+    "correct": false,
+    "probability_bearing::background-wear": 0.0025412517138312762,
+    "probability_bearing::wear": 0.6357737456917963,
+    "probability_impeller::background-wear": 0.0025412517138312762,
+    "probability_impeller::deposit": 0.3566024991667099,
+    "probability_impeller::rotor-damage": 0.0025412517138312762,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.2200000286102295,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.3012748679930438
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.8885999917984009,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.26544117535126055
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.5163999795913696,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.17962420887814212
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0256",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-20 10:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "rotor-damage",
+    "DIAG_INTERVAL": "S0256:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "impeller::rotor-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.4505561603964381,
+    "candidate_2_probability": 0.4502712176147815,
+    "margin": 0.00028494278165658304,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "impeller::rotor-damage",
+    "correct": true,
+    "probability_bearing::background-wear": 0.4502712176147815,
+    "probability_bearing::wear": 0.002131164868043683,
+    "probability_impeller::background-wear": 0.002131164868043683,
+    "probability_impeller::deposit": 0.09491029225269294,
+    "probability_impeller::rotor-damage": 0.4505561603964381,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": 1.7408000230789185,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.20934054629029655
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 3.3010001182556152,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.2002612207318244
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.5949000120162964,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.0660978744017387
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0266",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-11-29 19:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "wear",
+    "DIAG_INTERVAL": "S0266:P1-SP1-AGT01:4",
+    "task": "cause",
+    "prediction": "bearing::wear",
+    "candidate_2": "impeller::deposit",
+    "confidence": 0.38728214379670506,
+    "candidate_2_probability": 0.3868561262889468,
+    "margin": 0.0004260175077582806,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "bearing::wear",
+    "correct": true,
+    "probability_bearing::background-wear": 0.08388129062131576,
+    "probability_bearing::wear": 0.38728214379670506,
+    "probability_impeller::background-wear": 0.14013935343847406,
+    "probability_impeller::deposit": 0.3868561262889468,
+    "probability_impeller::rotor-damage": 0.001841085854558341,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.1627000570297241,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.09307394128437774
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 2.0322999954223633,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.054153946243540196
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.43369999527931213,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.03908387395643531
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0250",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-26 03:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0250:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "impeller::deposit",
+    "candidate_2": "bearing::wear",
+    "confidence": 0.3843267293747567,
+    "candidate_2_probability": 0.3835867315154855,
+    "margin": 0.000739997859271202,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "impeller::deposit",
+    "correct": true,
+    "probability_bearing::background-wear": 0.11085301188525216,
+    "probability_bearing::wear": 0.3835867315154855,
+    "probability_impeller::background-wear": 0.0018252942053265434,
+    "probability_impeller::deposit": 0.3843267293747567,
+    "probability_impeller::rotor-damage": 0.11940823301917906,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.2081999778747559,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.13882377216544434
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 2.0715999603271484,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.0811446092688034
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.8956999778747559,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 0.04111671769586156
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0256",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-10-20 05:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "rotor-damage",
+    "DIAG_INTERVAL": "S0256:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "impeller::rotor-damage",
+    "candidate_2": "bearing::background-wear",
+    "confidence": 0.5733979816597061,
+    "candidate_2_probability": 0.4193721359450627,
+    "margin": 0.15402584571464345,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "impeller::rotor-damage",
+    "correct": true,
+    "probability_bearing::background-wear": 0.4193721359450627,
+    "probability_bearing::wear": 0.0024099607984104164,
+    "probability_impeller::background-wear": 0.0024099607984104164,
+    "probability_impeller::deposit": 0.0024099607984104164,
+    "probability_impeller::rotor-damage": 0.5733979816597061,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": 1.1437000036239624,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.3162035235867334
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 3.2074999809265137,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.31159169180446944
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.6392999887466431,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.17561667465095332
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0250",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-09-26 01:30:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "impeller",
+    "GT_FAULT_MODE": "deposit",
+    "DIAG_INTERVAL": "S0250:P1-SP1-AGT01:1",
+    "task": "cause",
+    "prediction": "impeller::deposit",
+    "candidate_2": "bearing::wear",
+    "confidence": 0.529491557518587,
+    "candidate_2_probability": 0.4634316321715711,
+    "margin": 0.06605992534701594,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "impeller::deposit",
+    "correct": true,
+    "probability_bearing::background-wear": 0.0023589367699472672,
+    "probability_bearing::wear": 0.4634316321715711,
+    "probability_impeller::background-wear": 0.0023589367699472672,
+    "probability_impeller::deposit": 0.529491557518587,
+    "probability_impeller::rotor-damage": 0.0023589367699472672,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.2002999782562256,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.2912256727796648
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 2.0246999263763428,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.21971023292385078
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.8246999979019165,
+        "normal_reference": 0.7800499796867371,
+        "score_drop_to_reference": 0.12274386043014063
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0266",
+    "EQP_CD": "P1-SP1-AGT01",
+    "MEAS_DT": "2027-11-29 13:00:00.500000+00:00",
+    "equipment": "F",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "bearing",
+    "GT_FAULT_MODE": "wear",
+    "DIAG_INTERVAL": "S0266:P1-SP1-AGT01:4",
+    "task": "cause",
+    "prediction": "bearing::wear",
+    "candidate_2": "impeller::deposit",
+    "confidence": 0.5093470812528631,
+    "candidate_2_probability": 0.48360623669795877,
+    "margin": 0.02574084455490433,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "bearing::wear",
+    "correct": true,
+    "probability_bearing::background-wear": 0.0023488940163926444,
+    "probability_bearing::wear": 0.5093470812528631,
+    "probability_impeller::background-wear": 0.0023488940163926444,
+    "probability_impeller::deposit": 0.48360623669795877,
+    "probability_impeller::rotor-damage": 0.0023488940163926444,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "VIB-AGT_KUR",
+        "current_value": -1.2589000463485718,
+        "normal_reference": -1.461300015449524,
+        "score_drop_to_reference": 0.18348825113029277
+      },
+      {
+        "observation": "VIB-AGT_CRF",
+        "current_value": 1.888800024986267,
+        "normal_reference": 1.5778000354766846,
+        "score_drop_to_reference": 0.16102902250046858
+      },
+      {
+        "observation": "VIB-AGT_RMS",
+        "current_value": 0.4586000144481659,
+        "normal_reference": 0.40074998140335083,
+        "score_drop_to_reference": 0.10908859927031306
+      }
+    ]
+  }
+]

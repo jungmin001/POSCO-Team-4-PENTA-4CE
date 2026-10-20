@@ -1,0 +1,830 @@
+[
+  {
+    "SCENARIO_ID": "S0255",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-10-14 16:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0255:P1-CR1-WLD01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9999333873143741,
+    "candidate_2_probability": 6.661268562592212e-05,
+    "margin": 0.9998667746287482,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9999333873143741,
+    "probability_failed": 7.672963576581372e-23,
+    "probability_maintenance": 7.672963576581372e-23,
+    "probability_normal": 6.661268562592212e-05,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -14.971638679504395,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9958946319780045
+      },
+      {
+        "observation": "SET-PWR",
+        "current_value": 62.6327018737793,
+        "normal_reference": 77.99579620361328,
+        "score_drop_to_reference": 0.8752209409595516
+      },
+      {
+        "observation": "SPD",
+        "current_value": 93.9490966796875,
+        "normal_reference": 116.99369812011719,
+        "score_drop_to_reference": 0.6924498542999975
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-06 04:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9961617189081308,
+    "candidate_2_probability": 0.003838281091869276,
+    "margin": 0.9923234378162615,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9961617189081308,
+    "probability_failed": 9.957181816269493e-23,
+    "probability_maintenance": 9.957181816269493e-23,
+    "probability_normal": 0.003838281091869276,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -18.46241569519043,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9961282570895237
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.1583000421524048,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.21277310386758752
+      },
+      {
+        "observation": "SPD",
+        "current_value": 119.4176025390625,
+        "normal_reference": 116.99369812011719,
+        "score_drop_to_reference": 0.034702666812252314
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0220",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-05-27 03:00:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0220:P1-CR1-WLD01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.9933814343155793,
+    "candidate_2_probability": 0.006618565684420683,
+    "margin": 0.9867628686311587,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.9933814343155793,
+    "probability_failed": 1.0657793745087962e-22,
+    "probability_maintenance": 1.0657793745087962e-22,
+    "probability_normal": 0.006618565684420683,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -13.930830955505371,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9921360628673829
+      },
+      {
+        "observation": "SPD",
+        "current_value": 95.16510009765625,
+        "normal_reference": 116.99369812011719,
+        "score_drop_to_reference": 0.8923867971405777
+      },
+      {
+        "observation": "SET-PWR",
+        "current_value": 63.44340133666992,
+        "normal_reference": 77.99579620361328,
+        "score_drop_to_reference": 0.8512781163300731
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0255",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-10-16 05:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "power-loss",
+    "DIAG_INTERVAL": "S0255:P1-CR1-WLD01:4",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5018296318538042,
+    "candidate_2_probability": 0.49817036814619575,
+    "margin": 0.0036592637076084955,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.49817036814619575,
+    "probability_failed": 2.40304110696779e-22,
+    "probability_maintenance": 2.40304110696779e-22,
+    "probability_normal": 0.5018296318538042,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "PWR",
+        "current_value": 76.15682220458984,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.015763685282520756
+      },
+      {
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-06 04:00:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:0",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "normal",
+    "confidence": 0.5029978463039927,
+    "candidate_2_probability": 0.4970021536960074,
+    "margin": 0.00599569260798527,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": false,
+    "probability_degraded": 0.5029978463039927,
+    "probability_failed": 2.403023791127052e-22,
+    "probability_maintenance": 2.403023791127052e-22,
+    "probability_normal": 0.4970021536960074,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -16.67827606201172,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.5029643844853856
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.1583000421524048,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.45850827383311
+      },
+      {
+        "observation": "SPD",
+        "current_value": 118.02140045166016,
+        "normal_reference": 116.99369812011719,
+        "score_drop_to_reference": 0.23283968223911106
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0232",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-16 06:50:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0232:P1-CR1-WLD01:0",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5065014446503955,
+    "candidate_2_probability": 0.49349855534960446,
+    "margin": 0.01300288930079102,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.49349855534960446,
+    "probability_failed": 2.4029215975352826e-22,
+    "probability_maintenance": 2.4029215975352826e-22,
+    "probability_normal": 0.5065014446503955,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 2.220446049250313e-16
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 2.220446049250313e-16
+      },
+      {
+        "observation": "RUNNING",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 2.220446049250313e-16
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0249",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-09-20 17:50:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0249:P1-CR1-WLD01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 7.050995186141802e-23,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -21.11228370666504,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9577360114405015
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.4050999879837036,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.01747046613115566
+      },
+      {
+        "observation": "PWR",
+        "current_value": 95.45368194580078,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 2.988278533511135e-07
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-08 10:50:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 7.050995186141802e-23,
+    "margin": 1.0,
+    "uncertainty_reasons": "outside_training_envelope",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -48.825439453125,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9150307200178763
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.667799949645996,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.0015132464144764768
+      },
+      {
+        "observation": "PWR",
+        "current_value": 132.8296356201172,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 6.679403939058304e-06
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0282",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2028-01-31 02:30:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "power-loss",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 7.050995186141802e-23,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -28.66950035095215,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9827292992322917
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.1449999809265137,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.0005536045158007763
+      },
+      {
+        "observation": "SET-PWR",
+        "current_value": 62.25360107421875,
+        "normal_reference": 77.99579620361328,
+        "score_drop_to_reference": 0.0001420958048639065
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0220",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-05-29 11:30:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0220:P1-CR1-WLD01:6",
+    "task": "cause",
+    "prediction": "power::power-loss",
+    "candidate_2": "electrode::electrode-wear",
+    "confidence": 0.8043135094546395,
+    "candidate_2_probability": 0.18119087390936084,
+    "margin": 0.6231226355452787,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "electrode::background-wear",
+    "correct": false,
+    "probability_electrode::background-wear": 0.007247808317999808,
+    "probability_electrode::electrode-wear": 0.18119087390936084,
+    "probability_power::background-wear": 0.007247808317999808,
+    "probability_power::power-loss": 0.8043135094546395,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.2374000549316406,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.3540852848371284
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -23.799930572509766,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.35181431400191066
+      },
+      {
+        "observation": "PWR",
+        "current_value": 98.35002899169922,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.23146981910381115
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0282",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2028-02-01 05:00:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:3",
+    "task": "cause",
+    "prediction": "power::power-loss",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.6107793805270246,
+    "candidate_2_probability": 0.3778139025711896,
+    "margin": 0.23296547795583505,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "electrode::background-wear",
+    "correct": false,
+    "probability_electrode::background-wear": 0.3778139025711896,
+    "probability_electrode::electrode-wear": 0.005703358450892931,
+    "probability_power::background-wear": 0.005703358450892931,
+    "probability_power::power-loss": 0.6107793805270246,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.080399990081787,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.09557056095607508
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -24.70858383178711,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.05583721981659295
+      },
+      {
+        "observation": "PWR",
+        "current_value": 117.85528564453125,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.005941097215280133
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-08 22:40:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:3",
+    "task": "cause",
+    "prediction": "electrode::background-wear",
+    "candidate_2": "power::power-loss",
+    "confidence": 0.46117366528368786,
+    "candidate_2_probability": 0.32407207930332343,
+    "margin": 0.13710158598036443,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "power::background-wear",
+    "correct": false,
+    "probability_electrode::background-wear": 0.46117366528368786,
+    "probability_electrode::electrode-wear": 0.004438991805535302,
+    "probability_power::background-wear": 0.2103152636074534,
+    "probability_power::power-loss": 0.32407207930332343,
+    "kind": "confident_error",
+    "observations": [
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.600000023841858,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 0.15346359577055219
+      },
+      {
+        "observation": "GRADE",
+        "current_value": 2.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.13373745806433018
+      },
+      {
+        "observation": "PWR",
+        "current_value": 79.09626770019531,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.0928415270496909
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0220",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-05-27 22:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "power-loss",
+    "DIAG_INTERVAL": "S0220:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "electrode::electrode-wear",
+    "candidate_2": "power::power-loss",
+    "confidence": 0.4946819479398016,
+    "candidate_2_probability": 0.4946819479398016,
+    "margin": 0.0,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "power::power-loss",
+    "correct": false,
+    "probability_electrode::background-wear": 0.005318052060198366,
+    "probability_electrode::electrode-wear": 0.4946819479398016,
+    "probability_power::background-wear": 0.005318052060198366,
+    "probability_power::power-loss": 0.4946819479398016,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.313099980354309,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.48933706104964947
+      },
+      {
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-06 06:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "electrode::electrode-wear",
+    "candidate_2": "power::power-loss",
+    "confidence": 0.49662549111113613,
+    "candidate_2_probability": 0.49273816833026274,
+    "margin": 0.0038873227808733923,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "electrode::electrode-wear",
+    "correct": true,
+    "probability_electrode::background-wear": 0.005318170279300573,
+    "probability_electrode::electrode-wear": 0.49662549111113613,
+    "probability_power::background-wear": 0.005318170279300573,
+    "probability_power::power-loss": 0.49273816833026274,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.1746000051498413,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.3018295501885512
+      },
+      {
+        "observation": "GRADE",
+        "current_value": 0.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.09205269850015285
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.0,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 0.011496732255900532
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0282",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2028-02-01 15:40:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "background-wear",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:3",
+    "task": "cause",
+    "prediction": "power::power-loss",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.36352262082311515,
+    "candidate_2_probability": 0.3530550880296675,
+    "margin": 0.010467532793447643,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "electrode::background-wear",
+    "correct": false,
+    "probability_electrode::background-wear": 0.3530550880296675,
+    "probability_electrode::electrode-wear": 0.18102829380389632,
+    "probability_power::background-wear": 0.10239399734332098,
+    "probability_power::power-loss": 0.36352262082311515,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "PWR",
+        "current_value": 79.84426879882812,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.018449856954383836
+      },
+      {
+        "observation": "SET-PWR",
+        "current_value": 62.553001403808594,
+        "normal_reference": 77.99579620361328,
+        "score_drop_to_reference": 0.01175514513079573
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.087399959564209,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.0006695059339517084
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0249",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-09-21 14:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0249:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "electrode::electrode-wear",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.9736972929553291,
+    "candidate_2_probability": 0.008767569014890387,
+    "margin": 0.9649297239404387,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "electrode::electrode-wear",
+    "correct": true,
+    "probability_electrode::background-wear": 0.008767569014890387,
+    "probability_electrode::electrode-wear": 0.9736972929553291,
+    "probability_power::background-wear": 0.008767569014890387,
+    "probability_power::power-loss": 0.008767569014890387,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.6131999492645264,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.795709303211388
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -27.01048469543457,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.2812349294381262
+      },
+      {
+        "observation": "PWR",
+        "current_value": 91.02018737792969,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.2303405827529419
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-07 08:30:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "electrode::electrode-wear",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.9736972929553291,
+    "candidate_2_probability": 0.008767569014890387,
+    "margin": 0.9649297239404387,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "electrode::electrode-wear",
+    "correct": true,
+    "probability_electrode::background-wear": 0.008767569014890387,
+    "probability_electrode::electrode-wear": 0.9736972929553291,
+    "probability_power::background-wear": 0.008767569014890387,
+    "probability_power::power-loss": 0.008767569014890387,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.434000015258789,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.9683464385638162
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -29.408138275146484,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.3497998281783731
+      },
+      {
+        "observation": "PWR",
+        "current_value": 98.46923828125,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.24298626830715075
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0282",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2028-01-31 00:30:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "power-loss",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "power::power-loss",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.9736972929553289,
+    "candidate_2_probability": 0.008767569014890385,
+    "margin": 0.9649297239404385,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "power::power-loss",
+    "correct": true,
+    "probability_electrode::background-wear": 0.008767569014890385,
+    "probability_electrode::electrode-wear": 0.008767569014890385,
+    "probability_power::background-wear": 0.008767569014890385,
+    "probability_power::power-loss": 0.9736972929553289,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -29.45520782470703,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.549938529553963
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.1394000053405762,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.44987093098517084
+      },
+      {
+        "observation": "PWR",
+        "current_value": 97.23950958251953,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.281302067167311
+      }
+    ]
+  }
+]
