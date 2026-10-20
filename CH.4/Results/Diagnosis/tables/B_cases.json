@@ -12,36 +12,36 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9999795536583781,
-    "candidate_2_probability": 2.0446341621905163e-05,
-    "margin": 0.9999591073167562,
+    "confidence": 0.9999333873143741,
+    "candidate_2_probability": 6.661268562592212e-05,
+    "margin": 0.9998667746287482,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9999795536583781,
-    "probability_failed": 3.143179899753894e-22,
-    "probability_maintenance": 3.143179899753894e-22,
-    "probability_normal": 2.0446341621905163e-05,
+    "probability_degraded": 0.9999333873143741,
+    "probability_failed": 7.672963576581372e-23,
+    "probability_maintenance": 7.672963576581372e-23,
+    "probability_normal": 6.661268562592212e-05,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "POWER_ERROR",
         "current_value": -14.971638679504395,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9967750097786772
+        "score_drop_to_reference": 0.9958946319780045
       },
       {
         "observation": "SET-PWR",
         "current_value": 62.6327018737793,
         "normal_reference": 77.99579620361328,
-        "score_drop_to_reference": 0.8166026635719557
+        "score_drop_to_reference": 0.8752209409595516
       },
       {
         "observation": "SPD",
         "current_value": 93.9490966796875,
         "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.6265561677461446
+        "score_drop_to_reference": 0.6924498542999975
       }
     ]
   },
@@ -58,36 +58,36 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9954039504604051,
-    "candidate_2_probability": 0.004596049539594905,
-    "margin": 0.9908079009208102,
+    "confidence": 0.9961617189081308,
+    "candidate_2_probability": 0.003838281091869276,
+    "margin": 0.9923234378162615,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9954039504604051,
-    "probability_failed": 4.1967145250033533e-22,
-    "probability_maintenance": 4.1967145250033533e-22,
-    "probability_normal": 0.004596049539594905,
+    "probability_degraded": 0.9961617189081308,
+    "probability_failed": 9.957181816269493e-23,
+    "probability_maintenance": 9.957181816269493e-23,
+    "probability_normal": 0.003838281091869276,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "POWER_ERROR",
         "current_value": -18.46241569519043,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9953968846116132
+        "score_drop_to_reference": 0.9961282570895237
       },
       {
         "observation": "RESISTANCE",
         "current_value": 1.1583000421524048,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.266872520227707
+        "score_drop_to_reference": 0.21277310386758752
       },
       {
         "observation": "SPD",
         "current_value": 119.4176025390625,
         "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.03809312361730943
+        "score_drop_to_reference": 0.034702666812252314
       }
     ]
   },
@@ -104,36 +104,82 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9896828535296381,
-    "candidate_2_probability": 0.010317146470361934,
-    "margin": 0.9793657070592762,
+    "confidence": 0.9933814343155793,
+    "candidate_2_probability": 0.006618565684420683,
+    "margin": 0.9867628686311587,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9896828535296381,
-    "probability_failed": 4.663137205205855e-22,
-    "probability_maintenance": 4.663137205205855e-22,
-    "probability_normal": 0.010317146470361934,
+    "probability_degraded": 0.9933814343155793,
+    "probability_failed": 1.0657793745087962e-22,
+    "probability_maintenance": 1.0657793745087962e-22,
+    "probability_normal": 0.006618565684420683,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "POWER_ERROR",
         "current_value": -13.930830955505371,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9887279496584066
+        "score_drop_to_reference": 0.9921360628673829
       },
       {
         "observation": "SPD",
         "current_value": 95.16510009765625,
         "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.8977941266180809
+        "score_drop_to_reference": 0.8923867971405777
       },
       {
         "observation": "SET-PWR",
         "current_value": 63.44340133666992,
         "normal_reference": 77.99579620361328,
-        "score_drop_to_reference": 0.8410897882609287
+        "score_drop_to_reference": 0.8512781163300731
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0255",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-10-16 05:10:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "power",
+    "GT_FAULT_MODE": "power-loss",
+    "DIAG_INTERVAL": "S0255:P1-CR1-WLD01:4",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5018296318538042,
+    "candidate_2_probability": 0.49817036814619575,
+    "margin": 0.0036592637076084955,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": false,
+    "probability_degraded": 0.49817036814619575,
+    "probability_failed": 2.40304110696779e-22,
+    "probability_maintenance": 2.40304110696779e-22,
+    "probability_normal": 0.5018296318538042,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "PWR",
+        "current_value": 76.15682220458984,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.015763685282520756
+      },
+      {
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 0.0
       }
     ]
   },
@@ -150,89 +196,43 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.5045792013512667,
-    "candidate_2_probability": 0.49542079864873334,
-    "margin": 0.00915840270253332,
+    "confidence": 0.5029978463039927,
+    "candidate_2_probability": 0.4970021536960074,
+    "margin": 0.00599569260798527,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.5045792013512667,
-    "probability_failed": 9.667461562704936e-22,
-    "probability_maintenance": 9.667461562704936e-22,
-    "probability_normal": 0.49542079864873334,
+    "probability_degraded": 0.5029978463039927,
+    "probability_failed": 2.403023791127052e-22,
+    "probability_maintenance": 2.403023791127052e-22,
+    "probability_normal": 0.4970021536960074,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "POWER_ERROR",
         "current_value": -16.67827606201172,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.5045721355024748
+        "score_drop_to_reference": 0.5029643844853856
       },
       {
         "observation": "RESISTANCE",
         "current_value": 1.1583000421524048,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.45655067515892034
+        "score_drop_to_reference": 0.45850827383311
       },
       {
         "observation": "SPD",
         "current_value": 118.02140045166016,
         "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.22745174604952356
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0282",
-    "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2028-01-30 03:00:00+00:00",
-    "equipment": "B",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "power",
-    "GT_FAULT_MODE": "power-loss",
-    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
-    "task": "state",
-    "prediction": "normal",
-    "candidate_2": "degraded",
-    "confidence": 0.5119736502233521,
-    "candidate_2_probability": 0.488026349776648,
-    "margin": 0.023947300446704067,
-    "uncertainty_reasons": "close_candidates",
-    "needs_review": true,
-    "truth": "degraded",
-    "correct": false,
-    "probability_degraded": 0.488026349776648,
-    "probability_failed": 9.665974316076085e-22,
-    "probability_maintenance": 9.665974316076085e-22,
-    "probability_normal": 0.5119736502233521,
-    "kind": "uncertain",
-    "observations": [
-      {
-        "observation": "SPD",
-        "current_value": 129.5301055908203,
-        "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.3825605401556928
-      },
-      {
-        "observation": "GRADE",
-        "current_value": 0.0,
-        "normal_reference": 1.0,
-        "score_drop_to_reference": 0.2645210867713249
-      },
-      {
-        "observation": "THICKNESS",
-        "current_value": 1.0,
-        "normal_reference": 1.2999999523162842,
-        "score_drop_to_reference": 0.15278397681126843
+        "score_drop_to_reference": 0.23283968223911106
       }
     ]
   },
   {
     "SCENARIO_ID": "S0232",
     "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2027-07-16 07:40:00+00:00",
+    "MEAS_DT": "2027-07-16 06:50:00+00:00",
     "equipment": "B",
     "split": "validation",
     "GT_HEALTH_STATE": "normal",
@@ -242,174 +242,174 @@
     "task": "state",
     "prediction": "normal",
     "candidate_2": "degraded",
-    "confidence": 0.5208356140817211,
-    "candidate_2_probability": 0.479164385918279,
-    "margin": 0.0416712281634421,
+    "confidence": 0.5065014446503955,
+    "candidate_2_probability": 0.49349855534960446,
+    "margin": 0.01300288930079102,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "normal",
     "correct": true,
-    "probability_degraded": 0.479164385918279,
-    "probability_failed": 9.662439912647211e-22,
-    "probability_maintenance": 9.662439912647211e-22,
-    "probability_normal": 0.5208356140817211,
+    "probability_degraded": 0.49349855534960446,
+    "probability_failed": 2.4029215975352826e-22,
+    "probability_maintenance": 2.4029215975352826e-22,
+    "probability_normal": 0.5065014446503955,
     "kind": "uncertain",
     "observations": [
-      {
-        "observation": "SET-PWR",
-        "current_value": 79.831298828125,
-        "normal_reference": 77.99579620361328,
-        "score_drop_to_reference": 0.02285373308922556
-      },
       {
         "observation": "GRADE",
         "current_value": 1.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.0
+        "score_drop_to_reference": 2.220446049250313e-16
+      },
+      {
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
+        "score_drop_to_reference": 2.220446049250313e-16
       },
       {
         "observation": "RUNNING",
         "current_value": 1.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.0
+        "score_drop_to_reference": 2.220446049250313e-16
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0249",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-09-20 17:50:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0249:P1-CR1-WLD01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 7.050995186141802e-23,
+    "margin": 1.0,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -21.11228370666504,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9577360114405015
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.4050999879837036,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.01747046613115566
+      },
+      {
+        "observation": "PWR",
+        "current_value": 95.45368194580078,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 2.988278533511135e-07
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0230",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2027-07-08 10:50:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 1.0,
+    "candidate_2_probability": 7.050995186141802e-23,
+    "margin": 1.0,
+    "uncertainty_reasons": "outside_training_envelope",
+    "needs_review": true,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 1.0,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -48.825439453125,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.9150307200178763
+      },
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.667799949645996,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.0015132464144764768
+      },
+      {
+        "observation": "PWR",
+        "current_value": 132.8296356201172,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 6.679403939058304e-06
       }
     ]
   },
   {
     "SCENARIO_ID": "S0282",
     "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2028-02-01 22:30:00+00:00",
-    "equipment": "B",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "electrode",
-    "GT_FAULT_MODE": "background-wear",
-    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:3",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "failed",
-    "confidence": 1.0,
-    "candidate_2_probability": 2.9953640198974245e-22,
-    "margin": 1.0,
-    "uncertainty_reasons": "",
-    "needs_review": false,
-    "truth": "degraded",
-    "correct": true,
-    "probability_degraded": 1.0,
-    "probability_failed": 2.9953640198974245e-22,
-    "probability_maintenance": 2.9953640198974245e-22,
-    "probability_normal": 2.9953640198974245e-22,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "POWER_ERROR",
-        "current_value": -28.25114631652832,
-        "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9715122101827931
-      },
-      {
-        "observation": "PWR",
-        "current_value": 120.39664459228516,
-        "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.007936162367751631
-      },
-      {
-        "observation": "RESISTANCE",
-        "current_value": 1.0913000106811523,
-        "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.001158792746428161
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0220",
-    "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2027-05-27 08:50:00+00:00",
+    "MEAS_DT": "2028-01-31 02:30:00+00:00",
     "equipment": "B",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "power",
     "GT_FAULT_MODE": "power-loss",
-    "DIAG_INTERVAL": "S0220:P1-CR1-WLD01:1",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "failed",
     "confidence": 1.0,
-    "candidate_2_probability": 2.9953640198974245e-22,
+    "candidate_2_probability": 7.050995186141802e-23,
     "margin": 1.0,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": true,
     "probability_degraded": 1.0,
-    "probability_failed": 2.9953640198974245e-22,
-    "probability_maintenance": 2.9953640198974245e-22,
-    "probability_normal": 2.9953640198974245e-22,
+    "probability_failed": 7.050995186141802e-23,
+    "probability_maintenance": 7.050995186141802e-23,
+    "probability_normal": 7.050995186141802e-23,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "POWER_ERROR",
-        "current_value": -28.119792938232422,
+        "current_value": -28.66950035095215,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9934506118225029
+        "score_drop_to_reference": 0.9827292992322917
       },
       {
         "observation": "RESISTANCE",
-        "current_value": 1.228700041770935,
+        "current_value": 1.1449999809265137,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.0038455280773730394
+        "score_drop_to_reference": 0.0005536045158007763
       },
       {
-        "observation": "PWR",
-        "current_value": 118.64208984375,
-        "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.0031162480627850986
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0255",
-    "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2027-10-16 15:30:00+00:00",
-    "equipment": "B",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "power",
-    "GT_FAULT_MODE": "power-loss",
-    "DIAG_INTERVAL": "S0255:P1-CR1-WLD01:4",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "failed",
-    "confidence": 1.0,
-    "candidate_2_probability": 2.9953640198974245e-22,
-    "margin": 1.0,
-    "uncertainty_reasons": "",
-    "needs_review": false,
-    "truth": "degraded",
-    "correct": true,
-    "probability_degraded": 1.0,
-    "probability_failed": 2.9953640198974245e-22,
-    "probability_maintenance": 2.9953640198974245e-22,
-    "probability_normal": 2.9953640198974245e-22,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "POWER_ERROR",
-        "current_value": -26.85082244873047,
-        "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.9717737021613815
-      },
-      {
-        "observation": "PWR",
-        "current_value": 118.2645263671875,
-        "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.004001462981666926
-      },
-      {
-        "observation": "RESISTANCE",
-        "current_value": 1.0901000499725342,
-        "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.001158792746428161
+        "observation": "SET-PWR",
+        "current_value": 62.25360107421875,
+        "normal_reference": 77.99579620361328,
+        "score_drop_to_reference": 0.0001420958048639065
       }
     ]
   },
@@ -426,36 +426,36 @@
     "task": "cause",
     "prediction": "power::power-loss",
     "candidate_2": "electrode::electrode-wear",
-    "confidence": 0.8024619029455852,
-    "candidate_2_probability": 0.18260727771540017,
-    "margin": 0.619854625230185,
+    "confidence": 0.8043135094546395,
+    "candidate_2_probability": 0.18119087390936084,
+    "margin": 0.6231226355452787,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "electrode::background-wear",
     "correct": false,
-    "probability_electrode::background-wear": 0.007465409669507312,
-    "probability_electrode::electrode-wear": 0.18260727771540017,
-    "probability_power::background-wear": 0.007465409669507312,
-    "probability_power::power-loss": 0.8024619029455852,
+    "probability_electrode::background-wear": 0.007247808317999808,
+    "probability_electrode::electrode-wear": 0.18119087390936084,
+    "probability_power::background-wear": 0.007247808317999808,
+    "probability_power::power-loss": 0.8043135094546395,
     "kind": "confident_error",
     "observations": [
-      {
-        "observation": "POWER_ERROR",
-        "current_value": -23.799930572509766,
-        "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.3541999052623089
-      },
       {
         "observation": "RESISTANCE",
         "current_value": 1.2374000549316406,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.352890103453732
+        "score_drop_to_reference": 0.3540852848371284
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -23.799930572509766,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.35181431400191066
       },
       {
         "observation": "PWR",
         "current_value": 98.35002899169922,
         "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.2313336934054332
+        "score_drop_to_reference": 0.23146981910381115
       }
     ]
   },
@@ -472,36 +472,36 @@
     "task": "cause",
     "prediction": "power::power-loss",
     "candidate_2": "electrode::background-wear",
-    "confidence": 0.6098052226463022,
-    "candidate_2_probability": 0.3784401027814542,
-    "margin": 0.23136511986484803,
+    "confidence": 0.6107793805270246,
+    "candidate_2_probability": 0.3778139025711896,
+    "margin": 0.23296547795583505,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "electrode::background-wear",
     "correct": false,
-    "probability_electrode::background-wear": 0.3784401027814542,
-    "probability_electrode::electrode-wear": 0.005877337286121854,
-    "probability_power::background-wear": 0.005877337286121854,
-    "probability_power::power-loss": 0.6098052226463022,
+    "probability_electrode::background-wear": 0.3778139025711896,
+    "probability_electrode::electrode-wear": 0.005703358450892931,
+    "probability_power::background-wear": 0.005703358450892931,
+    "probability_power::power-loss": 0.6107793805270246,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "RESISTANCE",
         "current_value": 1.080399990081787,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.09490636349818704
+        "score_drop_to_reference": 0.09557056095607508
       },
       {
         "observation": "POWER_ERROR",
         "current_value": -24.70858383178711,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.05616860783973765
+        "score_drop_to_reference": 0.05583721981659295
       },
       {
         "observation": "PWR",
         "current_value": 117.85528564453125,
         "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.005901705046753913
+        "score_drop_to_reference": 0.005941097215280133
       }
     ]
   },
@@ -518,36 +518,36 @@
     "task": "cause",
     "prediction": "electrode::background-wear",
     "candidate_2": "power::power-loss",
-    "confidence": 0.4637701846441996,
-    "candidate_2_probability": 0.3198826168283627,
-    "margin": 0.1438875678158369,
+    "confidence": 0.46117366528368786,
+    "candidate_2_probability": 0.32407207930332343,
+    "margin": 0.13710158598036443,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "power::background-wear",
     "correct": false,
-    "probability_electrode::background-wear": 0.4637701846441996,
-    "probability_electrode::electrode-wear": 0.004587768223059523,
-    "probability_power::background-wear": 0.21175943030437808,
-    "probability_power::power-loss": 0.3198826168283627,
+    "probability_electrode::background-wear": 0.46117366528368786,
+    "probability_electrode::electrode-wear": 0.004438991805535302,
+    "probability_power::background-wear": 0.2103152636074534,
+    "probability_power::power-loss": 0.32407207930332343,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "THICKNESS",
         "current_value": 1.600000023841858,
         "normal_reference": 1.2999999523162842,
-        "score_drop_to_reference": 0.15099456653785975
+        "score_drop_to_reference": 0.15346359577055219
       },
       {
         "observation": "GRADE",
         "current_value": 2.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.13912777338191396
+        "score_drop_to_reference": 0.13373745806433018
       },
       {
         "observation": "PWR",
         "current_value": 79.09626770019531,
         "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.09622315800368825
+        "score_drop_to_reference": 0.0928415270496909
       }
     ]
   },
@@ -564,24 +564,24 @@
     "task": "cause",
     "prediction": "electrode::electrode-wear",
     "candidate_2": "power::power-loss",
-    "confidence": 0.4945180183865945,
-    "candidate_2_probability": 0.4945180183865945,
+    "confidence": 0.4946819479398016,
+    "candidate_2_probability": 0.4946819479398016,
     "margin": 0.0,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "power::power-loss",
     "correct": false,
-    "probability_electrode::background-wear": 0.005481981613405509,
-    "probability_electrode::electrode-wear": 0.4945180183865945,
-    "probability_power::background-wear": 0.005481981613405509,
-    "probability_power::power-loss": 0.4945180183865945,
+    "probability_electrode::background-wear": 0.005318052060198366,
+    "probability_electrode::electrode-wear": 0.4946819479398016,
+    "probability_power::background-wear": 0.005318052060198366,
+    "probability_power::power-loss": 0.4946819479398016,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "RESISTANCE",
         "current_value": 1.313099980354309,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.4890085069763366
+        "score_drop_to_reference": 0.48933706104964947
       },
       {
         "observation": "GRADE",
@@ -590,9 +590,9 @@
         "score_drop_to_reference": 0.0
       },
       {
-        "observation": "SET-PWR",
-        "current_value": 67.47850036621094,
-        "normal_reference": 77.99579620361328,
+        "observation": "THICKNESS",
+        "current_value": 1.2999999523162842,
+        "normal_reference": 1.2999999523162842,
         "score_drop_to_reference": 0.0
       }
     ]
@@ -610,36 +610,36 @@
     "task": "cause",
     "prediction": "electrode::electrode-wear",
     "candidate_2": "power::power-loss",
-    "confidence": 0.4964477586269668,
-    "candidate_2_probability": 0.4925880355873455,
-    "margin": 0.003859723039621288,
+    "confidence": 0.49662549111113613,
+    "candidate_2_probability": 0.49273816833026274,
+    "margin": 0.0038873227808733923,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "electrode::electrode-wear",
     "correct": true,
-    "probability_electrode::background-wear": 0.005482102892843788,
-    "probability_electrode::electrode-wear": 0.4964477586269668,
-    "probability_power::background-wear": 0.005482102892843788,
-    "probability_power::power-loss": 0.4925880355873455,
+    "probability_electrode::background-wear": 0.005318170279300573,
+    "probability_electrode::electrode-wear": 0.49662549111113613,
+    "probability_power::background-wear": 0.005318170279300573,
+    "probability_power::power-loss": 0.49273816833026274,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "RESISTANCE",
         "current_value": 1.1746000051498413,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.3009112200049571
+        "score_drop_to_reference": 0.3018295501885512
       },
       {
         "observation": "GRADE",
         "current_value": 0.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.08946951156308364
+        "score_drop_to_reference": 0.09205269850015285
       },
       {
         "observation": "THICKNESS",
         "current_value": 1.0,
         "normal_reference": 1.2999999523162842,
-        "score_drop_to_reference": 0.011415210254524355
+        "score_drop_to_reference": 0.011496732255900532
       }
     ]
   },
@@ -656,89 +656,43 @@
     "task": "cause",
     "prediction": "power::power-loss",
     "candidate_2": "electrode::background-wear",
-    "confidence": 0.3628663337576299,
-    "candidate_2_probability": 0.35248742321404164,
-    "margin": 0.010378910543588249,
+    "confidence": 0.36352262082311515,
+    "candidate_2_probability": 0.3530550880296675,
+    "margin": 0.010467532793447643,
     "uncertainty_reasons": "low_confidence;close_candidates",
     "needs_review": true,
     "truth": "electrode::background-wear",
     "correct": false,
-    "probability_electrode::background-wear": 0.35248742321404164,
-    "probability_electrode::electrode-wear": 0.18155650273463472,
-    "probability_power::background-wear": 0.10308974029369372,
-    "probability_power::power-loss": 0.3628663337576299,
+    "probability_electrode::background-wear": 0.3530550880296675,
+    "probability_electrode::electrode-wear": 0.18102829380389632,
+    "probability_power::background-wear": 0.10239399734332098,
+    "probability_power::power-loss": 0.36352262082311515,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "PWR",
         "current_value": 79.84426879882812,
         "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.018395502522415952
+        "score_drop_to_reference": 0.018449856954383836
       },
       {
         "observation": "SET-PWR",
         "current_value": 62.553001403808594,
         "normal_reference": 77.99579620361328,
-        "score_drop_to_reference": 0.011735829229322592
+        "score_drop_to_reference": 0.01175514513079573
       },
       {
         "observation": "RESISTANCE",
         "current_value": 1.087399959564209,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.0006377826297406242
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0282",
-    "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2028-01-31 15:30:00+00:00",
-    "equipment": "B",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "power",
-    "GT_FAULT_MODE": "power-loss",
-    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
-    "task": "cause",
-    "prediction": "power::power-loss",
-    "candidate_2": "electrode::background-wear",
-    "confidence": 0.9728680796614444,
-    "candidate_2_probability": 0.009043973446185214,
-    "margin": 0.9638241062152592,
-    "uncertainty_reasons": "",
-    "needs_review": false,
-    "truth": "power::power-loss",
-    "correct": true,
-    "probability_electrode::background-wear": 0.009043973446185214,
-    "probability_electrode::electrode-wear": 0.009043973446185214,
-    "probability_power::background-wear": 0.009043973446185214,
-    "probability_power::power-loss": 0.9728680796614444,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "RESISTANCE",
-        "current_value": 1.1837999820709229,
-        "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.5039322321208071
-      },
-      {
-        "observation": "POWER_ERROR",
-        "current_value": -47.826629638671875,
-        "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.46061759138756364
-      },
-      {
-        "observation": "PWR",
-        "current_value": 131.17242431640625,
-        "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.2706311000181184
+        "score_drop_to_reference": 0.0006695059339517084
       }
     ]
   },
   {
     "SCENARIO_ID": "S0249",
     "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2027-09-21 17:00:00+00:00",
+    "MEAS_DT": "2027-09-21 14:10:00+00:00",
     "equipment": "B",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -748,82 +702,128 @@
     "task": "cause",
     "prediction": "electrode::electrode-wear",
     "candidate_2": "electrode::background-wear",
-    "confidence": 0.9728680796614444,
-    "candidate_2_probability": 0.009043973446185214,
-    "margin": 0.9638241062152592,
+    "confidence": 0.9736972929553291,
+    "candidate_2_probability": 0.008767569014890387,
+    "margin": 0.9649297239404387,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "electrode::electrode-wear",
     "correct": true,
-    "probability_electrode::background-wear": 0.009043973446185214,
-    "probability_electrode::electrode-wear": 0.9728680796614444,
-    "probability_power::background-wear": 0.009043973446185214,
-    "probability_power::power-loss": 0.009043973446185214,
+    "probability_electrode::background-wear": 0.008767569014890387,
+    "probability_electrode::electrode-wear": 0.9736972929553291,
+    "probability_power::background-wear": 0.008767569014890387,
+    "probability_power::power-loss": 0.008767569014890387,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "RESISTANCE",
-        "current_value": 1.6480000019073486,
+        "current_value": 1.6131999492645264,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.8035057650037332
+        "score_drop_to_reference": 0.795709303211388
       },
       {
         "observation": "POWER_ERROR",
-        "current_value": -28.524730682373047,
+        "current_value": -27.01048469543457,
         "normal_reference": -10.624731063842773,
-        "score_drop_to_reference": 0.2629948441173289
+        "score_drop_to_reference": 0.2812349294381262
       },
       {
-        "observation": "SET-PWR",
-        "current_value": 63.84560012817383,
-        "normal_reference": 77.99579620361328,
-        "score_drop_to_reference": 0.2154223387902553
+        "observation": "PWR",
+        "current_value": 91.02018737792969,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.2303405827529419
       }
     ]
   },
   {
-    "SCENARIO_ID": "S0255",
+    "SCENARIO_ID": "S0230",
     "EQP_CD": "P1-CR1-WLD01",
-    "MEAS_DT": "2027-10-16 09:00:00+00:00",
+    "MEAS_DT": "2027-07-07 08:30:00+00:00",
+    "equipment": "B",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "electrode",
+    "GT_FAULT_MODE": "electrode-wear",
+    "DIAG_INTERVAL": "S0230:P1-CR1-WLD01:1",
+    "task": "cause",
+    "prediction": "electrode::electrode-wear",
+    "candidate_2": "electrode::background-wear",
+    "confidence": 0.9736972929553291,
+    "candidate_2_probability": 0.008767569014890387,
+    "margin": 0.9649297239404387,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "electrode::electrode-wear",
+    "correct": true,
+    "probability_electrode::background-wear": 0.008767569014890387,
+    "probability_electrode::electrode-wear": 0.9736972929553291,
+    "probability_power::background-wear": 0.008767569014890387,
+    "probability_power::power-loss": 0.008767569014890387,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "RESISTANCE",
+        "current_value": 1.434000015258789,
+        "normal_reference": 1.0354000329971313,
+        "score_drop_to_reference": 0.9683464385638162
+      },
+      {
+        "observation": "POWER_ERROR",
+        "current_value": -29.408138275146484,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.3497998281783731
+      },
+      {
+        "observation": "PWR",
+        "current_value": 98.46923828125,
+        "normal_reference": 88.48126220703125,
+        "score_drop_to_reference": 0.24298626830715075
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0282",
+    "EQP_CD": "P1-CR1-WLD01",
+    "MEAS_DT": "2028-01-31 00:30:00+00:00",
     "equipment": "B",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "power",
     "GT_FAULT_MODE": "power-loss",
-    "DIAG_INTERVAL": "S0255:P1-CR1-WLD01:4",
+    "DIAG_INTERVAL": "S0282:P1-CR1-WLD01:1",
     "task": "cause",
     "prediction": "power::power-loss",
     "candidate_2": "electrode::background-wear",
-    "confidence": 0.9728680796614444,
-    "candidate_2_probability": 0.009043973446185214,
-    "margin": 0.9638241062152592,
+    "confidence": 0.9736972929553289,
+    "candidate_2_probability": 0.008767569014890385,
+    "margin": 0.9649297239404385,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "power::power-loss",
     "correct": true,
-    "probability_electrode::background-wear": 0.009043973446185214,
-    "probability_electrode::electrode-wear": 0.009043973446185214,
-    "probability_power::background-wear": 0.009043973446185214,
-    "probability_power::power-loss": 0.9728680796614444,
+    "probability_electrode::background-wear": 0.008767569014890385,
+    "probability_electrode::electrode-wear": 0.008767569014890385,
+    "probability_power::background-wear": 0.008767569014890385,
+    "probability_power::power-loss": 0.9736972929553289,
     "kind": "correct_abnormal",
     "observations": [
       {
+        "observation": "POWER_ERROR",
+        "current_value": -29.45520782470703,
+        "normal_reference": -10.624731063842773,
+        "score_drop_to_reference": 0.549938529553963
+      },
+      {
         "observation": "RESISTANCE",
-        "current_value": 1.0750000476837158,
+        "current_value": 1.1394000053405762,
         "normal_reference": 1.0354000329971313,
-        "score_drop_to_reference": 0.529430675899287
+        "score_drop_to_reference": 0.44987093098517084
       },
       {
         "observation": "PWR",
-        "current_value": 95.94642639160156,
+        "current_value": 97.23950958251953,
         "normal_reference": 88.48126220703125,
-        "score_drop_to_reference": 0.223558920764378
-      },
-      {
-        "observation": "SPD",
-        "current_value": 113.94439697265625,
-        "normal_reference": 116.99369812011719,
-        "score_drop_to_reference": 0.18446639176805313
+        "score_drop_to_reference": 0.281302067167311
       }
     ]
   }

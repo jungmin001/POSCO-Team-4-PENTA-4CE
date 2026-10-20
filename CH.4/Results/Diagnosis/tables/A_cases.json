@@ -2,46 +2,46 @@
   {
     "SCENARIO_ID": "S0242",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-08-25 16:10:00+00:00",
+    "MEAS_DT": "2027-08-23 21:50:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "heater",
     "GT_FAULT_MODE": "background-wear",
-    "DIAG_INTERVAL": "S0242:P1-CR1-CAL01:6",
+    "DIAG_INTERVAL": "S0242:P1-CR1-CAL01:3",
     "task": "state",
     "prediction": "normal",
     "candidate_2": "degraded",
-    "confidence": 0.9994259328248302,
-    "candidate_2_probability": 0.0005740671747547484,
-    "margin": 0.9988518656500754,
+    "confidence": 0.9992339817899031,
+    "candidate_2_probability": 0.0007660182096915706,
+    "margin": 0.9984679635802115,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": false,
-    "probability_degraded": 0.0005740671747547484,
-    "probability_failed": 2.076066972498287e-13,
-    "probability_maintenance": 2.076066972498287e-13,
-    "probability_normal": 0.9994259328248302,
+    "probability_degraded": 0.0007660182096915706,
+    "probability_failed": 2.0270666902022732e-13,
+    "probability_maintenance": 2.0270666902022732e-13,
+    "probability_normal": 0.9992339817899031,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "LOAD",
-        "current_value": 0.6330000162124634,
+        "current_value": 0.9215099811553955,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.046786487939941335
+        "score_drop_to_reference": 0.029506919653197405
       },
       {
         "observation": "OP-Z3",
-        "current_value": 69.69412994384766,
+        "current_value": 70.56413269042969,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.002943579705904753
+        "score_drop_to_reference": 0.005642800624188649
       },
       {
-        "observation": "AMBIENT",
-        "current_value": 18.705509185791016,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.0007588818297716848
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
       }
     ]
   },
@@ -58,36 +58,36 @@
     "task": "state",
     "prediction": "normal",
     "candidate_2": "degraded",
-    "confidence": 0.9967049662818681,
-    "candidate_2_probability": 0.003295033717705919,
-    "margin": 0.9934099325641622,
+    "confidence": 0.9974623495857214,
+    "candidate_2_probability": 0.0025376504138659812,
+    "margin": 0.9949246991718554,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": false,
-    "probability_degraded": 0.003295033717705919,
-    "probability_failed": 2.1300734215355e-13,
-    "probability_maintenance": 2.1300734215355e-13,
-    "probability_normal": 0.9967049662818681,
+    "probability_degraded": 0.0025376504138659812,
+    "probability_failed": 2.0627272068211644e-13,
+    "probability_maintenance": 2.0627272068211644e-13,
+    "probability_normal": 0.9974623495857214,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "LOAD",
         "current_value": 0.9346799850463867,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.6492077139523593
+        "score_drop_to_reference": 0.64338943360717
       },
       {
         "observation": "AMBIENT",
         "current_value": 18.127180099487305,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.006873073970565358
+        "score_drop_to_reference": 0.008186698356279276
       },
       {
         "observation": "OP-Z3",
         "current_value": 76.93270874023438,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.0025744163974760204
+        "score_drop_to_reference": 0.003304581699825948
       }
     ]
   },
@@ -104,135 +104,43 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.9762454893376176,
-    "candidate_2_probability": 0.0237545106619199,
-    "margin": 0.9524909786756977,
+    "confidence": 0.9817408961996326,
+    "candidate_2_probability": 0.01825910379992397,
+    "margin": 0.9634817923997085,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "normal",
     "correct": false,
-    "probability_degraded": 0.9762454893376176,
-    "probability_failed": 2.312173213760313e-13,
-    "probability_maintenance": 2.312173213760313e-13,
-    "probability_normal": 0.0237545106619199,
+    "probability_degraded": 0.9817408961996326,
+    "probability_failed": 2.216118382539856e-13,
+    "probability_maintenance": 2.216118382539856e-13,
+    "probability_normal": 0.01825910379992397,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "OP-Z3",
         "current_value": 77.90670776367188,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.9751797353588234
+        "score_drop_to_reference": 0.9806332130502544
       },
       {
         "observation": "LOAD",
         "current_value": 0.796019971370697,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.08113623656760072
+        "score_drop_to_reference": 0.07358903633618219
       },
       {
         "observation": "TEMP_ERROR",
         "current_value": -0.14639000594615936,
         "normal_reference": -0.0002699999895412475,
-        "score_drop_to_reference": 0.01272585248135949
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0267",
-    "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-12-01 05:05:00+00:00",
-    "equipment": "A",
-    "split": "validation",
-    "GT_HEALTH_STATE": "normal",
-    "GT_CAUSE_PART": "",
-    "GT_FAULT_MODE": "",
-    "DIAG_INTERVAL": "S0267:P1-CR1-CAL01:0",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "normal",
-    "confidence": 0.5001615813593373,
-    "candidate_2_probability": 0.49983841864004785,
-    "margin": 0.0003231627192894493,
-    "uncertainty_reasons": "close_candidates",
-    "needs_review": true,
-    "truth": "normal",
-    "correct": false,
-    "probability_degraded": 0.5001615813593373,
-    "probability_failed": 3.074072127926888e-13,
-    "probability_maintenance": 3.074072127926888e-13,
-    "probability_normal": 0.49983841864004785,
-    "kind": "uncertain",
-    "observations": [
-      {
-        "observation": "OP-Z3",
-        "current_value": 69.7774429321289,
-        "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.5001593286442927
-      },
-      {
-        "observation": "AMBIENT",
-        "current_value": 29.81365966796875,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.24650165245053596
-      },
-      {
-        "observation": "LOAD",
-        "current_value": 0.7207199931144714,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.15722403292193615
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0258",
-    "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-10-27 10:55:00+00:00",
-    "equipment": "A",
-    "split": "validation",
-    "GT_HEALTH_STATE": "normal",
-    "GT_CAUSE_PART": "",
-    "GT_FAULT_MODE": "",
-    "DIAG_INTERVAL": "S0258:P1-CR1-CAL01:2",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "normal",
-    "confidence": 0.4832092870613846,
-    "candidate_2_probability": 0.4822429912893232,
-    "margin": 0.0009662957720614207,
-    "uncertainty_reasons": "close_candidates",
-    "needs_review": true,
-    "truth": "normal",
-    "correct": false,
-    "probability_degraded": 0.4832092870613846,
-    "probability_failed": 3.4264523818796707e-13,
-    "probability_maintenance": 0.03454772164894957,
-    "probability_normal": 0.4822429912893232,
-    "kind": "uncertain",
-    "observations": [
-      {
-        "observation": "OP-Z3",
-        "current_value": 67.57463073730469,
-        "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.4680851859987691
-      },
-      {
-        "observation": "AMBIENT",
-        "current_value": 25.735389709472656,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.07222850477494536
-      },
-      {
-        "observation": "TEMP_ERROR",
-        "current_value": 0.05720999836921692,
-        "normal_reference": -0.0002699999895412475,
-        "score_drop_to_reference": 0.01755165962756483
+        "score_drop_to_reference": 0.011473986590332386
       }
     ]
   },
   {
     "SCENARIO_ID": "S0242",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-08-25 12:45:00+00:00",
+    "MEAS_DT": "2027-08-25 19:25:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -242,43 +150,181 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "normal",
-    "confidence": 0.5015533793703042,
-    "candidate_2_probability": 0.498446620629081,
-    "margin": 0.003106758741223181,
+    "confidence": 0.5022750985481065,
+    "candidate_2_probability": 0.4977249014512941,
+    "margin": 0.0045501970968123695,
     "uncertainty_reasons": "close_candidates",
     "needs_review": true,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.5015533793703042,
-    "probability_failed": 3.07406670527497e-13,
-    "probability_maintenance": 3.07406670527497e-13,
-    "probability_normal": 0.498446620629081,
+    "probability_degraded": 0.5022750985481065,
+    "probability_failed": 2.9963175302697123e-13,
+    "probability_maintenance": 2.9963175302697123e-13,
+    "probability_normal": 0.4977249014512941,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 72.21753692626953,
+        "current_value": 70.75830841064453,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.46594738918100953
+        "score_drop_to_reference": 0.5011438411684327
       },
       {
+        "observation": "SET_TEMP",
+        "current_value": 780.0,
+        "normal_reference": 760.0,
+        "score_drop_to_reference": 0.1530757438154815
+      },
+      {
+        "observation": "TC-Z3",
+        "current_value": 780.1075439453125,
+        "normal_reference": 759.9944458007812,
+        "score_drop_to_reference": 0.05556185950574727
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0269",
+    "EQP_CD": "P1-CR1-CAL01",
+    "MEAS_DT": "2027-12-11 18:50:00+00:00",
+    "equipment": "A",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0269:P1-CR1-CAL01:0",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5025793773040305,
+    "candidate_2_probability": 0.4974206226953703,
+    "margin": 0.0051587546086601654,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.4974206226953703,
+    "probability_failed": 2.996314254234731e-13,
+    "probability_maintenance": 2.996314254234731e-13,
+    "probability_normal": 0.5025793773040305,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "TEMP_ERROR",
+        "current_value": -0.32499998807907104,
+        "normal_reference": -0.0002699999895412475,
+        "score_drop_to_reference": 0.048516846521460266
+      },
+      {
+        "observation": "RUNNING",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
+      },
+      {
+        "observation": "TC-Z3",
+        "current_value": 780.3250122070312,
+        "normal_reference": 759.9944458007812,
+        "score_drop_to_reference": -0.021636685806524225
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0261",
+    "EQP_CD": "P1-CR1-CAL01",
+    "MEAS_DT": "2027-11-07 11:50:00+00:00",
+    "equipment": "A",
+    "split": "validation",
+    "GT_HEALTH_STATE": "normal",
+    "GT_CAUSE_PART": "",
+    "GT_FAULT_MODE": "",
+    "DIAG_INTERVAL": "S0261:P1-CR1-CAL01:0",
+    "task": "state",
+    "prediction": "normal",
+    "candidate_2": "degraded",
+    "confidence": 0.5031079296156992,
+    "candidate_2_probability": 0.49689207038370153,
+    "margin": 0.006215859231997634,
+    "uncertainty_reasons": "close_candidates",
+    "needs_review": true,
+    "truth": "normal",
+    "correct": true,
+    "probability_degraded": 0.49689207038370153,
+    "probability_failed": 2.996307587225786e-13,
+    "probability_maintenance": 2.996307587225786e-13,
+    "probability_normal": 0.5031079296156992,
+    "kind": "uncertain",
+    "observations": [
+      {
         "observation": "LOAD",
-        "current_value": 0.7849299907684326,
+        "current_value": 0.892270028591156,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.2323848407940376
+        "score_drop_to_reference": 0.3504844174090652
+      },
+      {
+        "observation": "TEMP_ERROR",
+        "current_value": 0.1153699979186058,
+        "normal_reference": -0.0002699999895412475,
+        "score_drop_to_reference": 0.07399149253726267
+      },
+      {
+        "observation": "RUNNING",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.0
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0221",
+    "EQP_CD": "P1-CR1-CAL01",
+    "MEAS_DT": "2027-06-02 04:30:00+00:00",
+    "equipment": "A",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "thermocouple",
+    "GT_FAULT_MODE": "sensor-drift",
+    "DIAG_INTERVAL": "S0221:P1-CR1-CAL01:1",
+    "task": "state",
+    "prediction": "degraded",
+    "candidate_2": "failed",
+    "confidence": 0.9999999999994018,
+    "candidate_2_probability": 1.993994659185702e-13,
+    "margin": 0.9999999999992024,
+    "uncertainty_reasons": "",
+    "needs_review": false,
+    "truth": "degraded",
+    "correct": true,
+    "probability_degraded": 0.9999999999994018,
+    "probability_failed": 1.993994659185702e-13,
+    "probability_maintenance": 1.993994659185702e-13,
+    "probability_normal": 1.993994659185702e-13,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "OP-Z3",
+        "current_value": 99.04840087890625,
+        "normal_reference": 66.93004608154297,
+        "score_drop_to_reference": 0.9084371865617089
+      },
+      {
+        "observation": "TEMP_ERROR",
+        "current_value": 16.88787078857422,
+        "normal_reference": -0.0002699999895412475,
+        "score_drop_to_reference": 0.0029705579281840144
       },
       {
         "observation": "GRADE",
-        "current_value": 2.0,
+        "current_value": 1.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.1782727653461496
+        "score_drop_to_reference": 0.0
       }
     ]
   },
   {
     "SCENARIO_ID": "S0267",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-12-03 04:25:00+00:00",
+    "MEAS_DT": "2027-12-02 19:15:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -288,43 +334,43 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "failed",
-    "confidence": 0.9999999999993858,
-    "candidate_2_probability": 2.0477810704912178e-13,
-    "margin": 0.9999999999991811,
+    "confidence": 0.9999999999994018,
+    "candidate_2_probability": 1.993994659185702e-13,
+    "margin": 0.9999999999992024,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9999999999993858,
-    "probability_failed": 2.0477810704912178e-13,
-    "probability_maintenance": 2.0477810704912178e-13,
-    "probability_normal": 2.0477810704912178e-13,
+    "probability_degraded": 0.9999999999994018,
+    "probability_failed": 1.993994659185702e-13,
+    "probability_maintenance": 1.993994659185702e-13,
+    "probability_normal": 1.993994659185702e-13,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 91.4097900390625,
+        "current_value": 90.80973052978516,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.868914931315756
-      },
-      {
-        "observation": "LOAD",
-        "current_value": 0.706250011920929,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.0037363782946556734
+        "score_drop_to_reference": 0.9091918217826983
       },
       {
         "observation": "TEMP_ERROR",
-        "current_value": 18.137659072875977,
+        "current_value": 10.933199882507324,
         "normal_reference": -0.0002699999895412475,
-        "score_drop_to_reference": 2.184315131659176e-06
+        "score_drop_to_reference": 0.009244871290278844
+      },
+      {
+        "observation": "TC-Z3",
+        "current_value": 729.0667724609375,
+        "normal_reference": 759.9944458007812,
+        "score_drop_to_reference": 0.0010453404735670802
       }
     ]
   },
   {
     "SCENARIO_ID": "S0217",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-05-15 18:45:00+00:00",
+    "MEAS_DT": "2027-05-17 06:55:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -334,82 +380,36 @@
     "task": "state",
     "prediction": "degraded",
     "candidate_2": "failed",
-    "confidence": 0.9999999999993858,
-    "candidate_2_probability": 2.0477810704912178e-13,
-    "margin": 0.9999999999991811,
+    "confidence": 0.9999999999994018,
+    "candidate_2_probability": 1.993994659185702e-13,
+    "margin": 0.9999999999992024,
     "uncertainty_reasons": "",
     "needs_review": false,
     "truth": "degraded",
     "correct": true,
-    "probability_degraded": 0.9999999999993858,
-    "probability_failed": 2.0477810704912178e-13,
-    "probability_maintenance": 2.0477810704912178e-13,
-    "probability_normal": 2.0477810704912178e-13,
+    "probability_degraded": 0.9999999999994018,
+    "probability_failed": 1.993994659185702e-13,
+    "probability_maintenance": 1.993994659185702e-13,
+    "probability_normal": 1.993994659185702e-13,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 78.5235595703125,
+        "current_value": 91.68263244628906,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.9913844358707463
+        "score_drop_to_reference": 0.863566272042124
       },
       {
         "observation": "LOAD",
-        "current_value": 0.6373500227928162,
+        "current_value": 0.644599974155426,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.060676741423147273
+        "score_drop_to_reference": 0.0009705765662283428
       },
       {
-        "observation": "AMBIENT",
-        "current_value": 18.10420036315918,
-        "normal_reference": 24.071989059448242,
+        "observation": "GRADE",
+        "current_value": 1.0,
+        "normal_reference": 1.0,
         "score_drop_to_reference": 0.0
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0242",
-    "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-08-24 23:25:00+00:00",
-    "equipment": "A",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "thermocouple",
-    "GT_FAULT_MODE": "sensor-drift",
-    "DIAG_INTERVAL": "S0242:P1-CR1-CAL01:4",
-    "task": "state",
-    "prediction": "degraded",
-    "candidate_2": "failed",
-    "confidence": 0.9999999999993858,
-    "candidate_2_probability": 2.0477810704912178e-13,
-    "margin": 0.9999999999991811,
-    "uncertainty_reasons": "",
-    "needs_review": false,
-    "truth": "degraded",
-    "correct": true,
-    "probability_degraded": 0.9999999999993858,
-    "probability_failed": 2.0477810704912178e-13,
-    "probability_maintenance": 2.0477810704912178e-13,
-    "probability_normal": 2.0477810704912178e-13,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "OP-Z3",
-        "current_value": 82.4842300415039,
-        "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.8739872471530475
-      },
-      {
-        "observation": "LOAD",
-        "current_value": 0.6200199723243713,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.013450328438251224
-      },
-      {
-        "observation": "TEMP_ERROR",
-        "current_value": 17.790660858154297,
-        "normal_reference": -0.0002699999895412475,
-        "score_drop_to_reference": 0.009283921839293052
       }
     ]
   },
@@ -426,36 +426,36 @@
     "task": "cause",
     "prediction": "thermocouple::background-wear",
     "candidate_2": "heater::background-wear",
-    "confidence": 0.9825366134772245,
-    "candidate_2_probability": 0.005821128840925151,
-    "margin": 0.9767154846362994,
+    "confidence": 0.9708739774310315,
+    "candidate_2_probability": 0.009708674189656114,
+    "margin": 0.9611653032413754,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "heater::background-wear",
     "correct": false,
-    "probability_heater::background-wear": 0.005821128840925151,
-    "probability_heater::heater-loss": 0.005821128840925151,
-    "probability_thermocouple::background-wear": 0.9825366134772245,
-    "probability_thermocouple::sensor-drift": 0.005821128840925151,
+    "probability_heater::background-wear": 0.009708674189656114,
+    "probability_heater::heater-loss": 0.009708674189656114,
+    "probability_thermocouple::background-wear": 0.9708739774310315,
+    "probability_thermocouple::sensor-drift": 0.009708674189656114,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "AMBIENT",
         "current_value": 18.38698959350586,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.6194522271987495
+        "score_drop_to_reference": 0.6199520472026068
       },
       {
         "observation": "OP-Z3",
         "current_value": 79.32695770263672,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.5629630105022139
+        "score_drop_to_reference": 0.5763310715696932
       },
       {
-        "observation": "SET_TEMP",
-        "current_value": 780.0,
-        "normal_reference": 760.0,
-        "score_drop_to_reference": 0.5412012755491353
+        "observation": "LOAD",
+        "current_value": 0.7594199776649475,
+        "normal_reference": 0.7799299955368042,
+        "score_drop_to_reference": 0.547842607126847
       }
     ]
   },
@@ -472,43 +472,43 @@
     "task": "cause",
     "prediction": "thermocouple::sensor-drift",
     "candidate_2": "heater::heater-loss",
-    "confidence": 0.7410091885123693,
-    "candidate_2_probability": 0.2501613442380076,
-    "margin": 0.4908478442743617,
+    "confidence": 0.7156834936089533,
+    "candidate_2_probability": 0.2699310629764123,
+    "margin": 0.44575243063254105,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "heater::heater-loss",
     "correct": false,
-    "probability_heater::background-wear": 0.004414733624811524,
-    "probability_heater::heater-loss": 0.2501613442380076,
-    "probability_thermocouple::background-wear": 0.004414733624811524,
-    "probability_thermocouple::sensor-drift": 0.7410091885123693,
+    "probability_heater::background-wear": 0.007192721707317157,
+    "probability_heater::heater-loss": 0.2699310629764123,
+    "probability_thermocouple::background-wear": 0.007192721707317157,
+    "probability_thermocouple::sensor-drift": 0.7156834936089533,
     "kind": "confident_error",
     "observations": [
       {
         "observation": "AMBIENT",
         "current_value": 18.000410079956055,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.3248493618778416
+        "score_drop_to_reference": 0.3150692962323422
       },
       {
         "observation": "OP-Z3",
         "current_value": 73.97664642333984,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.3124200356650223
+        "score_drop_to_reference": 0.31501244217352165
       },
       {
         "observation": "LOAD",
         "current_value": 0.6453999876976013,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.1877570584939725
+        "score_drop_to_reference": 0.1865940332964292
       }
     ]
   },
   {
     "SCENARIO_ID": "S0242",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-08-25 23:25:00+00:00",
+    "MEAS_DT": "2027-08-25 18:00:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -517,44 +517,90 @@
     "DIAG_INTERVAL": "S0242:P1-CR1-CAL01:6",
     "task": "cause",
     "prediction": "thermocouple::background-wear",
-    "candidate_2": "thermocouple::sensor-drift",
-    "confidence": 0.6286151093989238,
-    "candidate_2_probability": 0.2310706494225563,
-    "margin": 0.39754445997636756,
+    "candidate_2": "heater::heater-loss",
+    "confidence": 0.6082526754122445,
+    "candidate_2_probability": 0.3791471287759212,
+    "margin": 0.22910554663632327,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "heater::background-wear",
     "correct": false,
-    "probability_heater::background-wear": 0.0037567137773550927,
-    "probability_heater::heater-loss": 0.1365575274011647,
-    "probability_thermocouple::background-wear": 0.6286151093989238,
-    "probability_thermocouple::sensor-drift": 0.2310706494225563,
+    "probability_heater::background-wear": 0.00630009790591714,
+    "probability_heater::heater-loss": 0.3791471287759212,
+    "probability_thermocouple::background-wear": 0.6082526754122445,
+    "probability_thermocouple::sensor-drift": 0.00630009790591714,
     "kind": "confident_error",
     "observations": [
       {
-        "observation": "OP-Z3",
-        "current_value": 75.4819564819336,
-        "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.28250784889316327
-      },
-      {
         "observation": "AMBIENT",
-        "current_value": 23.02910041809082,
+        "current_value": 18.000410079956055,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.2718536244398877
+        "score_drop_to_reference": 0.3540694093194229
       },
       {
-        "observation": "GRADE",
-        "current_value": 2.0,
-        "normal_reference": 1.0,
-        "score_drop_to_reference": 0.263840248727802
+        "observation": "LOAD",
+        "current_value": 0.6244500279426575,
+        "normal_reference": 0.7799299955368042,
+        "score_drop_to_reference": 0.23083322970852327
+      },
+      {
+        "observation": "SET_TEMP",
+        "current_value": 780.0,
+        "normal_reference": 760.0,
+        "score_drop_to_reference": 0.22920105251999623
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0267",
+    "EQP_CD": "P1-CR1-CAL01",
+    "MEAS_DT": "2027-12-02 13:25:00+00:00",
+    "equipment": "A",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "heater",
+    "GT_FAULT_MODE": "heater-loss",
+    "DIAG_INTERVAL": "S0267:P1-CR1-CAL01:1",
+    "task": "cause",
+    "prediction": "heater::heater-loss",
+    "candidate_2": "thermocouple::sensor-drift",
+    "confidence": 0.4941238818412757,
+    "candidate_2_probability": 0.4941238818412757,
+    "margin": 0.0,
+    "uncertainty_reasons": "low_confidence;close_candidates",
+    "needs_review": true,
+    "truth": "heater::heater-loss",
+    "correct": true,
+    "probability_heater::background-wear": 0.005876118158724285,
+    "probability_heater::heater-loss": 0.4941238818412757,
+    "probability_thermocouple::background-wear": 0.005876118158724285,
+    "probability_thermocouple::sensor-drift": 0.4941238818412757,
+    "kind": "uncertain",
+    "observations": [
+      {
+        "observation": "OP-Z3",
+        "current_value": 83.91515350341797,
+        "normal_reference": 66.93004608154297,
+        "score_drop_to_reference": 0.26317252805503966
+      },
+      {
+        "observation": "LOAD",
+        "current_value": 0.6202800273895264,
+        "normal_reference": 0.7799299955368042,
+        "score_drop_to_reference": 0.15147747623305152
+      },
+      {
+        "observation": "SET_TEMP",
+        "current_value": 740.0,
+        "normal_reference": 760.0,
+        "score_drop_to_reference": 0.0727822122937612
       }
     ]
   },
   {
     "SCENARIO_ID": "S0217",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-05-15 10:40:00+00:00",
+    "MEAS_DT": "2027-05-15 21:45:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -562,137 +608,91 @@
     "GT_FAULT_MODE": "heater-loss",
     "DIAG_INTERVAL": "S0217:P1-CR1-CAL01:1",
     "task": "cause",
-    "prediction": "thermocouple::background-wear",
-    "candidate_2": "thermocouple::sensor-drift",
-    "confidence": 0.3422494313411549,
-    "candidate_2_probability": 0.3422143541711888,
-    "margin": 3.5077169966091226e-05,
+    "prediction": "thermocouple::sensor-drift",
+    "candidate_2": "heater::heater-loss",
+    "confidence": 0.3708926467973252,
+    "candidate_2_probability": 0.3708511535470063,
+    "margin": 4.149325031888029e-05,
     "uncertainty_reasons": "low_confidence;close_candidates",
     "needs_review": true,
     "truth": "heater::heater-loss",
     "correct": false,
-    "probability_heater::background-wear": 0.0026802068948371853,
-    "probability_heater::heater-loss": 0.31285600759281906,
-    "probability_thermocouple::background-wear": 0.3422494313411549,
-    "probability_thermocouple::sensor-drift": 0.3422143541711888,
+    "probability_heater::background-wear": 0.0045265159906898,
+    "probability_heater::heater-loss": 0.3708511535470063,
+    "probability_thermocouple::background-wear": 0.25372968366497867,
+    "probability_thermocouple::sensor-drift": 0.3708926467973252,
     "kind": "uncertain",
     "observations": [
       {
-        "observation": "OP-Z3",
-        "current_value": 81.24739074707031,
-        "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.10189034012561879
+        "observation": "AMBIENT",
+        "current_value": 20.617839813232422,
+        "normal_reference": 24.071989059448242,
+        "score_drop_to_reference": 0.07345938518175082
       },
       {
         "observation": "LOAD",
-        "current_value": 0.8934599757194519,
+        "current_value": 0.7718899846076965,
         "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.07031957993413868
+        "score_drop_to_reference": 0.007336208643674125
       },
-      {
-        "observation": "AMBIENT",
-        "current_value": 26.10732078552246,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.0391815017953841
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0221",
-    "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-06-02 14:05:00+00:00",
-    "equipment": "A",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "heater",
-    "GT_FAULT_MODE": "background-wear",
-    "DIAG_INTERVAL": "S0221:P1-CR1-CAL01:3",
-    "task": "cause",
-    "prediction": "thermocouple::sensor-drift",
-    "candidate_2": "thermocouple::background-wear",
-    "confidence": 0.27020484173544446,
-    "candidate_2_probability": 0.27009279062728153,
-    "margin": 0.00011205110816292496,
-    "uncertainty_reasons": "low_confidence;close_candidates",
-    "needs_review": true,
-    "truth": "heater::background-wear",
-    "correct": false,
-    "probability_heater::background-wear": 0.23230655778016202,
-    "probability_heater::heater-loss": 0.22739580985711202,
-    "probability_thermocouple::background-wear": 0.27009279062728153,
-    "probability_thermocouple::sensor-drift": 0.27020484173544446,
-    "kind": "uncertain",
-    "observations": [
       {
         "observation": "GRADE",
-        "current_value": 2.0,
+        "current_value": 1.0,
         "normal_reference": 1.0,
-        "score_drop_to_reference": 0.026457758252852126
-      },
-      {
-        "observation": "AMBIENT",
-        "current_value": 20.937950134277344,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.012750601390717375
-      },
-      {
-        "observation": "SET_TEMP",
-        "current_value": 780.0,
-        "normal_reference": 760.0,
-        "score_drop_to_reference": 0.010137524920971253
+        "score_drop_to_reference": 0.0
       }
     ]
   },
   {
-    "SCENARIO_ID": "S0285",
+    "SCENARIO_ID": "S0242",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2028-02-13 11:15:00+00:00",
+    "MEAS_DT": "2027-08-24 10:00:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
     "GT_CAUSE_PART": "thermocouple",
     "GT_FAULT_MODE": "sensor-drift",
-    "DIAG_INTERVAL": "S0285:P1-CR1-CAL01:4",
+    "DIAG_INTERVAL": "S0242:P1-CR1-CAL01:4",
     "task": "cause",
-    "prediction": "thermocouple::sensor-drift",
-    "candidate_2": "heater::heater-loss",
-    "confidence": 0.330179951315862,
-    "candidate_2_probability": 0.3299407032441991,
-    "margin": 0.00023924807166286755,
+    "prediction": "heater::heater-loss",
+    "candidate_2": "thermocouple::sensor-drift",
+    "confidence": 0.38473349752121755,
+    "candidate_2_probability": 0.3846603822607993,
+    "margin": 7.3115260418255e-05,
     "uncertainty_reasons": "low_confidence;close_candidates",
     "needs_review": true,
     "truth": "thermocouple::sensor-drift",
-    "correct": true,
-    "probability_heater::background-wear": 0.12216017507675066,
-    "probability_heater::heater-loss": 0.3299407032441991,
-    "probability_thermocouple::background-wear": 0.21771917036318839,
-    "probability_thermocouple::sensor-drift": 0.330179951315862,
+    "correct": false,
+    "probability_heater::background-wear": 0.004641417704983305,
+    "probability_heater::heater-loss": 0.38473349752121755,
+    "probability_thermocouple::background-wear": 0.22596470251299985,
+    "probability_thermocouple::sensor-drift": 0.3846603822607993,
     "kind": "uncertain",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 65.54492950439453,
+        "current_value": 75.9200210571289,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.05776688096322091
+        "score_drop_to_reference": 0.25456733547764554
       },
       {
-        "observation": "LOAD",
-        "current_value": 0.7900999784469604,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.012685499105827835
+        "observation": "GRADE",
+        "current_value": 2.0,
+        "normal_reference": 1.0,
+        "score_drop_to_reference": 0.032711952680253786
       },
       {
         "observation": "SET_TEMP",
-        "current_value": 760.0,
+        "current_value": 780.0,
         "normal_reference": 760.0,
-        "score_drop_to_reference": 0.0
+        "score_drop_to_reference": 0.02300288869483419
       }
     ]
   },
   {
     "SCENARIO_ID": "S0217",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-05-17 23:10:00+00:00",
+    "MEAS_DT": "2027-05-17 23:05:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -702,89 +702,43 @@
     "task": "cause",
     "prediction": "thermocouple::background-wear",
     "candidate_2": "heater::background-wear",
-    "confidence": 0.9825366134772245,
-    "candidate_2_probability": 0.005821128840925151,
-    "margin": 0.9767154846362994,
+    "confidence": 0.9708739774310315,
+    "candidate_2_probability": 0.009708674189656114,
+    "margin": 0.9611653032413754,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "thermocouple::background-wear",
     "correct": true,
-    "probability_heater::background-wear": 0.005821128840925151,
-    "probability_heater::heater-loss": 0.005821128840925151,
-    "probability_thermocouple::background-wear": 0.9825366134772245,
-    "probability_thermocouple::sensor-drift": 0.005821128840925151,
+    "probability_heater::background-wear": 0.009708674189656114,
+    "probability_heater::heater-loss": 0.009708674189656114,
+    "probability_thermocouple::background-wear": 0.9708739774310315,
+    "probability_thermocouple::sensor-drift": 0.009708674189656114,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 75.8770523071289,
+        "current_value": 75.88157653808594,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.7073161047410137
+        "score_drop_to_reference": 0.6935465299887561
       },
       {
         "observation": "AMBIENT",
-        "current_value": 22.643949508666992,
+        "current_value": 22.516780853271484,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.6301495210632289
+        "score_drop_to_reference": 0.6290663038245382
       },
       {
         "observation": "TC-Z3",
-        "current_value": 779.8816528320312,
+        "current_value": 779.9766845703125,
         "normal_reference": 759.9944458007812,
-        "score_drop_to_reference": 0.5286272034606041
-      }
-    ]
-  },
-  {
-    "SCENARIO_ID": "S0267",
-    "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2027-12-03 13:30:00+00:00",
-    "equipment": "A",
-    "split": "validation",
-    "GT_HEALTH_STATE": "degraded",
-    "GT_CAUSE_PART": "thermocouple",
-    "GT_FAULT_MODE": "background-wear",
-    "DIAG_INTERVAL": "S0267:P1-CR1-CAL01:3",
-    "task": "cause",
-    "prediction": "thermocouple::background-wear",
-    "candidate_2": "thermocouple::sensor-drift",
-    "confidence": 0.7218764616363197,
-    "candidate_2_probability": 0.2695014301115564,
-    "margin": 0.45237503152476327,
-    "uncertainty_reasons": "low_confidence",
-    "needs_review": true,
-    "truth": "thermocouple::background-wear",
-    "correct": true,
-    "probability_heater::background-wear": 0.004311054126061973,
-    "probability_heater::heater-loss": 0.004311054126061973,
-    "probability_thermocouple::background-wear": 0.7218764616363197,
-    "probability_thermocouple::sensor-drift": 0.2695014301115564,
-    "kind": "correct_abnormal",
-    "observations": [
-      {
-        "observation": "GRADE",
-        "current_value": 2.0,
-        "normal_reference": 1.0,
-        "score_drop_to_reference": 0.36846972964135816
-      },
-      {
-        "observation": "LOAD",
-        "current_value": 0.8590099811553955,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.3654540566212932
-      },
-      {
-        "observation": "AMBIENT",
-        "current_value": 21.758480072021484,
-        "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.36055318922083807
+        "score_drop_to_reference": 0.5390388496736129
       }
     ]
   },
   {
     "SCENARIO_ID": "S0285",
     "EQP_CD": "P1-CR1-CAL01",
-    "MEAS_DT": "2028-02-11 21:10:00+00:00",
+    "MEAS_DT": "2028-02-11 21:25:00+00:00",
     "equipment": "A",
     "split": "validation",
     "GT_HEALTH_STATE": "degraded",
@@ -794,36 +748,82 @@
     "task": "cause",
     "prediction": "thermocouple::sensor-drift",
     "candidate_2": "heater::heater-loss",
-    "confidence": 0.6422343804810071,
-    "candidate_2_probability": 0.349925563644823,
-    "margin": 0.2923088168361841,
+    "confidence": 0.6211166465529573,
+    "candidate_2_probability": 0.366102116947337,
+    "margin": 0.25501452960562027,
     "uncertainty_reasons": "low_confidence",
     "needs_review": true,
     "truth": "thermocouple::sensor-drift",
     "correct": true,
-    "probability_heater::background-wear": 0.003920027937084889,
-    "probability_heater::heater-loss": 0.349925563644823,
-    "probability_thermocouple::background-wear": 0.003920027937084889,
-    "probability_thermocouple::sensor-drift": 0.6422343804810071,
+    "probability_heater::background-wear": 0.006390618249852799,
+    "probability_heater::heater-loss": 0.366102116947337,
+    "probability_thermocouple::background-wear": 0.006390618249852799,
+    "probability_thermocouple::sensor-drift": 0.6211166465529573,
     "kind": "correct_abnormal",
     "observations": [
       {
         "observation": "OP-Z3",
-        "current_value": 63.99837112426758,
+        "current_value": 64.348876953125,
         "normal_reference": 66.93004608154297,
-        "score_drop_to_reference": 0.23508745174749662
+        "score_drop_to_reference": 0.230189821597795
       },
       {
         "observation": "AMBIENT",
-        "current_value": 19.903310775756836,
+        "current_value": 20.198780059814453,
         "normal_reference": 24.071989059448242,
-        "score_drop_to_reference": 0.17968555328658992
+        "score_drop_to_reference": 0.18073113460253182
       },
       {
-        "observation": "LOAD",
-        "current_value": 0.6769800186157227,
-        "normal_reference": 0.7799299955368042,
-        "score_drop_to_reference": 0.12099921092046861
+        "observation": "TEMP_ERROR",
+        "current_value": -0.17348000407218933,
+        "normal_reference": -0.0002699999895412475,
+        "score_drop_to_reference": 0.08608858700897004
+      }
+    ]
+  },
+  {
+    "SCENARIO_ID": "S0267",
+    "EQP_CD": "P1-CR1-CAL01",
+    "MEAS_DT": "2027-12-02 20:40:00+00:00",
+    "equipment": "A",
+    "split": "validation",
+    "GT_HEALTH_STATE": "degraded",
+    "GT_CAUSE_PART": "heater",
+    "GT_FAULT_MODE": "heater-loss",
+    "DIAG_INTERVAL": "S0267:P1-CR1-CAL01:1",
+    "task": "cause",
+    "prediction": "heater::heater-loss",
+    "candidate_2": "thermocouple::sensor-drift",
+    "confidence": 0.6149573154029433,
+    "candidate_2_probability": 0.3723496816539559,
+    "margin": 0.24260763374898742,
+    "uncertainty_reasons": "low_confidence",
+    "needs_review": true,
+    "truth": "heater::heater-loss",
+    "correct": true,
+    "probability_heater::background-wear": 0.006346501471550446,
+    "probability_heater::heater-loss": 0.6149573154029433,
+    "probability_thermocouple::background-wear": 0.006346501471550446,
+    "probability_thermocouple::sensor-drift": 0.3723496816539559,
+    "kind": "correct_abnormal",
+    "observations": [
+      {
+        "observation": "OP-Z3",
+        "current_value": 92.6093521118164,
+        "normal_reference": 66.93004608154297,
+        "score_drop_to_reference": 0.404527017299013
+      },
+      {
+        "observation": "TEMP_ERROR",
+        "current_value": 12.448590278625488,
+        "normal_reference": -0.0002699999895412475,
+        "score_drop_to_reference": 0.11721265105379591
+      },
+      {
+        "observation": "TC-Z3",
+        "current_value": 727.5513916015625,
+        "normal_reference": 759.9944458007812,
+        "score_drop_to_reference": 0.009004557716975392
       }
     ]
   }
