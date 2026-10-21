@@ -21,10 +21,10 @@ def Check(Name):
 
 
 # 전체 파이프라인: 파트별 스크립트를 순서대로 별도 프로세스로 실행 (각 파트가 명령행 인자를 직접 읽으므로 함수 호출 대신 프로세스로 분리)
-#   python Main.py all                    전처리 → 이상탐지 → 상태·원인 진단 → 고장 위험 → 최종 결함 위험 → 언리얼 파일 → 모음
+#   python Main.py all                    전처리 → 이상탐지 → 상태·원인 진단 → 고장 위험 → 언리얼 파일 → 최종 결함 위험 → 잔여수명 → 모음
 #   python Main.py all skip=preprocess    전처리를 건너뜀 (이미 Data/Processed/Scenarios가 있을 때)
 #   python Main.py all skip=diagnosis,anomaly   여러 단계를 건너뜀
-#   python Main.py all rul                잔여수명(hee.py)도 실행 (scikit-survival 설치 필요)
+#   잔여수명(hee.py)의 생존분석은 scikit-survival이 있을 때만 돌고, 없으면 그 부분만 건너뜀
 # 한 단계가 실패하면 거기서 멈추고 어느 단계인지 알려 줌
 BaseDir = Path(__file__).resolve().parent
 
@@ -36,21 +36,20 @@ PipelineSteps = [
     ("risk", [sys.executable, "jungmin/Main.py", "A", "B", "C", "D", "E1", "E2", "F", "noshow"], "7개 설비 고장 위험 학습·평가·모델 저장"),
     ("unreal", [sys.executable, "jungmin/unreal.py"], "언리얼용 온톨로지·비용·위험 예측 파일 생성"),
     ("quality", [sys.executable, "chanhee/Analysis.py"], "C 검사 직후 최종 결함 위험 예측 (흐름 단위)"),
-    ("rul", [sys.executable, "hee.py"], "CC1 잔여수명 (옵션)"),
+    ("rul", [sys.executable, "hee.py"], "CC1 잔여수명 (생존분석은 scikit-survival 있을 때만)"),
     ("bundle", [sys.executable, "Bundle.py"], "언리얼 출력을 Results/Unreal에 모으기"),
 ]
 
 
 def RunAll(Args):
     Skip = {Name for Arg in Args if Arg.startswith("skip=") for Name in Arg[5:].split(",")}
-    Optional = {"rul"} - set(Args)
     Unknown = Skip - {Name for Name, _, _ in PipelineSteps}
 
     if Unknown:
         raise SystemExit(f"알 수 없는 단계: {sorted(Unknown)} (가능: {[Name for Name, _, _ in PipelineSteps]})")
 
     for Index, (Name, Command, Note) in enumerate(PipelineSteps, start=1):
-        if Name in Skip or Name in Optional:
+        if Name in Skip:
             print(f"\n[{Index}/{len(PipelineSteps)}] {Name} 건너뜀", flush=True)
             continue
 

@@ -311,7 +311,7 @@ def make_report(all_metrics,all_cases,audits,out,run):
         'accuracy':'정확도','macro_f1':'Macro-F1','baseline_macro_f1':'기준 F1','macro_f1_ci_low':'F1 하한','macro_f1_ci_high':'F1 상한',
         'accepted_coverage':'자동 채택률','accepted_accuracy':'채택 정확도','ece':'확률 오차'})
     body='<h1>설비 상태·원인 진단</h1><p>독립 검증 72개 상황. 원인은 실제 이상·원인 확인 시점의 조건부 평가입니다. 상세 과정·혼동 사례는 같은 폴더의 분석결과_과정설명.md를 확인하세요.</p><img style="width:90%;max-width:1000px" src="figures/performance_summary.png">'+overview.to_html(index=False,escape=True,float_format=lambda x:f'{x:.3f}')+''.join(html_sections)
-    document='<!doctype html><html lang="ko"><meta charset="utf-8"><title>설비 진단 분석 결과</title><style>body{font-family:Malgun Gothic,sans-serif;margin:32px;color:#172237;max-width:1400px}table{border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid #ddd}th{background:#edf2f7}img{width:48%;vertical-align:top}p{line-height:1.7}</style>'+body+'</html>'
+    document='<!doctype html><html lang="ko"><meta charset="utf-8"><title>설비 진단 분석 결과</title><style>body{font-family:Malgun Gothic,Apple SD Gothic Neo,sans-serif;margin:32px;color:#172237;max-width:1400px}table{border-collapse:collapse;font-size:13px}th,td{padding:9px;border-bottom:1px solid #ddd}th{background:#edf2f7}img{width:48%;vertical-align:top}p{line-height:1.7}</style>'+body+'</html>'
     (out/'결과_한눈에보기.html').write_text(document,encoding='utf-8')
     write_first_read(all_metrics,out,run)
     save_json(out/'run_manifest.json',run)
@@ -412,7 +412,7 @@ def main():
     parser.add_argument('--report-only',action='store_true',help='저장된 평가 결과로 보고서만 다시 생성')
     args=parser.parse_args()
     for folder in ['features','models','figures','tables','predictions']:(args.output/folder).mkdir(parents=True,exist_ok=True)
-    plt.rcParams.update({'font.family':'Malgun Gothic','axes.unicode_minus':False})
+    plt.rcParams.update({'font.family':['Malgun Gothic','AppleGothic','NanumGothic','DejaVu Sans'],'axes.unicode_minus':False})  # 윈도우·맥 모두 한글이 나오도록 있는 글꼴 순서대로 사용
     manifest=manifest_at(args.raw)
     if args.predict_scenario:return predict_scenario(args,manifest)
     if args.validation_dashboard:return export_validation_dashboard(args)
