@@ -78,7 +78,8 @@ def BuildRawTable(Path_, TimeCols, Start, TruthKeys):
     if not Path_.exists():
         return None
 
-    Df = pd.read_csv(Path_)
+    # 값을 숫자로 바꾸지 않고 원본 글자 그대로 읽음 (빈칸이 있는 열이 0 -> 0.0처럼 바뀌는 것을 막음)
+    Df = pd.read_csv(Path_, dtype=str, keep_default_na=False, encoding="utf-8-sig")
 
     if TruthKeys is not None:
         Df = Df.rename(columns={Col: config.TruthPrefix + Col for Col in Df.columns if Col not in TruthKeys})

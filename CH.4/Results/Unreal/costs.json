@@ -1,0 +1,220 @@
+{
+  "Version": 1,
+  "Currency": "만원",
+  "PlanHours": 6,
+  "UpdatedAt": "2026-10-19T00:29:48Z",
+  "UpdatedBy": "default",
+  "Note": "모든 값은 임의값(가정)입니다. 언리얼에서 수정하고 언리얼 Saved 폴더에 저장합니다.",
+  "Equipments": [
+    {
+      "Equip": "A",
+      "EqpTag": "P1-CR1-CAL01",
+      "EqpName": "연속소둔로",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "heater",
+      "Parts": [
+        {
+          "Part": "heater",
+          "PartName": "heater",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "thermocouple",
+          "PartName": "thermocouple",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "B",
+      "EqpTag": "P1-CR1-WLD01",
+      "EqpName": "코일 용접기",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "power",
+      "Parts": [
+        {
+          "Part": "electrode",
+          "PartName": "electrode",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "power",
+          "PartName": "power",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "C",
+      "EqpTag": "P1-CC1-INS01",
+      "EqpName": "연주 주편",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "valve",
+      "Parts": [
+        {
+          "Part": "oscillator",
+          "PartName": "oscillator",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "valve",
+          "PartName": "valve",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "D",
+      "EqpTag": "P1-CR1-SPM01",
+      "EqpName": "조질압연기",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "bearing",
+      "Parts": [
+        {
+          "Part": "roll",
+          "PartName": "roll",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "bearing",
+          "PartName": "bearing",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "E1",
+      "EqpTag": "P1-SP1-EXF01",
+      "EqpName": "소결 1 배풍기",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "mount",
+      "Parts": [
+        {
+          "Part": "rotor",
+          "PartName": "rotor",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "bearing",
+          "PartName": "bearing",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "mount",
+          "PartName": "mount",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "E2",
+      "EqpTag": "P1-SP2-EXF01",
+      "EqpName": "소결 2 배풍기",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "bearing",
+      "Parts": [
+        {
+          "Part": "rotor",
+          "PartName": "rotor",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "bearing",
+          "PartName": "bearing",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "mount",
+          "PartName": "mount",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    },
+    {
+      "Equip": "F",
+      "EqpTag": "P1-SP1-AGT01",
+      "EqpName": "슬러리 교반기",
+      "DowntimeCostPerHour": 200,
+      "ReplaceHours": 4,
+      "RepairCost": 3000,
+      "RepairHours": 8,
+      "FailureLoss": 2000,
+      "PlannedDowntimeRatio": 0.5,
+      "DefaultPart": "impeller",
+      "Parts": [
+        {
+          "Part": "impeller",
+          "PartName": "impeller",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        },
+        {
+          "Part": "bearing",
+          "PartName": "bearing",
+          "Price": 1200,
+          "Stock": 1,
+          "LeadTimeHours": 24
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "Version": 1,
+  "GeneratedAt": "2026-10-19T00:29:48Z",
+  "ObjectTypes": {
+    "Equipment": "설비: Id, EqpTag, EqpName, Plant, Stage(공정 순서), Downstream(다음 공정 설비들), Sensors, RiskFile",
+    "Part": "부품: Id(설비.부품), Equip, Part, PartName / 가정값(Price, Stock, LeadTimeHours)은 costs.json",
+    "RiskPoint": "시점별 예측: risk_{설비}.json의 Points",
+    "Decision": "정비 결정 기록: 언리얼 Saved/DSS/decision_log.json"
+  },
+  "Equipments": [
+    {
+      "Id": "A",
+      "EqpTag": "P1-CR1-CAL01",
+      "EqpName": "연속소둔로",
+      "Plant": "CR1",
+      "Sensors": [
+        "LOAD",
+        "AMBIENT",
+        "SET_TEMP",
+        "TC-Z3",
+        "OP-Z3"
+      ],
+      "RiskFile": "risk_A.json",
+      "Stage": 5,
+      "Downstream": [
+        "D"
+      ]
+    },
+    {
+      "Id": "B",
+      "EqpTag": "P1-CR1-WLD01",
+      "EqpName": "코일 용접기",
+      "Plant": "CR1",
+      "Sensors": [
+        "THICKNESS",
+        "SPD",
+        "PWR",
+        "SET-PWR",
+        "RESISTANCE"
+      ],
+      "RiskFile": "risk_B.json",
+      "Stage": 4,
+      "Downstream": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "Id": "C",
+      "EqpTag": "P1-CC1-INS01",
+      "EqpName": "연주 주편",
+      "Plant": "CC1",
+      "Sensors": [
+        "LOAD",
+        "WD-SPD",
+        "WD-LOD",
+        "OSC-FRQ",
+        "OSC-STK",
+        "MLD-LVL",
+        "CONTROL_DELAY"
+      ],
+      "RiskFile": "risk_C.json",
+      "Stage": 3,
+      "Downstream": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "Id": "D",
+      "EqpTag": "P1-CR1-SPM01",
+      "EqpName": "조질압연기",
+      "Plant": "CR1",
+      "Sensors": [
+        "LOAD",
+        "VIB-TOP_RMS",
+        "VIB-TOP_STD",
+        "VIB-TOP_KUR",
+        "VIB-TOP_CRF",
+        "VIB-BOT_RMS",
+        "CUR-MTR_RMS"
+      ],
+      "RiskFile": "risk_D.json",
+      "Stage": 6,
+      "Downstream": []
+    },
+    {
+      "Id": "E1",
+      "EqpTag": "P1-SP1-EXF01",
+      "EqpName": "소결 1 배풍기",
+      "Plant": "SP1",
+      "Sensors": [
+        "LOAD",
+        "RPM",
+        "VIB-MDE_RMS",
+        "VIB-MDE_STD",
+        "VIB-MDE_KUR",
+        "VIB-MDE_CRF",
+        "VIB-MNDE_RMS",
+        "VIB-FDE_RMS",
+        "VIB-FNDE_RMS"
+      ],
+      "RiskFile": "risk_E1.json",
+      "Stage": 1,
+      "Downstream": [
+        "E2",
+        "C",
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "Id": "E2",
+      "EqpTag": "P1-SP2-EXF01",
+      "EqpName": "소결 2 배풍기",
+      "Plant": "SP2",
+      "Sensors": [
+        "LOAD",
+        "RPM",
+        "VIB-MDE_RMS",
+        "VIB-MDE_STD",
+        "VIB-MDE_KUR",
+        "VIB-MDE_CRF",
+        "VIB-MNDE_RMS",
+        "VIB-FDE_RMS",
+        "VIB-FNDE_RMS"
+      ],
+      "RiskFile": "risk_E2.json",
+      "Stage": 2,
+      "Downstream": [
+        "C",
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "Id": "F",
+      "EqpTag": "P1-SP1-AGT01",
+      "EqpName": "슬러리 교반기",
+      "Plant": "SP1",
+      "Sensors": [
+        "LOAD",
+        "VISCOSITY",
+        "VIB-AGT_RMS",
+        "VIB-AGT_STD",
+        "VIB-AGT_KUR",
+        "VIB-AGT_CRF"
+      ],
+      "RiskFile": "risk_F.json",
+      "Stage": 0,
+      "Downstream": [
+        "E1",
+        "E2",
+        "C",
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "Parts": [
+    {
+      "Id": "A.heater",
+      "Equip": "A",
+      "Part": "heater",
+      "PartName": "heater"
+    },
+    {
+      "Id": "A.thermocouple",
+      "Equip": "A",
+      "Part": "thermocouple",
+      "PartName": "thermocouple"
+    },
+    {
+      "Id": "B.electrode",
+      "Equip": "B",
+      "Part": "electrode",
+      "PartName": "electrode"
+    },
+    {
+      "Id": "B.power",
+      "Equip": "B",
+      "Part": "power",
+      "PartName": "power"
+    },
+    {
+      "Id": "C.oscillator",
+      "Equip": "C",
+      "Part": "oscillator",
+      "PartName": "oscillator"
+    },
+    {
+      "Id": "C.valve",
+      "Equip": "C",
+      "Part": "valve",
+      "PartName": "valve"
+    },
+    {
+      "Id": "D.roll",
+      "Equip": "D",
+      "Part": "roll",
+      "PartName": "roll"
+    },
+    {
+      "Id": "D.bearing",
+      "Equip": "D",
+      "Part": "bearing",
+      "PartName": "bearing"
+    },
+    {
+      "Id": "E1.rotor",
+      "Equip": "E1",
+      "Part": "rotor",
+      "PartName": "rotor"
+    },
+    {
+      "Id": "E1.bearing",
+      "Equip": "E1",
+      "Part": "bearing",
+      "PartName": "bearing"
+    },
+    {
+      "Id": "E1.mount",
+      "Equip": "E1",
+      "Part": "mount",
+      "PartName": "mount"
+    },
+    {
+      "Id": "E2.rotor",
+      "Equip": "E2",
+      "Part": "rotor",
+      "PartName": "rotor"
+    },
+    {
+      "Id": "E2.bearing",
+      "Equip": "E2",
+      "Part": "bearing",
+      "PartName": "bearing"
+    },
+    {
+      "Id": "E2.mount",
+      "Equip": "E2",
+      "Part": "mount",
+      "PartName": "mount"
+    },
+    {
+      "Id": "F.impeller",
+      "Equip": "F",
+      "Part": "impeller",
+      "PartName": "impeller"
+    },
+    {
+      "Id": "F.bearing",
+      "Equip": "F",
+      "Part": "bearing",
+      "PartName": "bearing"
+    }
+  ],
+  "Relations": [
+    {
+      "Type": "InstalledOn",
+      "From": "A.heater",
+      "To": "A"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "A.thermocouple",
+      "To": "A"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "A",
+      "To": "D",
+      "AvgWaitHours": 0.26
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "B.electrode",
+      "To": "B"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "B.power",
+      "To": "B"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "B",
+      "To": "A",
+      "AvgWaitHours": 0.29
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "C.oscillator",
+      "To": "C"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "C.valve",
+      "To": "C"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "C",
+      "To": "B",
+      "AvgWaitHours": 0.21
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "D.roll",
+      "To": "D"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "D.bearing",
+      "To": "D"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E1.rotor",
+      "To": "E1"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E1.bearing",
+      "To": "E1"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E1.mount",
+      "To": "E1"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "E1",
+      "To": "E2",
+      "AvgWaitHours": 0.54
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E2.rotor",
+      "To": "E2"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E2.bearing",
+      "To": "E2"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "E2.mount",
+      "To": "E2"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "E2",
+      "To": "C",
+      "AvgWaitHours": 0.82
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "F.impeller",
+      "To": "F"
+    },
+    {
+      "Type": "InstalledOn",
+      "From": "F.bearing",
+      "To": "F"
+    },
+    {
+      "Type": "FeedsInto",
+      "From": "F",
+      "To": "E1",
+      "AvgWaitHours": 0.54
+    }
+  ],
+  "ProcessOrder": [
+    "F",
+    "E1",
+    "E2",
+    "C",
+    "B",
+    "A",
+    "D"
+  ],
+  "Actions": [
+    {
+      "Action": "EditAssumption",
+      "Label": "가정값 수정",
+      "Roles": [
+        "engineer",
+        "admin"
+      ],
+      "Target": "Part/Equipment",
+      "Params": [
+        "Price",
+        "Stock",
+        "LeadTimeHours",
+        "DowntimeCostPerHour",
+        "ReplaceHours",
+        "RepairCost",
+        "RepairHours",
+        "FailureLoss",
+        "PlannedDowntimeRatio"
+      ]
+    },
+    {
+      "Action": "ScheduleReplacement",
+      "Label": "부품 교체 예약",
+      "Roles": [
+        "engineer",
+        "admin"
+      ],
+      "Target": "Part",
+      "Params": [
+        "When (replace_now | replace_6h)",
+        "Note"
+      ]
+    },
+    {
+      "Action": "Wait",
+      "Label": "대기 (계속 운전)",
+      "Roles": [
+        "engineer",
+        "admin"
+      ],
+      "Target": "Equipment",
+      "Params": [
+        "Note"
+      ]
+    },
+    {
+      "Action": "AddFieldNote",
+      "Label": "현장 메모 (실제 부품 상태 등)",
+      "Roles": [
+        "engineer",
+        "admin"
+      ],
+      "Target": "Equipment",
+      "Params": [
+        "Note"
+      ]
+    },
+    {
+      "Action": "ResetAssumptions",
+      "Label": "가정값 기본값 복원",
+      "Roles": [
+        "admin"
+      ],
+      "Target": "All",
+      "Params": []
+    }
+  ],
+  "Roles": {
+    "viewer": "보기만",
+    "engineer": "가정값 수정, 정비 결정, 현장 메모",
+    "admin": "engineer 권한 + 가정값 기본값 복원"
+  },
+  "Lineage": {
+    "Dataset": "pdm-v2.2.0",
+    "Synthetic": true,
+    "Preprocessed": "CH.4/Data/Processed/Scenarios (CH.4/Main.py)",
+    "Sources": [
+      "history/equipment.csv",
+      "history/parts.csv",
+      "flow/operations.csv"
+    ]
+  }
+}
