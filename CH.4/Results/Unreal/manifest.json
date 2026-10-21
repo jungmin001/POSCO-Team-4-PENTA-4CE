@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "GeneratedAt": "2026-10-19T01:26:46Z",
+  "GeneratedAt": "2026-10-20T06:39:20Z",
   "Schema": "SCHEMA.md",
   "Files": [
     {
@@ -9,7 +9,7 @@
       "Producer": "직접 작성",
       "Status": "ok",
       "Bytes": 14160,
-      "SourceModified": "2026-10-19T01:26:44Z"
+      "SourceModified": "2026-10-20T06:39:12Z"
     },
     {
       "File": "ontology.json",

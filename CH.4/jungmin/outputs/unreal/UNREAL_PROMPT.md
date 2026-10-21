@@ -134,10 +134,10 @@ Python: 결정 기록 ↔ 실제 결과 비교 (feedback) → 모델·가정값 
       "User": "jungmin", "Role": "engineer",
       "Scenario": "S0222", "Time": "2027-06-05T06:00:00Z", "Equip": "C", "Part": "valve",
       "ModelVersion": "C-ENS-20261019-0031",
-      "P6H": 0.5767, "P24H": 0.941, "Level": "alarm",
+      "P6H": 0.663, "P24H": 0.967, "Level": "alarm",
       "Recommended": "replace_now",
       "Chosen": "replace_now",               // wait | replace_now | replace_6h | note
-      "Costs": { "wait": 6210.6, "replace_now": 2000, "replace_6h": 4483.5 },
+      "Costs": { "wait": 6384.18, "replace_now": 2000, "replace_6h": 4913.0 },
       "Assumptions": { ...그 순간 설비·부품 가정값 사본... },
       "Note": "현장 확인 결과 밸브 고착 흔적" }
   ]
@@ -215,7 +215,7 @@ Saving_vs_wait = Cost_wait − Cost_(Recommended)
 
 | Scenario | Time | P6H | P24H | Cost_wait | Cost_replace_now | Cost_replace_6h | Recommended |
 |---|---|---|---|---|---|---|---|
-| S0222 | 2027-06-05T06:00:00Z | 0.5767 | 0.941 | 6210.6 | 2000 | 4483.5 | replace_now |
+| S0222 | 2027-06-05T06:00:00Z | 0.663 | 0.967 | 6384.18 | 2000 | 4913.0 | replace_now |
 
 가정값을 바꾼 뒤 Python으로 같은 계산을 확인: `python jungmin/unreal.py costs=<언리얼프로젝트>/Saved/DSS/costs.json`
 

@@ -1,0 +1,50 @@
+{
+  "scenarios": 72,
+  "equipments": 7,
+  "failures": 47,
+  "warned": 40,
+  "warned_rate": 0.851063829787234,
+  "lead_median_h": 30.125,
+  "lead_mean_h": 29.693433604166664,
+  "lead_min_h": 4.0,
+  "lead_max_h": 52.75,
+  "lead_ge_6h": 39,
+  "lead_ge_24h": 27,
+  "quiet_pairs": 457,
+  "quiet_alarmed": 13,
+  "quiet_alarmed_rate": 0.028446389496717725,
+  "cost_after_failure": 6600.0,
+  "cost_replace_now": 2000.0,
+  "saving_per_failure": 4600.0,
+  "currency": "만원",
+  "by_equip": {
+    "A": {
+      "failures": 5,
+      "warned": 4
+    },
+    "B": {
+      "failures": 5,
+      "warned": 4
+    },
+    "C": {
+      "failures": 16,
+      "warned": 14
+    },
+    "D": {
+      "failures": 5,
+      "warned": 4
+    },
+    "E1": {
+      "failures": 5,
+      "warned": 5
+    },
+    "E2": {
+      "failures": 5,
+      "warned": 4
+    },
+    "F": {
+      "failures": 6,
+      "warned": 5
+    }
+  }
+}
