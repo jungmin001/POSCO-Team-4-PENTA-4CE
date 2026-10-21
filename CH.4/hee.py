@@ -10,6 +10,13 @@ from sklearn.pipeline import make_pipeline
 
 RUN_SURVIVAL = True
 SHOW_PLOTS = False
+# scikit-survival이 없으면 생존분석(9·10단계)만 건너뛰고 회귀모델은 그대로 실행 (Main.py all 이 여기서 멈추지 않도록)
+if RUN_SURVIVAL:
+    try:
+        import sksurv  # noqa: F401
+    except ImportError:
+        print("scikit-survival이 없어 생존분석(9·10단계)을 건너뜁니다. 설치: pip install scikit-survival")
+        RUN_SURVIVAL = False
 folder = Path(__file__).resolve().parent / "Data" / "Processed" / "Scenarios"
 index = pd.read_csv(folder / "index.csv")
 index = index[index["split"].isin(["train", "validation"])]
@@ -433,7 +440,7 @@ if RUN_SURVIVAL:
 # 11. 회귀모델 예측 그래프
 if SHOW_PLOTS:
     import matplotlib.pyplot as plt
-    plt.rcParams["font.family"] = "Malgun Gothic"
+    plt.rcParams["font.family"] = ["Malgun Gothic", "AppleGothic", "NanumGothic", "DejaVu Sans"]
     plt.rcParams["axes.unicode_minus"] = False
     graph_data = prediction_table(
         expanded_valid, predictions["8단계: 센서 7종+12시간 변화"]
